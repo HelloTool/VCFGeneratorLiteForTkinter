@@ -100,34 +100,34 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                 items=[
                     MenuCommand(
                         label="撤销(&U)",
-                        command=lambda: self.focus_get().event_generate("<<Undo>>"),
+                        command=lambda: self.__generate_focus_event("<<Undo>>"),
                         accelerator="Ctrl + Z",
                     ),
                     MenuCommand(
                         label="重做(&R)",
-                        command=lambda: self.focus_get().event_generate("<<Redo>>"),
+                        command=lambda: self.__generate_focus_event("<<Redo>>"),
                         accelerator="Ctrl + Y",
                     ),
                     MenuSeparator,
                     MenuCommand(
                         label="剪切(&T)",
-                        command=lambda: self.focus_get().event_generate("<<Cut>>"),
+                        command=lambda: self.__generate_focus_event("<<Cut>>"),
                         accelerator="Ctrl + X",
                     ),
                     MenuCommand(
                         label="复制(&C)",
-                        command=lambda: self.focus_get().event_generate("<<Copy>>"),
+                        command=lambda: self.__generate_focus_event("<<Copy>>"),
                         accelerator="Ctrl + C",
                     ),
                     MenuCommand(
                         label="粘贴(&P)",
-                        command=lambda: self.focus_get().event_generate("<<Paste>>"),
+                        command=lambda: self.__generate_focus_event("<<Paste>>"),
                         accelerator="Ctrl + V",
                     ),
                     MenuSeparator,
                     MenuCommand(
                         label="全选(&A)",
-                        command=lambda: self.focus_get().event_generate("<<SelectAll>>"),
+                        command=lambda: self.__generate_focus_event("<<SelectAll>>"),
                         accelerator="Ctrl + A",
                     ),
                     MenuSeparator,
@@ -166,6 +166,10 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                 ],
             ),
         )
+
+    def __generate_focus_event(self, sequence: str):
+        if widget := self.focus_get():
+            widget.event_generate(sequence)
 
     def set_text_content(self, content: str):
         self.content_text.replace(1.0, END, content)

@@ -22,7 +22,7 @@ class MenuSeparator:
 @dataclass
 class MenuCascade:
     label: str
-    items: list[MenuCommand | MenuSeparator | Self]
+    items: list[MenuCommand | MenuSeparator | Self | type[MenuSeparator]]
     accelerator: Optional[str] = None
     tearoff: bool = False
     state: Literal["normal", "active", "disabled"] = "normal"
@@ -47,9 +47,9 @@ def add_menu_items(menu: Menu, items: list[MenuItem]):
             label, underline = _parse_label(item.label)
             menu.add_command(
                 label=label,
-                command=item.command,
+                command=item.command,  # type: ignore
                 underline=underline,
-                accelerator=item.accelerator,
+                accelerator=item.accelerator,  # type: ignore
                 state=item.state,
             )
         elif isinstance(item, MenuSeparator) or (type(item) == type and issubclass(item, MenuSeparator)):
@@ -62,7 +62,7 @@ def add_menu_items(menu: Menu, items: list[MenuItem]):
                 label=label,
                 menu=submenu,
                 underline=underline,
-                accelerator=item.accelerator,
+                accelerator=item.accelerator,  # type: ignore
                 state=item.state,
             )
 
