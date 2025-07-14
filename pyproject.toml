@@ -44,9 +44,5 @@ docs_generate_os_notices = { call = "scripts.docs.generate_os_notices:main", hel
 [tool.pdm.build]
 is-purelib = true
 
-[[tool.pdm.source]]
-name = "pypi"
-url = "https://pypi.org/simple"
-
 [tool.black]
 line-length = 120
