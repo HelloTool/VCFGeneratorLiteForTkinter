@@ -1,7 +1,7 @@
 import logging
 import re
 from tkinter import Misc
-from typing import Optional
+from typing import Any, overload
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,11 @@ class ScalingMiscExtension(Misc):
                 f"system scale is {round(self._scale_factor * 0.75, 2)}."
             )
 
-    def scaling(self, factor: Optional[float] = None) -> float | None:
+    @overload
+    def scaling(self, factor: None = None) -> float: ...
+    @overload
+    def scaling(self, factor: float) -> None: ...
+    def scaling(self, factor=None):
         """
         设置或获取GUI缩放比例因子
 
@@ -30,18 +34,24 @@ class ScalingMiscExtension(Misc):
             self._scale_factor = factor
         return self.tk.call("tk", "scaling", factor)
 
-    def get_scaled(self, value: int | float) -> int | float:
+    @overload
+    def get_scaled(self, value: int) -> int: ...
+    @overload
+    def get_scaled(self, value: float) -> float: ...
+    def get_scaled(self, value):
         if isinstance(value, int):
             return int(self._scale_factor * value)
         elif isinstance(value, float):
             return float(self._scale_factor * value)
         else:
-            raise TypeError(f"{value} 必须为 int 或 float")
+            raise TypeError(f"{value} must be int or float")
 
     def parse_dimen(self, value: str | int | float) -> float:
-        if isinstance(value, int):
+        if isinstance(value, int | float):
             return value
         match = re.match(r"([0-9.]+)([a-z]*)", value)
+        if not match:
+            raise ValueError(f"{value} is not a valid dimension")
         value = float(match.group(1))
         unit = match.group(2)
         if unit == "p" or unit == "pt":
@@ -49,10 +59,8 @@ class ScalingMiscExtension(Misc):
         else:
             return float(value)
 
-    def scale_kw(self, **kw: int | float):
-        new_kw = {key: self.get_scaled(value) for key, value in kw.items()}
-        return new_kw
+    def scale_kw(self, **kwargs: int | float) -> dict[str, Any]:
+        return {key: self.get_scaled(value) for key, value in kwargs.items()}
 
-    def scale_args(self, *args: int | float):
-        new_args = [self.get_scaled(value) for value in args]
-        return new_args
+    def scale_args(self, *args: int | float) -> tuple[Any, ...]:
+        return tuple(self.get_scaled(value) for value in args)

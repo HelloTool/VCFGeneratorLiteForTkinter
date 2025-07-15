@@ -44,10 +44,19 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         content_label = Label(content_frame, text="异常的号码：")
         content_label.pack(fill=X, padx="7p", pady=("7p", "2p"))
         self.content_tree = ScrolledTreeview(
-            content_frame, columns=("row", "context"), show="headings", selectmode="browse"
+            content_frame,
+            columns=("row", "context"),
+            show="headings",
+            selectmode="browse",
         )
         self.content_tree.column(
-            column="row", anchor=W, stretch=False, width=self.get_scaled(60), minwidth=self.get_scaled(45)
+            column="row",
+            anchor=W,
+            stretch=False,
+            **self.scale_kw(
+                width=60,
+                minwidth=45,
+            ),
         )
         self.content_tree.column("context", anchor=W)
         self.content_tree.heading("row", text="位置", anchor=W)
