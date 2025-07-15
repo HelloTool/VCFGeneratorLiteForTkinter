@@ -32,7 +32,7 @@
 
 - 函数参数必须声明类型
 - 单行最大 120 字符
-- 其他情况以 [PEP8](https://peps.python.org/pep-0008/) 为准
+- 其他情况以 [The Black code style](https://black.readthedocs.io/en/stable/the_black_code_style/index.html) 和 [PEP8](https://peps.python.org/pep-0008/) 为准
 
 **Markdown (`.md`)：**
 
@@ -44,7 +44,7 @@
 
 ## 文档规范
 
-遵守[《中文技术文档写作风格指南》](https://zh-style-guide.readthedocs.io/zh-cn/latest/index.html)。
+遵守 [中文技术文档写作风格指南](https://zh-style-guide.readthedocs.io/zh-cn/latest/index.html)。
 
 ## Git 提交规范
 
@@ -52,7 +52,7 @@
 
 ## UI 设计
 
-使用平台样式，并且建议遵循微软[《桌面应用程序的设计基础知识》](https://learn.microsoft.com/zh-cn/windows/win32/uxguide/designprinciples)。
+使用平台样式，并且建议遵循微软 [桌面应用程序的设计基础知识](https://learn.microsoft.com/zh-cn/windows/win32/uxguide/designprinciples)。
 
 [RepositoryOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
 [RepositoryOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
