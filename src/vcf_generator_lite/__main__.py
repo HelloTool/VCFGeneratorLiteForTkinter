@@ -4,7 +4,10 @@ import sys
 
 from vcf_generator_lite import constants
 from vcf_generator_lite.utils.display import enable_dpi_aware
+from vcf_generator_lite.utils.locales import branch
 from vcf_generator_lite.windows.main import create_main_window
+
+startup_t = branch("startup")
 
 
 def fix_home_env():
@@ -24,13 +27,14 @@ def main():
     fix_home_env()
     enable_dpi_aware()
 
-    logging.info("Starting VCF Generator...")
-    print(f"💡Tip: The source code is hosted at {constants.URL_REPOSITORY}")
+    logging.info(startup_t("starting"))
+    print(startup_t("source_tip").format(url=constants.URL_REPOSITORY))
 
     main_window, _ = create_main_window()
+
     main_window.mainloop()
 
-    logging.info("Exiting VCF Generator...")
+    logging.info(startup_t("exiting"))
 
 
 if __name__ == "__main__":

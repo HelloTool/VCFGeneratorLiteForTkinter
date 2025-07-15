@@ -3,22 +3,14 @@ import re
 import traceback
 from concurrent.futures import Future
 from concurrent.futures.thread import ThreadPoolExecutor
-from tkinter import Event, filedialog
+from tkinter import Event, filedialog, messagebox
 
-from vcf_generator_lite.core.vcf_generator import (
-    GenerateResult,
-    InvalidLine,
-    VCFGeneratorTask,
-)
-from vcf_generator_lite.utils.tkinter import dialog
+from vcf_generator_lite.core.vcf_generator import GenerateResult, InvalidLine, VCFGeneratorTask
+from vcf_generator_lite.utils.locales import branch, t
 from vcf_generator_lite.windows.about import AboutOpener
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines import create_invalid_lines_window
-from vcf_generator_lite.windows.main.constants import (
-    EVENT_ABOUT,
-    EVENT_CLEAN_QUOTES,
-    EVENT_GENERATE,
-)
+from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
 from vcf_generator_lite.windows.main.window import MainWindow
 
 
@@ -52,9 +44,10 @@ class MainController:
     def on_generate(self, _):
         text_content = self.window.get_text_content()
         file_io = filedialog.asksaveasfile(
+            title=t("save_vcf_window.title"),
             parent=self.window,
             initialfile=self.generate_file_name,
-            filetypes=[("vCard 文件", ".vcf")],
+            filetypes=[(t("save_vcf_window.label_type_vcf"), ".vcf")],
             defaultextension=".vcf",
         )
         if file_io is None:
@@ -91,10 +84,10 @@ class MainController:
 
     def on_exit(self, _):
         if self.is_generating:
-            dialog.show_warning(
-                self.window,
-                "正在生成文件",
-                "文件正在生成中，无法关闭窗口。请稍后重试。",
+            messagebox.showwarning(
+                master=self.window,
+                title=t("vcf_generating_exit_messagebox.title"),
+                message=t("vcf_generating_exit_messagebox.message"),
             )
         else:
             self.window.destroy()
@@ -108,25 +101,24 @@ class MainController:
             self._show_generate_success_dialog(display_path)
 
     def _show_generate_error_dialog(self, exceptions: list[BaseException]):
-        title_failure = "生成 VCF 文件失败"
-        message_failure_template = "生成 VCF 文件时出现未知异常：\n\n{content}"
-        formatted_exceptions = ["\n".join(traceback.format_exception(exception)) for exception in exceptions]
-        dialog.show_error(
-            self.window,
-            title_failure,
-            message_failure_template.format(content="\n\n".join(formatted_exceptions)),
+        messagebox.showerror(
+            master=self.window,
+            title=t("vcf_generate_error_messagebox.title"),
+            message=t("vcf_generate_error_messagebox.message").format(
+                content="\n\n".join(
+                    ("\n".join(traceback.format_exception(exception)) for exception in exceptions),
+                ),
+            ),
         )
 
     def _show_generate_invalid_dialog(self, display_path: str, invalid_lines: list[InvalidLine]):
         create_invalid_lines_window(self.window, display_path, invalid_lines)
 
     def _show_generate_success_dialog(self, display_path: str):
-        title_success = "生成 VCF 文件成功"
-        message_success_template = "已导出文件到“{path}”。"
-        dialog.show_info(
-            self.window,
-            title_success,
-            message_success_template.format(path=display_path),
+        messagebox.showinfo(
+            master=self.window,
+            title=t("vcf_generate_success_messagebox.title"),
+            message=t("vcf_generate_success_messagebox.message").format(path=display_path),
         )
 
     def _clean_quotes(self):

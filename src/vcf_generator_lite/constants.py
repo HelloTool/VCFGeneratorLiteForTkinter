@@ -1,6 +1,5 @@
 from vcf_generator_lite.__version__ import __version__
 
-APP_NAME = "VCF 生成器 Lite"
 APP_COPYRIGHT = "Copyright (c) 2023-2025 Jesse205"
 
 SOURCE_REFERENCE = "master" if __debug__ else "v" + __version__

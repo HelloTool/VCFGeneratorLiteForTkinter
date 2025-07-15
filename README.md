@@ -16,8 +16,6 @@
 **English** |
 <small>More translations are welcome!</small>
 
-_The application currently only supports the Chinese language._
-
 </div>
 
 VCF generator, input name and phone number to automatically generate VCF files for batch importing into the address book.
@@ -73,7 +71,7 @@ Users of different systems need to download different files. You can make your s
    Muhammad		13554678907
    Confucius		13645436748
    ```
-3. Click "生成" (Generate), select a path to save the file.
+3. Click "Generate", select a path to save the file.
 4. Copy the generated VCF file to your phone, select "Contacts" when opening the file, and then follow the prompts.
 5. Wait for the import to complete.
 

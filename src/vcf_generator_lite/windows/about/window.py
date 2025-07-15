@@ -1,18 +1,22 @@
-from tkinter import Label as TkLabel, Misc, PhotoImage
+from tkinter import Label as TkLabel
+from tkinter import Misc, PhotoImage
 from tkinter.constants import *
 from tkinter.ttk import Button, Frame, Label, Style
 from typing import override
 
 from vcf_generator_lite import constants
 from vcf_generator_lite.__version__ import __version__
-from vcf_generator_lite.constants import APP_COPYRIGHT, APP_NAME
+from vcf_generator_lite.constants import APP_COPYRIGHT
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils import resources
+from vcf_generator_lite.utils.locales import branch, t
 from vcf_generator_lite.utils.tkinter.font import extend_font_scale
 from vcf_generator_lite.widgets.menu import TextContextMenu
 from vcf_generator_lite.widgets.tkhtmlview import HTMLScrolledText
 from vcf_generator_lite.windows.base import ExtendedDialog
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
+
+window_t = branch("about_window")
 
 
 class AboutWindow(ExtendedDialog, VerticalDialogLayout):
@@ -21,7 +25,7 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()
-        self.title(f"关于 {APP_NAME}")
+        self.title(window_t("title"))
         self.wm_size_pt(375, 300)
         self.wm_minsize_pt(375, 300)
         self.wm_maxsize_pt(375, 300)
@@ -57,7 +61,7 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
 
         app_name_label = Label(
             app_info_frame,
-            text=f"{APP_NAME} v{__version__}",
+            text=window_t("label_app_name").format(version=__version__),
             style="DialogHeaderContent.TLabel",
             font=extend_font_scale("TkDefaultFont", 12 / 9),
         )
@@ -72,9 +76,16 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
         details_input = HTMLScrolledText(
             content_frame,
             html=resources.read_text("texts/about.html").format(
+                heading_links=window_t("heading_links"),
+                label_repository=window_t("label_repository"),
                 repository_url=constants.URL_REPOSITORY,
+                label_release=window_t("label_release"),
                 release_url=constants.URL_RELEASES,
+                heading_contact=window_t("heading_contact"),
+                label_email=window_t("label_email"),
                 jesse205_email=constants.EMAIL_JESSE205,
+                heading_legal=window_t("heading_legal"),
+                label_os_notices=window_t("label_os_notices"),
                 os_notices_url=constants.URL_OS_NOTICES,
             ),
             state=DISABLED,
@@ -88,7 +99,7 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
     def _create_actions(self, parent: Misc):
         action_frame = Frame(parent)
         self.ok_button = Button(
-            action_frame, text="确定", default=ACTIVE, command=lambda: self.event_generate(EVENT_EXIT)
+            action_frame, text=t("button_ok"), default=ACTIVE, command=lambda: self.event_generate(EVENT_EXIT)
         )
         self.ok_button.pack(side=RIGHT, padx="7p", pady="7p")
         return action_frame

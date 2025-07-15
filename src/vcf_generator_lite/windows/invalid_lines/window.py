@@ -4,11 +4,13 @@ from tkinter.ttk import Button, Frame, Label, Sizegrip
 from typing import override
 
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
+from vcf_generator_lite.utils.locales import t
 from vcf_generator_lite.utils.tkinter.font import extend_font_scale
 from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
 from vcf_generator_lite.widgets.scrolled_treeview import ScrolledTreeview
 from vcf_generator_lite.windows.base import ExtendedDialog
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
+from vcf_generator_lite.windows.invalid_lines.common import window_t
 
 
 class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
@@ -16,7 +18,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()
-        self.title("生成 VCF 文件完成")
+        self.title(window_t("title"))
         self.resizable(True, True)
         self.wm_size_pt(375, 300)
         self.wm_minsize_pt(225, 225)
@@ -41,11 +43,11 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
     @override
     def _create_content(self, parent: Misc):
         content_frame = Frame(parent)
-        content_label = Label(content_frame, text="异常的号码：")
+        content_label = Label(content_frame, text=window_t("label_invalid_numbers"))
         content_label.pack(fill=X, padx="7p", pady=("7p", "2p"))
         self.content_tree = ScrolledTreeview(
             content_frame,
-            columns=("row", "context"),
+            columns=("row", "original"),
             show="headings",
             selectmode="browse",
         )
@@ -58,9 +60,9 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
                 minwidth=45,
             ),
         )
-        self.content_tree.column("context", anchor=W)
-        self.content_tree.heading("row", text="位置", anchor=W)
-        self.content_tree.heading("context", text="原始内容", anchor=W)
+        self.content_tree.column("original", anchor=W)
+        self.content_tree.heading("row", text=window_t("heading_row"), anchor=W)
+        self.content_tree.heading("original", text=window_t("heading_original"), anchor=W)
         self.content_tree.pack(fill=BOTH, expand=True, padx="7p")
         return content_frame
 
@@ -70,7 +72,10 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         sizegrip = Sizegrip(action_frame)
         sizegrip.place(relx=1, rely=1, anchor=SE)
         self.ok_button = Button(
-            action_frame, text="确定", default=ACTIVE, command=lambda: self.event_generate(EVENT_EXIT)
+            action_frame,
+            text=t("button_ok"),
+            default=ACTIVE,
+            command=lambda: self.event_generate(EVENT_EXIT),
         )
         self.ok_button.pack(side=RIGHT, padx="7p", pady="7p")
         return action_frame

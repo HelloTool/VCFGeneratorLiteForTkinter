@@ -1,0 +1,82 @@
+app_name = "VCF 生成器 Lite"
+button_ok = "确定"
+
+[startup]
+source_tip = "💡提示：源码已托管到 {url}"
+
+starting = "正在启动 VCF 生成器..."
+exiting = "正在退出 VCF 生成器..."
+
+[main_window]
+button_generate = "开始生成"
+label_generating = "正在生成……"
+
+menu_file = "文件(&F)"
+menu_file_generate = "开始生成(&S)…"
+menu_file_exit = "退出(&X)"
+
+menu_edit = "编辑(&E)"
+menu_edit_undo = "撤销(&U)"
+menu_edit_redo = "重做(&R)"
+menu_edit_cut = "剪切(&T)"
+menu_edit_copy = "复制(&C)"
+menu_edit_paste = "粘贴(&P)"
+menu_edit_select_all = "全选(&A)"
+menu_edit_clean_quotes = "删除引号(&Q)"
+
+menu_help = "帮助(&H)"
+menu_help_repository = "项目仓库(&O)"
+menu_help_release = "版本发布(&R)"
+menu_help_feedback = "提交反馈(&F)"
+menu_help_license = "许可协议(&L)"
+menu_help_about = "关于 VCF 生成器 Lite(&A)"
+
+input_example = """张三\t13345367789\t著名的法外狂徒
+李四\t13445467890
+王五\t13554678907
+赵六\t13645436748
+"""
+
+usage = """使用说明：
+1. 把名字和电话以每行“姓名 电话号码 备注”的格式复制到下面的编辑框内，其中备注可忽略。
+2. 点击“生成”，选择一个路径保存文件。
+3. 将生成后的 VCF 文件复制到手机内，打开文件时选择使用“通讯录”，然后根据提示操作。
+4. 等待导入完成。"""
+
+[save_vcf_window]
+title = "选择文件保存位置"
+label_type_vcf = "vCard 文件 (*.vcf)"
+
+[vcf_generate_success_messagebox]
+title = "生成 VCF 文件成功"
+message = "已导出文件到“{path}”。"
+
+[vcf_generate_error_messagebox]
+title = "生成 VCF 文件失败"
+message = "生成 VCF 文件时出现未知异常：\n\n{content}"
+
+[vcf_generating_exit_messagebox]
+title = "正在生成 VCF 文件"
+message = "请等待文件生成完成"
+
+[vcf_generate_invalid_window]
+title = "生成 VCF 文件完成"
+message = "已导出文件到 {path}，异常的号码已被忽略。"
+label_invalid_numbers = "异常的号码："
+heading_row = "位置"
+heading_original = "原始内容"
+cell_row = "第 {row} 行"
+
+[about_window]
+title = "关于 VCF 生成器 Lite"
+label_app_name = "VCF 生成器 Lite v{version}"
+
+heading_links = "链接"
+label_repository = "项目仓库："
+label_release = "版本发布："
+
+heading_contact = "联系"
+label_email = "电子邮箱："
+
+heading_legal = "法律"
+label_os_notices = "开源声明："
