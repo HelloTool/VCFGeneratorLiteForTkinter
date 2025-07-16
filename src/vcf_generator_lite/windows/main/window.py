@@ -1,6 +1,5 @@
 import webbrowser
 from tkinter import Misc
-from tkinter.constants import *
 from tkinter.ttk import Button, Frame, Label, Progressbar, Sizegrip
 from typing import override
 
@@ -43,9 +42,9 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
 
     @override
     def _create_header(self, parent: Misc):
-        description_label = Label(parent, text=window_t("usage"), justify=LEFT)
+        description_label = Label(parent, text=window_t("usage"), justify="left")
         description_label.bind("<Configure>", auto_wrap_configure_event, "+")
-        description_label.pack(fill=X, padx="7p", pady="7p")
+        description_label.pack(fill="x", padx="7p", pady="7p")
         return description_label
 
     @override
@@ -54,7 +53,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         self.content_text = ScrolledText(content_frame, undo=True, tabs="2c", tabstyle="wordprocessor", maxundo=5)
         self.content_text.insert(0.0, window_t("input_example"))
         self.content_text.edit_reset()
-        self.content_text.pack(fill=BOTH, expand=True, padx="7p", pady=0)
+        self.content_text.pack(fill="both", expand=True, padx="7p", pady=0)
         text_context_menu = TextContextMenu(self.content_text)
         text_context_menu.bind_to_widget()
         return content_frame
@@ -63,18 +62,18 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
     def _create_actions(self, master: Misc):
         action_frame = Frame(master)
         sizegrip = Sizegrip(action_frame)
-        sizegrip.place(relx=1, rely=1, anchor=SE)
+        sizegrip.place(relx=1, rely=1, anchor="se")
 
-        self.progress_bar = Progressbar(action_frame, orient=HORIZONTAL, length=200)
+        self.progress_bar = Progressbar(action_frame, orient="horizontal", length=200)
         self.progress_label = Label(master=action_frame, text=window_t("label_generating"))
 
         self.generate_button = Button(
             action_frame,
             text=window_t("button_generate"),
-            default=ACTIVE,
+            default="active",
             command=lambda: self.event_generate(EVENT_GENERATE),
         )
-        self.generate_button.pack(side=RIGHT, padx="7p", pady="7p")
+        self.generate_button.pack(side="right", padx="7p", pady="7p")
         return action_frame
 
     def _create_menus(self):
@@ -172,14 +171,14 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
             widget.event_generate(sequence)
 
     def set_text_content(self, content: str):
-        self.content_text.replace(1.0, END, content)
+        self.content_text.replace(1.0, "end", content)
 
     def get_text_content(self) -> str:
-        return self.content_text.get(1.0, END)[:-1]
+        return self.content_text.get(1.0, "end")[:-1]
 
     def show_progress(self):
-        self.progress_bar.pack(side=LEFT, padx="7p", pady="7p")
-        self.progress_label.pack(side=LEFT, padx=(0, "7p"), pady="7p")
+        self.progress_bar.pack(side="left", padx="7p", pady="7p")
+        self.progress_label.pack(side="left", padx=(0, "7p"), pady="7p")
 
     def hide_progress(self):
         self.progress_bar.pack_forget()

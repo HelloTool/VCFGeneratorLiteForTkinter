@@ -1,5 +1,6 @@
-from tkinter import *
-from typing import Union, Literal
+from tkinter import Entry, Menu, TclError, Text
+from tkinter.constants import SEL_FIRST
+from typing import Literal
 
 from vcf_generator_lite.utils.tkinter.menu import add_menu_items, MenuCommand, MenuSeparator
 
@@ -13,9 +14,9 @@ def state_to_boolean(state: Literal["normal", "disabled"]) -> bool:
 
 
 class TextContextMenu(Menu):
-    master: Union[Text, Entry]
+    master: Text | Entry
 
-    def __init__(self, master: Union[Text, Entry], **kw):
+    def __init__(self, master: Text | Entry, **kw):
         super().__init__(master, tearoff=False, **kw)
 
     def is_selected(self):
@@ -27,7 +28,7 @@ class TextContextMenu(Menu):
 
     def show(self, x: int, y: int):
         self.master.focus()
-        self.delete(0, END)
+        self.delete(0, "end")
         state_by_selected = boolean_to_state(self.is_selected())
         is_master_editable = state_to_boolean(self.master.cget("state"))
         if is_master_editable:

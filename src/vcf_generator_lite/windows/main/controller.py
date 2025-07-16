@@ -85,7 +85,7 @@ class MainController:
     def on_exit(self, _):
         if self.is_generating:
             messagebox.showwarning(
-                master=self.window,
+                parent=self.window,
                 title=t("vcf_generating_exit_messagebox.title"),
                 message=t("vcf_generating_exit_messagebox.message"),
             )
@@ -102,7 +102,7 @@ class MainController:
 
     def _show_generate_error_dialog(self, exceptions: list[BaseException]):
         messagebox.showerror(
-            master=self.window,
+            parent=self.window,
             title=t("vcf_generate_error_messagebox.title"),
             message=t("vcf_generate_error_messagebox.message").format(
                 content="\n\n".join(
@@ -116,7 +116,7 @@ class MainController:
 
     def _show_generate_success_dialog(self, display_path: str):
         messagebox.showinfo(
-            master=self.window,
+            parent=self.window,
             title=t("vcf_generate_success_messagebox.title"),
             message=t("vcf_generate_success_messagebox.message").format(path=display_path),
         )

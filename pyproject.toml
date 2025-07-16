@@ -10,10 +10,7 @@ dependencies = ["ttk-text>=0.2.0"]
 
 [dependency-groups]
 test = ["pytest>=8.3.5"]
-lint = [
-    "black>=25.1.0",
-    "pyright>=1.1.403",
-]
+lint = ["black>=25.1.0", "pyright>=1.1.403"]
 build = [
     "pyinstaller<7.0.0,>=6.11.0",
     "pyinstaller-versionfile<4.0.0,>=3.0.0",
@@ -56,3 +53,4 @@ strictDictionaryInference = true
 strictSetInference = true
 deprecateTypingAliases = true
 typeCheckingMode = "basic"
+ignore = ["src/vcf_generator_lite/widgets/tkhtmlview/html_parser.py"]

@@ -1,6 +1,5 @@
 from tkinter import Label as TkLabel
 from tkinter import Misc, PhotoImage
-from tkinter.constants import *
 from tkinter.ttk import Button, Frame, Label, Style
 from typing import override
 
@@ -54,10 +53,10 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
             width="36p",
             height="36p",
         )
-        app_icon_label.pack(side=LEFT, padx="14p", pady="7p")
+        app_icon_label.pack(side="left", padx="14p", pady="7p")
 
         app_info_frame = Frame(header_frame, style="DialogHeaderContent.TFrame")
-        app_info_frame.pack(side=LEFT, anchor=CENTER, fill=X, expand=True, padx=(0, "14p"), pady="14p")
+        app_info_frame.pack(side="left", anchor="center", fill="x", expand=True, padx=(0, "14p"), pady="14p")
 
         app_name_label = Label(
             app_info_frame,
@@ -65,9 +64,9 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
             style="DialogHeaderContent.TLabel",
             font=extend_font_scale("TkDefaultFont", 12 / 9),
         )
-        app_name_label.pack(anchor=W)
+        app_name_label.pack(anchor="w")
         app_copyright_label = Label(app_info_frame, text=APP_COPYRIGHT, style="DialogHeaderContent.TLabel")
-        app_copyright_label.pack(anchor=W)
+        app_copyright_label.pack(anchor="w")
         return header_frame
 
     @override
@@ -88,9 +87,9 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
                 label_os_notices=window_t("label_os_notices"),
                 os_notices_url=constants.URL_OS_NOTICES,
             ),
-            state=DISABLED,
+            state="disabled",
         )
-        details_input.pack(fill=BOTH, expand=True, padx="7p", pady=("7p", 0))
+        details_input.pack(fill="both", expand=True, padx="7p", pady=("7p", 0))
         details_context_menu = TextContextMenu(details_input)
         details_context_menu.bind_to_widget()
         return content_frame
@@ -99,7 +98,7 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
     def _create_actions(self, parent: Misc):
         action_frame = Frame(parent)
         self.ok_button = Button(
-            action_frame, text=t("button_ok"), default=ACTIVE, command=lambda: self.event_generate(EVENT_EXIT)
+            action_frame, text=t("button_ok"), default="active", command=lambda: self.event_generate(EVENT_EXIT)
         )
-        self.ok_button.pack(side=RIGHT, padx="7p", pady="7p")
+        self.ok_button.pack(side="right", padx="7p", pady="7p")
         return action_frame
