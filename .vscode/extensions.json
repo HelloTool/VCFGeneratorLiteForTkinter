@@ -3,6 +3,8 @@
         "chouzz.vscode-innosetup",
         "davidanson.vscode-markdownlint",
         "ms-python.debugpy",
-        "ms-python.python"
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
     ]
 }
