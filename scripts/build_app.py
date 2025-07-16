@@ -8,10 +8,7 @@ from zipfile import ZipFile
 
 import PyInstaller.__main__ as pyinstaller
 
-from scripts.prepare_innosetup_extensions import (
-    PATH_INNOSETUP_EXTENSION,
-    prepare_innosetup_extensions,
-)
+from scripts.prepare_innosetup_extensions import PATH_INNOSETUP_EXTENSION, prepare_innosetup_extensions
 from scripts.utils import require_64_bits
 from vcf_generator_lite.__version__ import __version__ as APP_VERSION
 from vcf_generator_lite.constants import APP_COPYRIGHT
@@ -42,10 +39,13 @@ def build_with_pyinstaller():
 def build_with_pdm_packer():
     print("Building with pdm-packer...")
     ensure_dist_dir()
-    os.environ["PYTHONOPTIMIZE"] = "2"
+    pdm_path = shutil.which("pdm")
+    if pdm_path is None:
+        print("pdm not found.", file=sys.stderr)
+        return 1
     result = subprocess.run(
         [
-            shutil.which("pdm"),
+            pdm_path,
             "pack",
             "-m",
             "vcf_generator_lite.__main__:main",
@@ -60,7 +60,11 @@ def build_with_pdm_packer():
             "--compile",
             "--compress",
             "--no-py",
-        ]
+        ],
+        env={
+            **os.environ,
+            "PYTHONOPTIMIZE": "2",
+        },
     )
     print("Building finished.")
     return result.returncode
@@ -74,9 +78,14 @@ def pack_with_innosetup() -> int:
             return result
 
     os.environ["PATH"] += os.pathsep + "C:\\Program Files (x86)\\Inno Setup 6\\"
+    search_path = os.environ["PATH"] + os.pathsep + "C:\\Program Files (x86)\\Inno Setup 6\\"
+    iscc_path = shutil.which("iscc", path=search_path)
+    if iscc_path is None:
+        print("InnoSetup not found.", file=sys.stderr)
+        return 1
     result = subprocess.run(
         [
-            shutil.which("iscc"),
+            iscc_path,
             "/D"
             + f"OutputBaseFilename={OUTPUT_BASE_NAME_TEMPLATE.format(
             version=APP_VERSION,
