@@ -39,7 +39,8 @@ def utf8_to_qp(text: str) -> str:
 
 def serialize_to_vcard(contact: Contact):
     items: list[str] = [
-        "BEGIN:VCARD" "VERSION:2.1",
+        "BEGIN:VCARD",
+        "VERSION:2.1",
         f"FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.name)}",
         f"TEL;CELL:{contact.phone}",
     ]
