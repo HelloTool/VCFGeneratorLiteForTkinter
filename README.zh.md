@@ -152,6 +152,10 @@ limitations under the License.
 
 请参见 [《开源声明》](./docs/legal/os_notices.md)
 
+## 特别感谢
+
+本项目部分代码由 DeepSeek、通义灵码 生成
+
 [RepositoryOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
 [RepositoryOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
 [ReleaseOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
