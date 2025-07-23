@@ -1,7 +1,6 @@
 import argparse
 import re
 import sys
-from typing import Pattern
 
 import pyinstaller_versionfile
 
@@ -15,7 +14,7 @@ def get_exe_style_version(version: str):
 
 
 def change_version(
-    file_name: str, content_pattern: Pattern[str], content_formatter: str, version: str, encoding="utf-8"
+    file_name: str, content_pattern: re.Pattern[str], content_formatter: str, version: str, encoding="utf-8"
 ):
     with open(file_name, "r", encoding=encoding) as f:
         origin_content = f.read()

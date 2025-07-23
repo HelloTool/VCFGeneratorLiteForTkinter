@@ -3,6 +3,7 @@ from contextlib import contextmanager
 from ctypes import WinError, get_last_error, windll
 from ctypes.wintypes import HWND
 from tkinter import Misc
+from typing import override
 
 from vcf_generator_lite.utils.display.base import Display
 
@@ -24,6 +25,7 @@ def get_dc(hwnd: HWND):
 
 
 class Windows2000Display(Display, ABC):
+    @override
     @staticmethod
     def get_default_scale_factor(misc: Misc) -> float:
         with get_dc(HWND(misc.winfo_id())) as hdc:

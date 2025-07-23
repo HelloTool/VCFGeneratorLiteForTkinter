@@ -2,6 +2,7 @@ import logging
 from ctypes import windll
 from ctypes.wintypes import HWND
 from tkinter import Misc
+from typing import override
 
 from vcf_generator_lite.utils.display.windows_2000_impl import DEFAULT_DPI
 from vcf_generator_lite.utils.display.windows_8_1_impl import Windows81Display
@@ -10,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class Windows10Display(Windows81Display):
-
+    @override
     @staticmethod
     def get_default_scale_factor(misc: Misc) -> float:
         try:

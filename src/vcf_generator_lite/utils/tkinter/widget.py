@@ -1,6 +1,5 @@
 from tkinter import Label, Event, Widget
 from tkinter.ttk import Label as TtkLabel
-from typing import Optional
 
 
 def auto_wrap_configure_event(event: Event):
@@ -12,10 +11,10 @@ def auto_wrap_configure_event(event: Event):
 def update_padding(
     widget: Widget,
     *,
-    left: Optional[int | str] = None,
-    top: Optional[int | str] = None,
-    right: Optional[int | str] = None,
-    bottom: Optional[int | str] = None,
+    left: int | str | None = None,
+    top: int | str | None = None,
+    right: int | str | None = None,
+    bottom: int | str | None = None,
 ):
     origin_padding = widget.cget("padding") or (0,)
     origin_left = origin_padding[0] if len(origin_padding) >= 1 else 0

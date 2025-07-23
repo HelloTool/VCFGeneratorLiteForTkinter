@@ -3,6 +3,7 @@ from ctypes import WinError, get_last_error, pointer, windll
 from ctypes.wintypes import DWORD, HWND, UINT
 from enum import Enum
 from tkinter import Misc
+from typing import override
 
 from vcf_generator_lite.utils.display.windows_2000_impl import DEFAULT_DPI
 from vcf_generator_lite.utils.display.windows_vista_impl import WindowsVistaDisplay
@@ -40,6 +41,7 @@ class ProcessDpiAwareness(Enum):
 
 
 class Windows81Display(WindowsVistaDisplay):
+    @override
     @staticmethod
     def get_default_scale_factor(misc: Misc) -> float:
         try:
@@ -58,6 +60,7 @@ class Windows81Display(WindowsVistaDisplay):
             _logger.warning(e)
             return WindowsVistaDisplay.get_default_scale_factor(misc)
 
+    @override
     @staticmethod
     def enable_dpi_aware():
         try:

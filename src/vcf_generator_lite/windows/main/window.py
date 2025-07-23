@@ -48,8 +48,8 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         return description_label
 
     @override
-    def _create_content(self, master: Misc):
-        content_frame = Frame(master)
+    def _create_content(self, parent: Misc):
+        content_frame = Frame(parent)
         self.content_text = ScrolledText(content_frame, undo=True, tabs="2c", tabstyle="wordprocessor", maxundo=5)
         self.content_text.insert(0.0, window_t("input_example"))
         self.content_text.edit_reset()
@@ -59,8 +59,8 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         return content_frame
 
     @override
-    def _create_actions(self, master: Misc):
-        action_frame = Frame(master)
+    def _create_actions(self, parent: Misc):
+        action_frame = Frame(parent)
         sizegrip = Sizegrip(action_frame)
         sizegrip.place(relx=1, rely=1, anchor="se")
 

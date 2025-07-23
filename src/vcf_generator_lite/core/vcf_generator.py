@@ -1,9 +1,10 @@
 import binascii
+from collections.abc import Callable
 import logging
 from concurrent.futures import FIRST_EXCEPTION, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass
 from queue import Queue
-from typing import Callable, IO, Optional
+from typing import IO
 
 from vcf_generator_lite.models.contact import Contact, parse_contact
 
@@ -38,31 +39,30 @@ def utf8_to_qp(text: str) -> str:
 
 def serialize_to_vcard(contact: Contact):
     items: list[str] = [
-        "VERSION:2.1",
+        "BEGIN:VCARD" "VERSION:2.1",
         f"FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.name)}",
         f"TEL;CELL:{contact.phone}",
     ]
     if contact.note:
         items.append(f"NOTE;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.note)}")
-    return f"""BEGIN:VCARD
-{"\n".join(items)}
-END:VCARD"""
+    items.append("END:VCARD")
+    return "\n".join(items)
 
 
 class VCFGeneratorTask:
     def __init__(
         self,
         executor: ThreadPoolExecutor,
-        progress_listener: Optional[Callable[[float, bool], None]],
+        progress_listener: Callable[[float, bool], None] | None,
         input_text: str,
-        output_io: IO,
+        output_io: IO[str],
     ):
         self._executor = executor
         self._progress_listener = progress_listener
         self._input_text = input_text
         self._output_io = output_io
         self._state = VCardGeneratorState(total=0, processed=0, progress=0.0, invalid_lines=[], exceptions=[])
-        self._write_queue = Queue()
+        self._write_queue: Queue[str | None] = Queue()
 
     def start(self) -> Future[GenerateResult]:
         future = self._executor.submit(self._process)

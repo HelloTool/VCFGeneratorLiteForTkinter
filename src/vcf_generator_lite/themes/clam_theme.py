@@ -28,5 +28,5 @@ class ClamTheme(BaseTheme):
     def apply_window(self, master: Tk | Toplevel, style: Style):
         super().apply_window(master, style)
         # 窗口背景色不会跟随主题变化，需要手动设置
-        window_background = style.lookup("TFrame", "background")
+        window_background: str = style.lookup("TFrame", "background")
         master.configure(background=window_background)

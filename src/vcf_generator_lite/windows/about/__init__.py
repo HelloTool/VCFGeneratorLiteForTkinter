@@ -1,5 +1,4 @@
 from tkinter import Event, Tk, Toplevel
-from typing import Optional
 
 from vcf_generator_lite.windows.about.controller import AboutController
 from vcf_generator_lite.windows.about.window import AboutWindow
@@ -9,8 +8,8 @@ class AboutOpener:
 
     def __init__(self, master: Tk | Toplevel):
         self.master = master
-        self.window: Optional[AboutWindow] = None
-        self.controller: Optional[AboutController] = None
+        self.window: AboutWindow | None = None
+        self.controller: AboutController | None = None
 
     def open(self):
         if self.window is None or not self.window.winfo_exists():

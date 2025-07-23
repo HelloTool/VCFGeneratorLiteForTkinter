@@ -1,13 +1,12 @@
 from abc import abstractmethod, ABC
 from tkinter import Misc, Widget
 from tkinter.constants import X, BOTH, BOTTOM
-from typing import Optional
+
 
 from vcf_generator_lite.utils.tkinter.window import WindowExtension
 
 
 class VerticalDialogLayout(WindowExtension, ABC):
-
     def _create_widgets(self, parent: Misc):
         header = self._create_header(parent)
         if header is not None:
@@ -22,10 +21,10 @@ class VerticalDialogLayout(WindowExtension, ABC):
             footer.pack(fill=X, side=BOTTOM)
 
     @abstractmethod
-    def _create_header(self, parent: Misc) -> Optional[Widget]: ...
+    def _create_header(self, parent: Misc) -> Widget | None: ...
 
     @abstractmethod
-    def _create_content(self, parent: Misc) -> Optional[Widget]: ...
+    def _create_content(self, parent: Misc) -> Widget | None: ...
 
     @abstractmethod
-    def _create_actions(self, parent: Misc) -> Optional[Widget]: ...
+    def _create_actions(self, parent: Misc) -> Widget | None: ...

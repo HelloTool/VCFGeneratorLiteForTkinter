@@ -6,7 +6,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from tkinter import Event, filedialog, messagebox
 
 from vcf_generator_lite.core.vcf_generator import GenerateResult, InvalidLine, VCFGeneratorTask
-from vcf_generator_lite.utils.locales import branch, t
+from vcf_generator_lite.utils.locales import t
 from vcf_generator_lite.windows.about import AboutOpener
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines import create_invalid_lines_window
@@ -30,10 +30,10 @@ class MainController:
         window.bind("<Return>", self.on_return)
         window.bind(EVENT_EXIT, self.on_exit)
 
-    def on_about(self, _):
+    def on_about(self, _: Event):
         self.about_opener.open()
 
-    def on_clean_quotes(self, _):
+    def on_clean_quotes(self, _: Event):
         self._clean_quotes()
 
     def on_return(self, event: Event):
@@ -41,7 +41,7 @@ class MainController:
             return
         self.window.generate_button.invoke()
 
-    def on_generate(self, _):
+    def on_generate(self, _: Event):
         text_content = self.window.get_text_content()
         file_io = filedialog.asksaveasfile(
             title=t("save_vcf_window.title"),
@@ -55,7 +55,7 @@ class MainController:
         self.generate_file_name = os.path.basename(file_io.name)
         self.is_generating = True
         self.window.show_progress()
-        self.window.set_progress(0)
+        self.window.set_progress(progress=0)
         self.window.set_progress_determinate(False)
         self.window.set_generate_enabled(False)
 
@@ -82,7 +82,7 @@ class MainController:
         generate_future.add_done_callback(lambda future: self.window.after_idle(done, future))
         executor.shutdown(wait=False)
 
-    def on_exit(self, _):
+    def on_exit(self, _: Event):
         if self.is_generating:
             messagebox.showwarning(
                 parent=self.window,

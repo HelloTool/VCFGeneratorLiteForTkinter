@@ -1,7 +1,8 @@
 from abc import ABC
+from collections.abc import Callable
 from dataclasses import dataclass
 from tkinter import Menu
-from typing import Callable, Self, Optional, Literal
+from typing import Self, Literal
 
 from vcf_generator_lite.utils.tkinter.window import WindowExtension
 
@@ -9,8 +10,8 @@ from vcf_generator_lite.utils.tkinter.window import WindowExtension
 @dataclass
 class MenuCommand:
     label: str
-    command: Optional[Callable[[], object | str]] = None
-    accelerator: Optional[str] = None
+    command: Callable[[], object | str] | None = None
+    accelerator: str | None = None
     state: Literal["normal", "active", "disabled"] = "normal"
 
 
@@ -23,7 +24,7 @@ class MenuSeparator:
 class MenuCascade:
     label: str
     items: list[MenuCommand | MenuSeparator | Self | type[MenuSeparator]]
-    accelerator: Optional[str] = None
+    accelerator: str | None = None
     tearoff: bool = False
     state: Literal["normal", "active", "disabled"] = "normal"
 
@@ -47,9 +48,9 @@ def add_menu_items(menu: Menu, items: list[MenuItem]):
             label, underline = _parse_label(item.label)
             menu.add_command(
                 label=label,
-                command=item.command,  # type: ignore
+                command=item.command,  # pyright: ignore[reportArgumentType]
                 underline=underline,
-                accelerator=item.accelerator,  # type: ignore
+                accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
                 state=item.state,
             )
         elif isinstance(item, MenuSeparator) or (type(item) == type and issubclass(item, MenuSeparator)):
@@ -62,13 +63,13 @@ def add_menu_items(menu: Menu, items: list[MenuItem]):
                 label=label,
                 menu=submenu,
                 underline=underline,
-                accelerator=item.accelerator,  # type: ignore
+                accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
                 state=item.state,
             )
 
 
 class MenuBarWindowExtension(WindowExtension, ABC):
-    menu_bar: Optional[Menu] = None
+    menu_bar: Menu | None = None
 
     def add_menu_bar_items(self, *items: MenuItem):
         if self.menu_bar is None:

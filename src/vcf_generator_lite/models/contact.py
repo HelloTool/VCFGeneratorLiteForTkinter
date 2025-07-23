@@ -1,5 +1,5 @@
 import re
-from typing import NamedTuple, Optional
+from typing import NamedTuple
 
 CHINA_PHONE_PATTERN = re.compile(r"^1[356789]\d{9}$")
 
@@ -7,7 +7,7 @@ CHINA_PHONE_PATTERN = re.compile(r"^1[356789]\d{9}$")
 class Contact(NamedTuple):
     name: str
     phone: str
-    note: Optional[str] = None
+    note: str | None = None
 
 
 def is_china_mobile_phone(phone: str) -> bool:

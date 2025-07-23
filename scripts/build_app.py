@@ -110,7 +110,7 @@ def pack_with_zipfile():
         + ".zip",
     )
     with ZipFile(zip_path, "w") as zip_file:
-        for path, dirs, files in os.walk(os.path.join("dist", "vcf_generator_lite")):
+        for path, _dirs, files in os.walk(os.path.join("dist", "vcf_generator_lite")):
             for file_path in [os.path.join(path, file) for file in files]:
                 zip_file.write(file_path, os.path.relpath(file_path, "dist"))
     print("Packaging finished.")
@@ -140,4 +140,6 @@ def main() -> int:
             pack_with_zipfile()
         case "zipapp":
             return build_with_pdm_packer()
+        case _:
+            raise ValueError(f"Invalid type: {type_}")
     return 0

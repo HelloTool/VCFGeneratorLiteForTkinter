@@ -33,7 +33,7 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
     @override
     def _create_header(self, parent: Misc):
         header_frame = Frame(parent, style="DialogHeader.TFrame")
-        background_color = Style(parent).lookup("DialogHeader.TFrame", "background")
+        background_color: str | None = Style(parent).lookup("DialogHeader.TFrame", "background")
         # 保存到 Window 中防止回收内存
         self.app_icon_image = PhotoImage(
             master=self,
@@ -49,10 +49,11 @@ class AboutWindow(ExtendedDialog, VerticalDialogLayout):
         app_icon_label = TkLabel(
             header_frame,
             image=self.app_icon_image,
-            background=background_color,
             width="36p",
             height="36p",
         )
+        if background_color is not None:
+            app_icon_label.configure(background=background_color)
         app_icon_label.pack(side="left", padx="14p", pady="7p")
 
         app_info_frame = Frame(header_frame, style="DialogHeaderContent.TFrame")
