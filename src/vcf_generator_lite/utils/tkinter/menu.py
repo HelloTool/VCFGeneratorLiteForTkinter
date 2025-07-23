@@ -2,7 +2,7 @@ from abc import ABC
 from collections.abc import Callable
 from dataclasses import dataclass
 from tkinter import Menu
-from typing import Self, Literal
+from typing import Self, Literal, TypedDict
 
 from vcf_generator_lite.utils.tkinter.window import WindowExtension
 
@@ -32,11 +32,17 @@ class MenuCascade:
 type MenuItem = MenuCommand | MenuSeparator | MenuCascade | type[MenuSeparator]
 
 
-def _parse_label(label: str) -> tuple[str, int]:
+class ParseLabelResult(TypedDict):
+    label: str
+    underline: int
+
+
+def _parse_label(label: str) -> ParseLabelResult:
     """
-    解析标签字符串，将标签字符串中的快捷键标识符替换为对应的快捷键键值
+    解析标签字符串，将标签字符串中的快捷键标识符设置为对应的快捷键键值
     """
-    return label.replace("&", "", 1), label.find("&")
+
+    return ParseLabelResult(label=label.replace("&", "", 1), underline=label.find("&"))
 
 
 def add_menu_items(menu: Menu, items: list[MenuItem]):
@@ -45,26 +51,22 @@ def add_menu_items(menu: Menu, items: list[MenuItem]):
     """
     for item in items:
         if isinstance(item, MenuCommand):
-            label, underline = _parse_label(item.label)
             menu.add_command(
-                label=label,
                 command=item.command,  # pyright: ignore[reportArgumentType]
-                underline=underline,
                 accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
                 state=item.state,
+                **_parse_label(item.label),
             )
         elif isinstance(item, MenuSeparator) or (type(item) == type and issubclass(item, MenuSeparator)):
             menu.add_separator()
         elif isinstance(item, MenuCascade):
-            label, underline = _parse_label(item.label)
             submenu = Menu(menu, tearoff=item.tearoff)
             add_menu_items(submenu, item.items)
             menu.add_cascade(
-                label=label,
                 menu=submenu,
-                underline=underline,
                 accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
                 state=item.state,
+                **_parse_label(item.label),
             )
 
 
