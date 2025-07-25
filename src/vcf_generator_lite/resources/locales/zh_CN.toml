@@ -47,9 +47,13 @@ usage = """使用说明：
 title = "选择文件保存位置"
 label_type_vcf = "vCard 文件 (*.vcf)"
 
+[save_vcf_permission_denied_messagebox]
+title = "保存失败"
+message = "权限被拒，请授予权限后再试。"
+
 [vcf_generate_success_messagebox]
 title = "生成 VCF 文件成功"
-message = "已导出文件到“{path}”。"
+message = "已导出文件到 {path}。"
 
 [vcf_generate_error_messagebox]
 title = "生成 VCF 文件失败"

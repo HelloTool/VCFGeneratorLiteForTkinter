@@ -47,9 +47,13 @@ usage = """Instructions:
 title = "Select File Save Location"
 label_type_vcf = "vCard File (*.vcf)"
 
+[save_vcf_permission_denied_messagebox]
+title = "Save Failed"
+message = "Permission denied, please grant permission again."
+
 [vcf_generate_success_messagebox]
 title = "VCF File Generated Successfully"
-message = "File exported to \"{path}\"."
+message = "File exported to {path}."
 
 [vcf_generate_error_messagebox]
 title = "Failed to Generate VCF File"

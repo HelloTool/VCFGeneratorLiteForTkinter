@@ -43,13 +43,20 @@ class MainController:
 
     def on_generate(self, _: Event):
         text_content = self.window.get_text_content()
-        file_io = filedialog.asksaveasfile(
-            title=t("save_vcf_window.title"),
-            parent=self.window,
-            initialfile=self.generate_file_name,
-            filetypes=[(t("save_vcf_window.label_type_vcf"), ".vcf")],
-            defaultextension=".vcf",
-        )
+        file_io = None
+        try:
+            file_io = filedialog.asksaveasfile(
+                title=t("save_vcf_window.title"),
+                parent=self.window,
+                initialfile=self.generate_file_name,
+                filetypes=[(t("save_vcf_window.label_type_vcf"), ".vcf")],
+                defaultextension=".vcf",
+            )
+        except PermissionError:
+            messagebox.showerror(
+                t("save_vcf_permission_denied_messagebox.title"), t("save_vcf_permission_denied_messagebox.message")
+            )
+            return
         if file_io is None:
             return
         self.generate_file_name = os.path.basename(file_io.name)
