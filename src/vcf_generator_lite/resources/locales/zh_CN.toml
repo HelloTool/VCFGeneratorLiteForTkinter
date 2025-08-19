@@ -49,19 +49,19 @@ usage = """使用说明：
 title = "选择文件保存位置"
 label_type_vcf = "vCard 文件 (*.vcf)"
 
-[save_vcf_permission_denied_messagebox]
+[save_vcf_permission_denied_message_box]
 title = "保存失败"
 message = "权限被拒，请授予权限后再试。"
 
-[vcf_generate_success_messagebox]
+[vcf_generate_success_message_box]
 title = "生成 VCF 文件成功"
 message = "已导出文件到 {path}。"
 
-[vcf_generate_error_messagebox]
+[vcf_generate_error_message_box]
 title = "生成 VCF 文件失败"
 message = "生成 VCF 文件时出现未知异常：\n\n{content}"
 
-[vcf_generating_exit_messagebox]
+[vcf_generating_exit_message_box]
 title = "正在生成 VCF 文件"
 message = "请等待文件生成完成"
 
@@ -76,7 +76,7 @@ cell_row = "第 {row} 行"
 [about_message_box]
 title = "关于 VCF 生成器 Lite"
 message = "VCF 生成器 Lite v{version}"
-details = """{copyright}"""
+detail = """{copyright}"""
 
 [open_url_failure_message_box]
 title = "打开外部应用失败"

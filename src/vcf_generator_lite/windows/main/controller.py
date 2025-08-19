@@ -54,7 +54,7 @@ class MainController:
             )
         except PermissionError:
             messagebox.showerror(
-                t("save_vcf_permission_denied_messagebox.title"), t("save_vcf_permission_denied_messagebox.message")
+                t("save_vcf_permission_denied_message_box.title"), t("save_vcf_permission_denied_message_box.message")
             )
             return
         if file_io is None:
@@ -93,8 +93,8 @@ class MainController:
         if self.is_generating:
             messagebox.showwarning(
                 parent=self.window,
-                title=t("vcf_generating_exit_messagebox.title"),
-                message=t("vcf_generating_exit_messagebox.message"),
+                title=t("vcf_generating_exit_message_box.title"),
+                message=t("vcf_generating_exit_message_box.message"),
             )
         else:
             self.window.destroy()
@@ -106,7 +106,7 @@ class MainController:
             message=t("about_message_box.message").format(
                 version=__version__,
             ),
-            detail=t("about_message_box.details").format(
+            detail=t("about_message_box.detail").format(
                 copyright=APP_COPYRIGHT,
             ),
         )
@@ -122,8 +122,8 @@ class MainController:
     def _show_generate_error_dialog(self, exceptions: list[BaseException]):
         messagebox.showerror(
             parent=self.window,
-            title=t("vcf_generate_error_messagebox.title"),
-            message=t("vcf_generate_error_messagebox.message").format(
+            title=t("vcf_generate_error_message_box.title"),
+            message=t("vcf_generate_error_message_box.message").format(
                 content="\n\n".join(
                     ("\n".join(traceback.format_exception(exception)) for exception in exceptions),
                 ),
@@ -136,8 +136,8 @@ class MainController:
     def _show_generate_success_dialog(self, display_path: str):
         messagebox.showinfo(
             parent=self.window,
-            title=t("vcf_generate_success_messagebox.title"),
-            message=t("vcf_generate_success_messagebox.message").format(path=display_path),
+            title=t("vcf_generate_success_message_box.title"),
+            message=t("vcf_generate_success_message_box.message").format(path=display_path),
         )
 
     def _clean_quotes(self):

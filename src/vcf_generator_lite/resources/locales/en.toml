@@ -49,19 +49,19 @@ usage = """Instructions:
 title = "Select File Save Location"
 label_type_vcf = "vCard File (*.vcf)"
 
-[save_vcf_permission_denied_messagebox]
+[save_vcf_permission_denied_message_box]
 title = "Save Failed"
 message = "Permission denied, please grant permission again."
 
-[vcf_generate_success_messagebox]
+[vcf_generate_success_message_box]
 title = "VCF File Generated Successfully"
 message = "File exported to {path}."
 
-[vcf_generate_error_messagebox]
+[vcf_generate_error_message_box]
 title = "Failed to Generate VCF File"
 message = "An unknown error occurred while generating the VCF file:\n\n{content}"
 
-[vcf_generating_exit_messagebox]
+[vcf_generating_exit_message_box]
 title = "Generating VCF File"
 message = "Please wait for the file generation to complete"
 
@@ -76,7 +76,7 @@ cell_row = "Row {row}"
 [about_message_box]
 title = "About VCF Generator Lite"
 message = "VCF Generator Lite v{version}"
-details = "{copyright}"
+detail = "{copyright}"
 
 [open_url_failure_message_box]
 title = "Failed to Open External Application"
