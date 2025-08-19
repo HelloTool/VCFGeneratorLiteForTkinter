@@ -2,7 +2,7 @@ from tkinter import Entry, Menu, TclError, Text
 from tkinter.constants import SEL_FIRST
 from typing import Literal
 
-from vcf_generator_lite.utils.tkinter.menu import MenuCommand, MenuSeparator, load_menus
+from vcf_generator_lite.utils.tkinter.menu import MenuCommand, MenuSeparator, load_menu_items
 
 
 def boolean_to_state(state: bool) -> Literal["normal", "disabled"]:
@@ -32,7 +32,7 @@ class TextContextMenu(Menu):
         state_by_selected = boolean_to_state(self.is_selected())
         is_master_editable = state_to_boolean(self.master.cget("state"))
         if is_master_editable:
-            load_menus(
+            load_menu_items(
                 self,
                 [
                     MenuCommand(
@@ -51,7 +51,7 @@ class TextContextMenu(Menu):
                     ),
                 ],
             )
-        load_menus(
+        load_menu_items(
             self,
             [
                 MenuCommand(
@@ -62,7 +62,7 @@ class TextContextMenu(Menu):
             ],
         )
         if is_master_editable:
-            load_menus(
+            load_menu_items(
                 self,
                 [
                     MenuCommand(
@@ -76,7 +76,7 @@ class TextContextMenu(Menu):
                     ),
                 ],
             )
-        load_menus(
+        load_menu_items(
             self,
             [
                 MenuSeparator(),

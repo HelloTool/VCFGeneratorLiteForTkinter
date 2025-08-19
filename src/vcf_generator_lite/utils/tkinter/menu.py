@@ -49,7 +49,7 @@ class MenuCascade(MenuItem):
     @override
     def load(self, menu: Menu):
         submenu = Menu(menu, tearoff=self.tearoff)
-        load_menus(submenu, self.items)
+        load_menu_items(submenu, self.items)
         menu.add_cascade(
             menu=submenu,
             accelerator=self.accelerator,  # pyright: ignore[reportArgumentType]
@@ -71,7 +71,7 @@ def _parse_label(label: str) -> ParseLabelResult:
     return ParseLabelResult(label=label.replace("&", "", 1), underline=label.find("&"))
 
 
-def load_menus(menu: Menu, items: list[MenuItem]):
+def load_menu_items(menu: Menu, items: list[MenuItem]):
     for item in items:
         item.load(menu)
 
@@ -79,8 +79,8 @@ def load_menus(menu: Menu, items: list[MenuItem]):
 class MenuBarWindowExtension(WindowExtension, ABC):
     menu_bar: Menu | None = None
 
-    def add_menu_bar_items(self, *items: MenuItem):
+    def load_menu_bar_items(self, *items: MenuItem):
         if self.menu_bar is None:
-            self.menu_bar = Menu(self, tearoff=False)
+            self.menu_bar = Menu(self, tearoff=True)
             self.configure({"menu": self.menu_bar})
-        load_menus(self.menu_bar, list(items))
+        load_menu_items(self.menu_bar, list(items))

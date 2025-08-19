@@ -6,10 +6,10 @@ from typing import override
 from vcf_generator_lite.themes.base import BaseTheme
 
 
-class WindowsTheme(BaseTheme):
+class VistaTheme(BaseTheme):
     @override
-    def apply_tk(self, master: Tk, style: Style):
-        super().apply_tk(master, style)
+    def configure_tk(self, master: Tk, style: Style):
+        super().configure_tk(master, style)
         style.theme_use("vista")
         default_font = nametofont("TkDefaultFont")
         default_font_size = int(default_font.actual("size"))

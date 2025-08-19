@@ -6,9 +6,9 @@ __all__ = ["create_platform_theme"]
 
 def create_platform_theme() -> EnhancedTheme:
     if is_windows:
-        from vcf_generator_lite.themes.widows_theme import WindowsTheme
+        from vcf_generator_lite.themes.vista_theme import VistaTheme
 
-        return WindowsTheme()
+        return VistaTheme()
 
     from vcf_generator_lite.themes.clam_theme import ClamTheme
 

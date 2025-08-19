@@ -8,8 +8,8 @@ from vcf_generator_lite.themes.base import BaseTheme
 
 class ClamTheme(BaseTheme):
     @override
-    def apply_tk(self, master: Tk, style: Style):
-        super().apply_tk(master, style)
+    def configure_tk(self, master: Tk, style: Style):
+        super().configure_tk(master, style)
         style.theme_use("clam")
         default_font = nametofont("TkDefaultFont")
         default_font_size = int(default_font.actual("size"))
@@ -25,8 +25,8 @@ class ClamTheme(BaseTheme):
         style.configure("ThemedText.TEntry", padding=0, borderwidth="1.5p")
 
     @override
-    def apply_window(self, master: Tk | Toplevel, style: Style):
-        super().apply_window(master, style)
+    def configure_window(self, master: Tk | Toplevel, style: Style):
+        super().configure_window(master, style)
         # 窗口背景色不会跟随主题变化，需要手动设置
         window_background: str = style.lookup("TFrame", "background")
         master.configure(background=window_background)

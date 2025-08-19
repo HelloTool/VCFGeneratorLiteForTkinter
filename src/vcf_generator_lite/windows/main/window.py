@@ -85,7 +85,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         return action_frame
 
     def _create_menus(self):
-        self.add_menu_bar_items(
+        self.load_menu_bar_items(
             MenuCascade(
                 label=window_t("menu_file"),
                 items=[

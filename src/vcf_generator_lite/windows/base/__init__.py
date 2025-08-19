@@ -35,7 +35,6 @@ class AppWindowExtension(
     - 继承 ScalingWindowExtension: 支持高DPI屏幕的自适应缩放
     - 继承 CenterWindowExtension: 实现窗口居中显示功能
     - 继承 WindowExtension: 基础窗口功能扩展
-    - 抽象类要求子类必须实现 on_init_window 方法
     """
 
     def __init__(self):
@@ -60,15 +59,12 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
     theme: EnhancedTheme
 
     def __init__(self, **kw):
-        # __init__中加载的配置文件中可能需要设置主题，因此必须先设置标志
-        self._theme_applied: bool = False
         super().__init__(baseName="vcf_generator_lite", **kw)
         AppWindowExtension.__init__(self)
 
     @override
     def _configure_ui_withdraw(self):
-        if not self._theme_applied:
-            self.set_theme(create_platform_theme())
+        self.set_theme(create_platform_theme())
         super()._configure_ui_withdraw()
         self.__apply_default_icon()
 
@@ -77,12 +73,9 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
 
     def set_theme(self, theme: EnhancedTheme):
         self.theme = theme
-        theme.apply_tk(self, Style(self))
-        theme.apply_window(self, Style(self))
-        self.event_generate(
-            EVENT_ENHANCED_THEME_CHANGED,
-        )
-        self._theme_applied = True
+        theme.configure_tk(self, Style(self))
+        theme.configure_window(self, Style(self))
+        self.event_generate(EVENT_ENHANCED_THEME_CHANGED)
 
 
 class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
@@ -97,8 +90,8 @@ class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
 
     def __apply_theme(self):
         root: ExtendedTk = self.nametowidget(".")
-        root.theme.apply_window(self, Style(self))
-        root.bind(EVENT_ENHANCED_THEME_CHANGED, lambda _: root.theme.apply_window(self, Style(self)))
+        root.theme.configure_window(self, Style(self))
+        root.bind(EVENT_ENHANCED_THEME_CHANGED, lambda _: root.theme.configure_window(self, Style(self)))
 
 
 class ExtendedDialog(ExtendedToplevel, ABC):
