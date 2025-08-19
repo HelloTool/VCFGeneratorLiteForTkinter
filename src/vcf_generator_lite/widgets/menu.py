@@ -2,7 +2,7 @@ from tkinter import Entry, Menu, TclError, Text
 from tkinter.constants import SEL_FIRST
 from typing import Literal
 
-from vcf_generator_lite.utils.tkinter.menu import add_menu_items, MenuCommand, MenuSeparator
+from vcf_generator_lite.utils.tkinter.menu import MenuCommand, MenuSeparator, load_menus
 
 
 def boolean_to_state(state: bool) -> Literal["normal", "disabled"]:
@@ -32,7 +32,7 @@ class TextContextMenu(Menu):
         state_by_selected = boolean_to_state(self.is_selected())
         is_master_editable = state_to_boolean(self.master.cget("state"))
         if is_master_editable:
-            add_menu_items(
+            load_menus(
                 self,
                 [
                     MenuCommand(
@@ -43,7 +43,7 @@ class TextContextMenu(Menu):
                         label="重做(&R)",
                         command=lambda: self.master.event_generate("<<Redo>>"),
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label="剪切(&T)",
                         command=lambda: self.master.event_generate("<<Cut>>"),
@@ -51,7 +51,7 @@ class TextContextMenu(Menu):
                     ),
                 ],
             )
-        add_menu_items(
+        load_menus(
             self,
             [
                 MenuCommand(
@@ -62,7 +62,7 @@ class TextContextMenu(Menu):
             ],
         )
         if is_master_editable:
-            add_menu_items(
+            load_menus(
                 self,
                 [
                     MenuCommand(
@@ -76,10 +76,10 @@ class TextContextMenu(Menu):
                     ),
                 ],
             )
-        add_menu_items(
+        load_menus(
             self,
             [
-                MenuSeparator,
+                MenuSeparator(),
                 MenuCommand(
                     label="全选(&A)",
                     command=lambda: self.master.event_generate("<<SelectAll>>"),

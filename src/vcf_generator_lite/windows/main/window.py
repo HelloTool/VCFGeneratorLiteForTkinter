@@ -94,7 +94,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         command=lambda: self.event_generate(EVENT_GENERATE),
                         accelerator="Ctrl + S",
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_file_exit"),
                         command=lambda: self.event_generate(EVENT_EXIT),
@@ -115,7 +115,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         command=lambda: self.__generate_focus_event("<<Redo>>"),
                         accelerator="Ctrl + Y",
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_edit_cut"),
                         command=lambda: self.__generate_focus_event("<<Cut>>"),
@@ -131,13 +131,13 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         command=lambda: self.__generate_focus_event("<<Paste>>"),
                         accelerator="Ctrl + V",
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_edit_select_all"),
                         command=lambda: self.__generate_focus_event("<<SelectAll>>"),
                         accelerator="Ctrl + A",
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_edit_clean_quotes"),
                         command=lambda: self.event_generate(EVENT_CLEAN_QUOTES),
@@ -155,7 +155,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         label=window_t("menu_help_release"),
                         command=lambda: open_url_with_fallback(self, URL_RELEASES),
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_help_feedback"),
                         command=lambda: open_url_with_fallback(self, URL_REPORT),
@@ -166,7 +166,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                             self, str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
                         ),
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_help_license"),
                         command=lambda: open_url_with_fallback(self, URL_LICENSE),
@@ -175,7 +175,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         label=window_t("menu_help_os_notices"),
                         command=lambda: open_url_with_fallback(self, URL_OS_NOTICES),
                     ),
-                    MenuSeparator,
+                    MenuSeparator(),
                     MenuCommand(
                         label=window_t("menu_help_about"),
                         command=lambda: self.event_generate(EVENT_ABOUT),

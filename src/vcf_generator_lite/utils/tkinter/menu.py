@@ -1,35 +1,61 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from collections.abc import Callable
 from dataclasses import dataclass
 from tkinter import Menu
-from typing import Self, Literal, TypedDict
+from typing import Literal, TypedDict, override
 
 from vcf_generator_lite.utils.tkinter.window import WindowExtension
 
 
+class MenuItem(ABC):
+    @abstractmethod
+    def load(self, menu: Menu): ...
+
+
 @dataclass
-class MenuCommand:
+class MenuCommand(MenuItem):
+
     label: str
     command: Callable[[], object | str] | None = None
     accelerator: str | None = None
     state: Literal["normal", "active", "disabled"] = "normal"
 
+    @override
+    def load(self, menu: Menu):
+        menu.add_command(
+            command=self.command,  # pyright: ignore[reportArgumentType]
+            accelerator=self.accelerator,  # pyright: ignore[reportArgumentType]
+            state=self.state,
+            **_parse_label(self.label),
+        )
+
 
 @dataclass
-class MenuSeparator:
-    pass
+class MenuSeparator(MenuItem):
+
+    @override
+    def load(self, menu: Menu):
+        menu.add_separator()
 
 
 @dataclass
-class MenuCascade:
+class MenuCascade(MenuItem):
     label: str
-    items: list[MenuCommand | MenuSeparator | Self | type[MenuSeparator]]
+    items: list[MenuItem]
     accelerator: str | None = None
     tearoff: bool = False
     state: Literal["normal", "active", "disabled"] = "normal"
 
-
-type MenuItem = MenuCommand | MenuSeparator | MenuCascade | type[MenuSeparator]
+    @override
+    def load(self, menu: Menu):
+        submenu = Menu(menu, tearoff=self.tearoff)
+        load_menus(submenu, self.items)
+        menu.add_cascade(
+            menu=submenu,
+            accelerator=self.accelerator,  # pyright: ignore[reportArgumentType]
+            state=self.state,
+            **_parse_label(self.label),
+        )
 
 
 class ParseLabelResult(TypedDict):
@@ -45,29 +71,9 @@ def _parse_label(label: str) -> ParseLabelResult:
     return ParseLabelResult(label=label.replace("&", "", 1), underline=label.find("&"))
 
 
-def add_menu_items(menu: Menu, items: list[MenuItem]):
-    """
-    向给定的菜单对象中批量添加菜单项。
-    """
+def load_menus(menu: Menu, items: list[MenuItem]):
     for item in items:
-        if isinstance(item, MenuCommand):
-            menu.add_command(
-                command=item.command,  # pyright: ignore[reportArgumentType]
-                accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
-                state=item.state,
-                **_parse_label(item.label),
-            )
-        elif isinstance(item, MenuSeparator) or (type(item) == type and issubclass(item, MenuSeparator)):
-            menu.add_separator()
-        elif isinstance(item, MenuCascade):
-            submenu = Menu(menu, tearoff=item.tearoff)
-            add_menu_items(submenu, item.items)
-            menu.add_cascade(
-                menu=submenu,
-                accelerator=item.accelerator,  # pyright: ignore[reportArgumentType]
-                state=item.state,
-                **_parse_label(item.label),
-            )
+        item.load(menu)
 
 
 class MenuBarWindowExtension(WindowExtension, ABC):
@@ -77,4 +83,4 @@ class MenuBarWindowExtension(WindowExtension, ABC):
         if self.menu_bar is None:
             self.menu_bar = Menu(self, tearoff=False)
             self.configure({"menu": self.menu_bar})
-        add_menu_items(self.menu_bar, list(items))
+        load_menus(self.menu_bar, list(items))
