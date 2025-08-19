@@ -35,9 +35,11 @@ def change_pyproject_version(version: str):
 
 def change_version_info(version: str):
     pyinstaller_versionfile.create_versionfile_from_input_file(
-        output_file="versionfile.txt", input_file="metadata.yml", version=get_exe_style_version(version)
+        output_file="vcf_generator_lite_versionfile.txt",
+        input_file="vcf_generator_lite_metadata.yml",
+        version=get_exe_style_version(version),
     )
-    print("Change version to %s in %s." % (version, "versionfile.txt"))
+    print("Change version to %s in %s." % (version, "vcf_generator_lite_versionfile.txt"))
 
 
 def print_version():

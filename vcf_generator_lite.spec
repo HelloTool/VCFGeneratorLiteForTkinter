@@ -39,7 +39,7 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=['./icon.ico'],
-    version="versionfile.txt" if os.path.exists("versionfile.txt") else None,
+    version="vcf_generator_lite_versionfile.txt" if os.path.exists("vcf_generator_lite_versionfile.txt") else None,
 )
 
 # noinspection PyUnresolvedReferences

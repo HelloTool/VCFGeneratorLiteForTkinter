@@ -77,7 +77,6 @@ def pack_with_innosetup() -> int:
         if (result := prepare_innosetup_extensions()) != 0:
             return result
 
-    os.environ["PATH"] += os.pathsep + "C:\\Program Files (x86)\\Inno Setup 6\\"
     search_path = os.environ["PATH"] + os.pathsep + "C:\\Program Files (x86)\\Inno Setup 6\\"
     iscc_path = shutil.which("iscc", path=search_path)
     if iscc_path is None:
@@ -94,7 +93,7 @@ def pack_with_innosetup() -> int:
         )}",
             "/D" + f"MyAppCopyright={APP_COPYRIGHT}",
             "/D" + f"MyAppVersion={APP_VERSION}",
-            os.path.abspath("setup.iss"),
+            os.path.abspath("vcf_generator_lite.iss"),
         ]
     )
     print("Packaging finished.")
