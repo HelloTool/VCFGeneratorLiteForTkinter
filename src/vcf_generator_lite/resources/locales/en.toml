@@ -77,3 +77,8 @@ cell_row = "Row {row}"
 title = "About VCF Generator Lite"
 message = "VCF Generator Lite v{version}"
 details = "{copyright}"
+
+[open_url_failure_message_box]
+title = "Failed to Open External Application"
+message = "Failed to open external application. Please check your default application settings.
+detail = """Link: {url}"""

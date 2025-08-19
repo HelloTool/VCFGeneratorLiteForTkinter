@@ -1,5 +1,4 @@
 import urllib.parse
-import webbrowser
 from tkinter import Misc
 from tkinter.ttk import Button, Frame, Label, Progressbar, Sizegrip
 from typing import override
@@ -15,6 +14,7 @@ from vcf_generator_lite.constants import (
     URL_REPOSITORY,
 )
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
+from vcf_generator_lite.utils.external_app import open_url_with_fallback
 from vcf_generator_lite.utils.locales import branch, t
 from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
 from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
@@ -149,31 +149,31 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                 items=[
                     MenuCommand(
                         label=window_t("menu_help_repository"),
-                        command=lambda: webbrowser.open(URL_REPOSITORY),
+                        command=lambda: open_url_with_fallback(self, URL_REPOSITORY),
                     ),
                     MenuCommand(
                         label=window_t("menu_help_release"),
-                        command=lambda: webbrowser.open(URL_RELEASES),
+                        command=lambda: open_url_with_fallback(self, URL_RELEASES),
                     ),
                     MenuSeparator,
                     MenuCommand(
                         label=window_t("menu_help_feedback"),
-                        command=lambda: webbrowser.open(URL_REPORT),
+                        command=lambda: open_url_with_fallback(self, URL_REPORT),
                     ),
                     MenuCommand(
                         label=window_t("menu_help_contact"),
-                        command=lambda: webbrowser.open(
-                            str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
+                        command=lambda: open_url_with_fallback(
+                            self, str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
                         ),
                     ),
                     MenuSeparator,
                     MenuCommand(
                         label=window_t("menu_help_license"),
-                        command=lambda: webbrowser.open(URL_LICENSE),
+                        command=lambda: open_url_with_fallback(self, URL_LICENSE),
                     ),
                     MenuCommand(
                         label=window_t("menu_help_os_notices"),
-                        command=lambda: webbrowser.open(URL_OS_NOTICES),
+                        command=lambda: open_url_with_fallback(self, URL_OS_NOTICES),
                     ),
                     MenuSeparator,
                     MenuCommand(

@@ -77,3 +77,8 @@ cell_row = "第 {row} 行"
 title = "关于 VCF 生成器 Lite"
 message = "VCF 生成器 Lite v{version}"
 details = """{copyright}"""
+
+[open_url_failure_message_box]
+title = "打开外部应用失败"
+message = "无法打开外部应用，请检查默认应用设置。"
+detail = """链接：{url}"""
