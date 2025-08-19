@@ -28,7 +28,9 @@ menu_help = "帮助(&H)"
 menu_help_repository = "项目仓库(&O)"
 menu_help_release = "版本发布(&R)"
 menu_help_feedback = "提交反馈(&F)"
+menu_help_contact = "联系作者(&C)"
 menu_help_license = "许可协议(&L)"
+menu_help_os_notices = "开源声明(&N)"
 menu_help_about = "关于 VCF 生成器 Lite(&A)"
 
 input_example = """张三\t13345367789\t著名的法外狂徒
@@ -71,16 +73,7 @@ heading_row = "位置"
 heading_original = "原始内容"
 cell_row = "第 {row} 行"
 
-[about_window]
+[about_message_box]
 title = "关于 VCF 生成器 Lite"
-label_app_name = "VCF 生成器 Lite v{version}"
-
-heading_links = "链接"
-label_repository = "项目仓库："
-label_release = "版本发布："
-
-heading_contact = "联系"
-label_email = "电子邮箱："
-
-heading_legal = "法律"
-label_os_notices = "开源声明："
+message = "VCF 生成器 Lite v{version}"
+details = """{copyright}"""

@@ -28,7 +28,9 @@ menu_help = "&Help"
 menu_help_repository = "Rep&ository"
 menu_help_release = "&Releases"
 menu_help_feedback = "&Feedback"
+menu_help_contact = "&Contact author"
 menu_help_license = "&License"
+menu_help_os_notices = "Open Source &Notices"
 menu_help_about = "&About VCF Generator Lite"
 
 input_example = """John\t13345367789\tA famous scientist
@@ -71,16 +73,7 @@ heading_row = "Position"
 heading_original = "Original Content"
 cell_row = "Row {row}"
 
-[about_window]
+[about_message_box]
 title = "About VCF Generator Lite"
-label_app_name = "VCF Generator Lite v{version}"
-
-heading_links = "Links"
-label_repository = "Repository: "
-label_release = "Releases: "
-
-heading_contact = "Contact"
-label_email = "Email: "
-
-heading_legal = "Legal"
-label_os_notices = "Open Source Notices: "
+message = "VCF Generator Lite v{version}"
+details = "{copyright}"

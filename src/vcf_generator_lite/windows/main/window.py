@@ -1,3 +1,4 @@
+import urllib.parse
 import webbrowser
 from tkinter import Misc
 from tkinter.ttk import Button, Frame, Label, Progressbar, Sizegrip
@@ -5,7 +6,14 @@ from typing import override
 
 from ttk_text.scrolled_text import ScrolledText
 
-from vcf_generator_lite.constants import URL_LICENSE, URL_RELEASES, URL_REPORT, URL_REPOSITORY
+from vcf_generator_lite.constants import (
+    EMAIL_JESSE205,
+    URL_LICENSE,
+    URL_OS_NOTICES,
+    URL_RELEASES,
+    URL_REPORT,
+    URL_REPOSITORY,
+)
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils.locales import branch, t
 from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
@@ -152,10 +160,20 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
                         label=window_t("menu_help_feedback"),
                         command=lambda: webbrowser.open(URL_REPORT),
                     ),
+                    MenuCommand(
+                        label=window_t("menu_help_contact"),
+                        command=lambda: webbrowser.open(
+                            str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
+                        ),
+                    ),
                     MenuSeparator,
                     MenuCommand(
                         label=window_t("menu_help_license"),
                         command=lambda: webbrowser.open(URL_LICENSE),
+                    ),
+                    MenuCommand(
+                        label=window_t("menu_help_os_notices"),
+                        command=lambda: webbrowser.open(URL_OS_NOTICES),
                     ),
                     MenuSeparator,
                     MenuCommand(
