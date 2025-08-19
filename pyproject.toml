@@ -6,14 +6,19 @@ authors = [{ name = "Jesse205", email = "jesse205@qq.com" }]
 license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
-dependencies = ["ttk-text>=0.2.0"]
+dependencies = ["ttk-text>=0.2.1"]
 
 [dependency-groups]
-test = ["pytest>=8.3.5"]
-lint = ["black>=25.1.0", "pyright>=1.1.403"]
+test = [
+    "pytest>=8.4.1",
+]
+lint = [
+    "black>=25.1.0",
+    "pyright>=1.1.403",
+]
 build = [
-    "pyinstaller<7.0.0,>=6.11.0",
-    "pyinstaller-versionfile<4.0.0,>=3.0.0",
+    "pyinstaller>=6.15.0",
+    "pyinstaller-versionfile>=3.0.1",
     "requests>=2.32.3",
 ]
 
