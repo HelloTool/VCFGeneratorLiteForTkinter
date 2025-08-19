@@ -10,10 +10,8 @@ from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
 from vcf_generator_lite.utils.tkinter.theme import EnhancedTheme
 from vcf_generator_lite.utils.tkinter.window import (
     CenterWindowExtension,
-    GcWindowExtension,
     GeometryWindowExtension,
     WindowExtension,
-    WindowingSystemWindowExtension,
     withdraw_cm,
 )
 from vcf_generator_lite.windows.base.constants import EVENT_ENHANCED_THEME_CHANGED, EVENT_EXIT
@@ -23,11 +21,9 @@ _logger = logging.getLogger(__name__)
 
 
 class AppWindowExtension(
-    GcWindowExtension,
     GeometryWindowExtension,
     ScalingMiscExtension,
     CenterWindowExtension,
-    WindowingSystemWindowExtension,
     WindowExtension,
     ABC,
 ):

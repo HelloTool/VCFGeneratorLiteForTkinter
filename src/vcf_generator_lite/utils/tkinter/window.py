@@ -1,9 +1,8 @@
-import gc
+from abc import ABC
 from abc import ABC
 from contextlib import contextmanager
-from functools import cached_property
-from tkinter import Event, Misc, Tk, Toplevel, Wm
-from typing import Literal, cast
+from tkinter import Misc, Tk, Toplevel, Wm
+from typing import cast
 
 from vcf_generator_lite.utils.graphics import Offset
 from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
@@ -39,25 +38,6 @@ class GeometryWindowExtension(ScalingMiscExtension, WindowExtension, ABC):
 
     def wm_maxsize_pt(self, width: int, height: int) -> None:
         return self.wm_maxsize(*cast(tuple[int, int], self.scale_args(width, height)))
-
-
-class GcWindowExtension(WindowExtension, ABC):
-    def __init__(self):
-        super().__init__()
-        self.bind("<Destroy>", self._on_destroy, "+")
-
-    def _on_destroy(self, event: Event):
-        if event.widget == self:
-            gc.collect()
-
-
-type WindowingSystem = Literal["x11", "win32", "aqua"]
-
-
-class WindowingSystemWindowExtension(WindowExtension, ABC):
-    @cached_property
-    def tk_windowing_system(self) -> WindowingSystem:
-        return self.tk.call("tk", "windowingsystem")
 
 
 class CenterWindowExtension(GeometryOffsetWindowExtension, WindowExtension, ABC):
