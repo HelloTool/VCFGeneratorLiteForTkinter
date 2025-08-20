@@ -81,6 +81,6 @@ class MenuBarWindowExtension(WindowExtension, ABC):
 
     def load_menu_bar_items(self, *items: MenuItem):
         if self.menu_bar is None:
-            self.menu_bar = Menu(self, tearoff=True)
+            self.menu_bar = Menu(self, tearoff=False)
             self.configure({"menu": self.menu_bar})
         load_menu_items(self.menu_bar, list(items))
