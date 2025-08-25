@@ -93,13 +93,11 @@ Users of different systems need to download different files. You can make your s
 
 ### Application Compatibility
 
-| System Environment | Feature         | Compatibility                                                                                  |
-| ------------------ | --------------- | ---------------------------------------------------------------------------------------------- |
-| Windows 10+        | Dark Mode       | Dark mode not supported                                                                        |
-| Windows 10+        | Display Scaling | Unable to auto-scale when switching DPI; scaling adaptation is handled by the operating system |
-| Windows 10+        | Font Scaling    | Font scaling not supported                                                                     |
-| Windows 7+         | Display Scaling | Icon scaling only supports 100%, 125%, and 150% levels                                         |
-| Windows 7 ~ 8.1    | App Launch      | Requires patches                                                                               |
+| System Environment  | Feature         | Compatibility                                                      |
+| ------------------- | --------------- | ------------------------------------------------------------------ |
+| Windows 10 or later | Dark Mode       | Dark mode not supported                                            |
+| Windows 10 or later | Display Scaling | Display scaling adaptation is handled by the OS when switching DPI |
+| Windows 7 to 8.1    | App Launch      | Requires specific patches to run                                   |
 
 #### Special Notes
 

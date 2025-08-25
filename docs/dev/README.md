@@ -40,23 +40,23 @@
 
 ```txt
 VCFGeneratorLiteForTkinter/
-├── scripts/                      # 构建脚本
-├── src/                          # 源代码
+├── scripts/                        # 构建脚本
+├── src/                            # 源代码
 │   └── vcf_generator_lite/
-│       ├── core/                 # 业务逻辑
-│       ├── resources/            # 静态资源（图标、数据等）
-│       ├── themes/               # 应用主题
-│       ├── utils/                # 工具类
-│       ├── widgets/              # 自定义组件（增强型输入框等）
-│       ├── windows/              # 窗口
-│       ├── __main__.py           # 程序入口
-│       └── constants.py          # 全局常量（名称、链接等）
-├── pyproject.toml                # 项目配置
-├── vcf_generator_lite.spec       # PyInstaller 配置
-├── setup.iss                     # InnoSetup 安装脚本
-├── metadata.yml                  # 元数据（作者、描述等）
-├── versionfile.txt               # 版本信息（自动生成）
-└── os_notices.toml               # 开源声明信息
+│       ├── core/                   # 业务逻辑
+│       ├── resources/              # 静态资源（图标、数据等）
+│       ├── themes/                 # 应用主题
+│       ├── utils/                  # 工具类
+│       ├── widgets/                # 自定义组件（增强型输入框等）
+│       ├── windows/                # 窗口
+│       ├── __main__.py             # 程序入口
+│       └── constants.py            # 全局常量（名称、链接等）
+├── pyproject.toml                  # 项目配置
+├── vcf_generator_lite.iss          # InnoSetup 安装脚本
+├── vcf_generator_lite.spec         # PyInstaller 配置
+├── vcf_generator_lite_metadata.yml # 元数据（作者、描述等）
+├── vcf_generator_lite_metadata.txt # 版本信息（自动生成）
+└── os_notices.toml                 # 开源声明信息
 ```
 
 ## 常用命令
