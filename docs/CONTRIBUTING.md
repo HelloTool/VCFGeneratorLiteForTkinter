@@ -50,9 +50,9 @@
 
 遵循 [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/)。
 
-## UI 设计
+## 视觉设计
 
-使用平台样式，并且建议遵循微软 [桌面应用程序的设计基础知识](https://learn.microsoft.com/zh-cn/windows/win32/uxguide/designprinciples)。
+详见 [视觉设计](./dev/visual.md)
 
 [RepositoryOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
 [RepositoryOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/

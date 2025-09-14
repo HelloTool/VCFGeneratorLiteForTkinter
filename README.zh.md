@@ -103,14 +103,14 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 <summary>兼容性补丁安装指南（仅 Windows 7 用户）</summary>
 
 1. **获取 Python 嵌入包**：从 [PythonWin7][PythonWin7RepositoryOnGithub] 仓库下载：
-    - `python-3.13.2-embed-amd64.zip`
+   - `python-3.13.2-embed-amd64.zip`
 2. **提取 DLL 文件**：解压下载的 ZIP 包，从中获取以下文件：
-    - `python313.dll`  
-    - `api-ms-win-core-path-l1-1-0.dll`
+   - `python313.dll`  
+   - `api-ms-win-core-path-l1-1-0.dll`
 3. **应用补丁**：
-    1. 完成软件安装
-    2. 打开安装目录下的 `_internal` 文件夹
-    3. 将下载的两个 DLL 文件覆盖到该目录
+   1. 完成软件安装
+   2. 打开安装目录下的 `_internal` 文件夹
+   3. 将下载的两个 DLL 文件覆盖到该目录
 
 </details>
 
