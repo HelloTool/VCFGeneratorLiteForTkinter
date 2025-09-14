@@ -11,8 +11,8 @@ class BaseTheme(EnhancedTheme, ABC):
     @override
     def configure_tk(self, master: Tk, style: Style):
         # 防止编辑框将其他组件挤出窗口
-        master.option_add("*ThemedTextFrame.Text.width", 0, "startupFile")
-        master.option_add("*ThemedTextFrame.Text.height", 0, "startupFile")
+        master.option_add("*ThemedText.Text.width", 0, "startupFile")
+        master.option_add("*ThemedText.Text.height", 0, "startupFile")
 
     @override
     def configure_window(self, master: Tk | Toplevel, style: Style):
