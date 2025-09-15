@@ -3,7 +3,7 @@ import os
 import sys
 
 from vcf_generator_lite import constants
-from vcf_generator_lite.utils.display import enable_dpi_aware
+from vcf_generator_lite.utils.dpi_aware import enable_dpi_aware
 from vcf_generator_lite.utils.locales import branch
 from vcf_generator_lite.windows.main import create_main_window
 
