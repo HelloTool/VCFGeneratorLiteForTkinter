@@ -13,7 +13,7 @@ class ScalingMiscExtension(Misc):
         self._scale_factor = self.scaling()
         if __debug__:
             logger.debug(
-                f"ScalingMiscExtension init with scale_factor={self._scale_factor}, "
+                f"init with scale_factor={self._scale_factor}, "
                 f"system scale is {round(self._scale_factor * 0.75, 2)}."
             )
 

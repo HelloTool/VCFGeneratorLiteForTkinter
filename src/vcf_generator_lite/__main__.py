@@ -7,6 +7,11 @@ from vcf_generator_lite.utils.dpi_aware import enable_dpi_aware
 from vcf_generator_lite.utils.locales import branch
 from vcf_generator_lite.windows.main import create_main_window
 
+try:
+    from colorlog import ColoredFormatter
+except ImportError:
+    ColoredFormatter = None
+
 startup_t = branch("startup")
 
 
@@ -18,8 +23,19 @@ def fix_home_env():
 
 
 def setup_logging():
-    log_level = logging.DEBUG if __debug__ else logging.INFO
-    logging.basicConfig(level=log_level, stream=sys.stdout)
+    handler = logging.StreamHandler()
+    handler.setStream(sys.stdout)
+    log_format = "{log_color} {asctime} {levelname:8} {name:50.50} {message}"
+    if ColoredFormatter:
+        formatter = ColoredFormatter(log_format, style="{")
+    else:
+        formatter = logging.Formatter(log_format, style="{", defaults={"log_color": ""})
+
+    handler.setFormatter(formatter)
+    logging.basicConfig(
+        level=logging.DEBUG if __debug__ else logging.INFO,
+        handlers=[handler],
+    )
 
 
 def main():
