@@ -19,8 +19,10 @@ class ScalingMiscExtension(Misc):
 
     @overload
     def scaling(self, factor: None = None) -> float: ...
+
     @overload
     def scaling(self, factor: float) -> None: ...
+
     def scaling(self, factor: float | None = None):
         """
         设置或获取GUI缩放比例因子
@@ -36,8 +38,10 @@ class ScalingMiscExtension(Misc):
 
     @overload
     def get_scaled(self, value: int) -> int: ...
+
     @overload
     def get_scaled(self, value: float) -> float: ...
+
     def get_scaled(self, value: int | float):
         if isinstance(value, int):
             return int(self._scale_factor * value)
@@ -62,7 +66,9 @@ class ScalingMiscExtension(Misc):
 
     @overload
     def scale_args(self, *args: int) -> tuple[int, ...]: ...
+
     @overload
     def scale_args(self, *args: float) -> tuple[float, ...]: ...
+
     def scale_args(self, *args: int | float) -> tuple[Any, ...]:
         return tuple(self.get_scaled(value) for value in args)
