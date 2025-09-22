@@ -9,7 +9,6 @@ from zipfile import ZipFile
 import PyInstaller.__main__ as pyinstaller
 
 from scripts.prepare_innosetup_extensions import PATH_INNOSETUP_EXTENSION, prepare_innosetup_extensions
-from scripts.utils import require_64_bits
 from vcf_generator_lite.__version__ import __version__ as APP_VERSION
 from vcf_generator_lite.constants import APP_COPYRIGHT
 
@@ -82,6 +81,18 @@ def pack_with_innosetup() -> int:
     if iscc_path is None:
         print("InnoSetup not found.", file=sys.stderr)
         return 1
+
+    match PLATFORM_NATIVE:
+        case "win-amd64":
+            architecturesAllowed = "x64compatible"
+            architecturesInstallIn64BitMode = "win64"
+        case "win-arm64":
+            architecturesAllowed = "arm64"
+            architecturesInstallIn64BitMode = "win64"
+        case _:
+            architecturesAllowed = "x86compatible"
+            architecturesInstallIn64BitMode = ""
+
     result = subprocess.run(
         [
             iscc_path,
@@ -93,6 +104,8 @@ def pack_with_innosetup() -> int:
         )}",
             "/D" + f"MyAppCopyright={APP_COPYRIGHT}",
             "/D" + f"MyAppVersion={APP_VERSION}",
+            "/D" + f"ArchitecturesAllowed={architecturesAllowed}",
+            "/D" + f"ArchitecturesInstallIn64BitMode={architecturesInstallIn64BitMode}",
             os.path.abspath("vcf_generator_lite.iss"),
         ]
     )
@@ -121,20 +134,18 @@ def main() -> int:
         "-t",
         "--type",
         type=str,
-        default="installer",
-        choices=["installer", "portable", "zipapp"],
-        help="应用打包类型（默认：%(default)s）",
+        default="innosetup",
+        choices=["innosetup", "portable", "zipapp"],
+        help="软件包类型（默认：%(default)s）",
     )
     args = parser.parse_args()
 
     type_ = args.type
     match type_:
-        case "installer":
-            require_64_bits()
+        case "innosetup":
             build_with_pyinstaller()
             return pack_with_innosetup()
         case "portable":
-            require_64_bits()
             build_with_pyinstaller()
             pack_with_zipfile()
         case "zipapp":

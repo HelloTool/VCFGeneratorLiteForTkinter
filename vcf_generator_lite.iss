@@ -27,8 +27,8 @@ OutputBaseFilename={#OutputBaseFilename}
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
-ArchitecturesAllowed=x64compatible
-ArchitecturesInstallIn64BitMode=x64compatible
+ArchitecturesAllowed={#ArchitecturesAllowed}
+ArchitecturesInstallIn64BitMode={#ArchitecturesInstallIn64BitMode}
 AllowNoIcons=yes
 UninstallDisplayIcon={app}\{#MyAppExeName}
 VersionInfoOriginalFileName={#OutputBaseFilename}.exe
@@ -66,7 +66,7 @@ en_us.MyAppPublisher=Jesse205
 en_us.MyAppPublisherURL=https://github.com/Jesse205
 en_us.MyAppReadmeFile=https://github.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/README.md
 en_us.MyAppUpdatesURL=https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases
-en_us.SetupAppRunningOnWin7=Note: You are using Windows 7, you will need to add the following additional files after the installation is complete in order to run: python313.dll and api-ms-win-core-path-l1-1-0.dll.
+en_us.SetupAppRunningOnWin7=Note: You are using Windows 7. You need to replace program files with compatible version. For details, please visit https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older_windows.md
 en_us.UninstallFailed=Uninstall failed
 
 zh_cn.MyAppName=VCF 生成器 Lite
@@ -74,7 +74,7 @@ zh_cn.MyAppPublisher=Jesse205
 zh_cn.MyAppPublisherURL=https://gitee.com/Jesse205
 zh_cn.MyAppReadmeFile=https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/README.md
 zh_cn.MyAppUpdatesURL=https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases
-zh_cn.SetupAppRunningOnWin7=注意: 您正在使用 Windows 7, 您需要在安装完成后额外添加以下文件才能运行：python313.dll 和 api-ms-win-core-path-l1-1-0.dll。
+zh_cn.SetupAppRunningOnWin7=注意: 您正在使用 Windows 7，您需要使用兼容的版本替换掉程序文件。详情请见 https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older_windows.md
 zh_cn.UninstallFailed=自动卸载失败
 
 [Code]

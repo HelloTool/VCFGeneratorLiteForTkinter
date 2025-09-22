@@ -32,7 +32,7 @@
 
 | 软件包类型        | 命令                             |
 | ----------------- | -------------------------------- |
-| Inno Setup 安装包 | `pdm run build_app -t installer` |
+| Inno Setup 安装包 | `pdm run build_app -t innosetup` |
 | 便携包            | `pdm run build_app -t portable`  |
 | Python ZIP 应用   | `pdm run build_app -t zipapp`    |
 
