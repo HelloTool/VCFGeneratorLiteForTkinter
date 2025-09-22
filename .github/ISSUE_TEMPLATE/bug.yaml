@@ -1,7 +1,7 @@
 name: Bug 反馈
 description: 当你在代码中发现了一个 Bug，导致应用崩溃或抛出异常，或者有一个组件存在问题，或者某些地方看起来不对劲。
-title: '[Bug]: '
-labels: [ 'bug' ]
+title: "[Bug]: "
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
@@ -48,12 +48,18 @@ body:
       multiple: true
       options:
         - Windows
-        - Linux
         - macOS
+        - HarmonyOS
+        - KaihongOS
+        - 统信 UOS
+        - Deepin
+        - 银河麒麟
         - Android
         - OpenHarmony
-        - Unix
+        - FreeBSD
+        - 其他 Linux 发行版
         - 其他操作系统
+        - 我不知道
     validations:
       required: true
   - type: dropdown
@@ -63,9 +69,9 @@ body:
       description: 您当前正在使用我们应用的什么软件包类型？
       multiple: true
       options:
-        - 安装器 (*_setup.exe)
-        - 便携包 (*_portable.zip)
-        - Zip 应用 (*_zipapp.pyzw)
-        - 未知
+        - Inno Setup 安装包 (*_setup.exe)
+        - 便携包（压缩文件）(*_portable.zip)
+        - Python ZIP 应用 (*_zipapp.pyzw)
+        - 我不知道
     validations:
       required: true

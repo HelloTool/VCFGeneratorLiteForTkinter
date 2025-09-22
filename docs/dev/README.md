@@ -30,11 +30,11 @@
 
 ## 📦 构建应用
 
-| 应用包类型 | 命令                             |
-| ---------- | -------------------------------- |
-| 安装器     | `pdm run build_app -t installer` |
-| 便携版     | `pdm run build_app -t portable`  |
-| ZipApp     | `pdm run build_app -t zipapp`    |
+| 软件包类型        | 命令                             |
+| ----------------- | -------------------------------- |
+| Inno Setup 安装包 | `pdm run build_app -t installer` |
+| 便携包            | `pdm run build_app -t portable`  |
+| Python ZIP 应用   | `pdm run build_app -t zipapp`    |
 
 ## 项目结构
 

@@ -30,22 +30,7 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 
 <img src="./docs/images/screenshots/main_window.webp" width="600" alt="主窗口" />
 
-## 下载
-
-### 软件包类型
-
-本应用提供多个软件包类型，您可以根据下表进行选择：
-
-| 软件包类型 | 运行方式                    | 适用场景                  |
-| ---------- | --------------------------- | ------------------------- |
-| 安装器     | 通过安装程序安装后使用      | 长期使用/需要桌面快捷方式 |
-| 便携包     | 解压即用（支持U盘随身携带） | 免安装/临时使用           |
-| Zip 应用   | 双击直接运行                | 快速启动/跨平台使用       |
-
-| 软件包类型    | 系统环境                | 特别说明                                 |
-| ------------- | ----------------------- | ---------------------------------------- |
-| 安装器/便携包 | Windows 7+ 64 位        | Windows 7 需补丁文件（见下方“兼容性”节） |
-| Zip 应用      | Python 3.12+ 与 Tkinter | -                                        |
+## 获取应用
 
 ### 获取软件包
 
@@ -56,11 +41,12 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 
 不同系统的用户需要下载不同的文件，您可以根据下表进行选择：
 
-| 软件包类型 | Windows               | Linux                   | macOS                   | Android |
-| ---------- | --------------------- | ----------------------- | ----------------------- | ------- |
-| 安装器     | `*_setup.exe`（推荐） | 暂未提供                | 暂未提供                | 不支持  |
-| 便携包     | `*_portable.zip`      | 暂未提供                | 暂未提供                | 不支持  |
-| Zip 应用   | `*_zipapp.pyzw`       | `*_zipapp.pyzw`（推荐） | `*_zipapp.pyzw`（推荐） | 不支持  |
+| 操作系统 | Inno Setup 安装包     | 便携包（压缩文件） | Python ZIP 应用         |
+| -------- | --------------------- | ------------------ | ----------------------- |
+| Windows  | `*_setup.exe`（推荐） | `*_portable.zip`   | `*_zipapp.pyzw`         |
+| Linux    | 暂未提供              | 暂未提供           | `*_zipapp.pyzw`（推荐） |
+| macOS    | 暂未提供              | 暂未提供           | `*_zipapp.pyzw`（推荐） |
+| Android  | 不支持                | 不支持             | 不支持                  |
 
 ## 使用方法
 
@@ -91,34 +77,18 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 
 ### 应用兼容性
 
-| 系统环境              | 特性     | 兼容性                                  |
+应用支持 Windows 8.1 或更高版本。如果您想在 Windows 8 及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older_windows.md)。
+
+| 系统环境              | 特性     | 详情                                    |
 | --------------------- | -------- | --------------------------------------- |
 | Windows 10 或更高版本 | 深色模式 | 不支持深色模式                          |
 | Windows 10 或更高版本 | 显示缩放 | 切换 DPI 时，由操作系统自动完成缩放适配 |
-| Windows 7 至 8.1      | 应用启动 | 需要安装特定补丁                        |
-
-#### 特别说明
-
-<details>
-<summary>兼容性补丁安装指南（仅 Windows 7 用户）</summary>
-
-1. **获取 Python 嵌入包**：从 [PythonWin7][PythonWin7RepositoryOnGithub] 仓库下载：
-   - `python-3.13.2-embed-amd64.zip`
-2. **提取 DLL 文件**：解压下载的 ZIP 包，从中获取以下文件：
-   - `python313.dll`  
-   - `api-ms-win-core-path-l1-1-0.dll`
-3. **应用补丁**：
-   1. 完成软件安装
-   2. 打开安装目录下的 `_internal` 文件夹
-   3. 将下载的两个 DLL 文件覆盖到该目录
-
-</details>
 
 ### vCard 文件兼容性
 
 本 APP 仅支持生成仅包含姓名和电话的 2.1 版本 vCard 文件。
 
-| 第三方应用     | 兼容性                            |
+| 第三方应用     | 详情                              |
 | -------------- | --------------------------------- |
 | Windows 联系人 | 非 UTF-8 环境下中文姓名会显示乱码 |
 
@@ -158,4 +128,3 @@ limitations under the License.
 [RepositoryOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
 [ReleaseOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
 [ReleaseOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-[PythonWin7RepositoryOnGithub]: https://github.com/adang1345/PythonWin7

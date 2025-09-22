@@ -30,22 +30,7 @@ VCF generator, input name and phone number to automatically generate VCF files f
 
 <img src="./docs/images/screenshots/main_window.webp" width="600" alt="Main window" />
 
-## Download
-
-### Package Types
-
-This application provides multiple package types, and you can make your selection according to the table below:
-
-| Package Type     | Running Method                             | Applicable Scenarios                   |
-| ---------------- | ------------------------------------------ | -------------------------------------- |
-| Installer        | Install via setup program                  | Long-term use / Need desktop shortcuts |
-| Portable Package | Extract and use (supports USB portability) | No installation / Temporary use        |
-| Zip Application  | Double-click to run                        | Quick launch / Cross-platform use      |
-
-| Package Type               | System Environment       | Notes                                                                  |
-| -------------------------- | ------------------------ | ---------------------------------------------------------------------- |
-| Installer/Portable Package | Windows 7+ 64-bits       | Windows 7 requires patch files (See the "Compatibility" section below) |
-| Zip Application            | Python 3.12+ and Tkinter | -                                                                      |
+## Get the App
 
 ### Get the Packages
 
@@ -56,11 +41,12 @@ Get the software package through the following channels:
 
 Users of different systems need to download different files. You can make your selection according to the table below:
 
-| Package Type     | Windows                     | Linux                         | macOS                         | Android       |
-| ---------------- | --------------------------- | ----------------------------- | ----------------------------- | ------------- |
-| Installer        | `*_setup.exe` (recommended) | Not available                 | Not available                 | Not supported |
-| Portable Package | `*_portable.zip`            | Not available                 | Not available                 | Not supported |
-| Zip Application  | `*_zipapp.pyzw`             | `*_zipapp.pyzw` (recommended) | `*_zipapp.pyzw` (recommended) | Not supported |
+| Operating System | Inno Setup Installer        | Portable Package (ZIP) | Python ZIP Application        |
+| ---------------- | --------------------------- | ---------------------- | ----------------------------- |
+| Windows          | `*_setup.exe` (Recommended) | `*_portable.zip`       | `*_zipapp.pyzw`               |
+| Linux            | Not Available               | Not Available          | `*_zipapp.pyzw` (Recommended) |
+| macOS            | Not Available               | Not Available          | `*_zipapp.pyzw` (Recommended) |
+| Android          | Not Supported               | Not Supported          | Not Supported                 |
 
 ## Usage
 
@@ -93,34 +79,18 @@ Users of different systems need to download different files. You can make your s
 
 ### Application Compatibility
 
-| System Environment  | Feature         | Compatibility                                                      |
+This application supports Windows 8.1 or later. If you wish to use it on Windows 8 or earlier versions, please refer to the [Running on Older Windows](./docs/compatibility/runs-on-older_windows.md) guide.
+
+| System Environment  | Feature         | Details                                                            |
 | ------------------- | --------------- | ------------------------------------------------------------------ |
 | Windows 10 or later | Dark Mode       | Dark mode not supported                                            |
 | Windows 10 or later | Display Scaling | Display scaling adaptation is handled by the OS when switching DPI |
-| Windows 7 to 8.1    | App Launch      | Requires specific patches to run                                   |
-
-#### Special Notes
-
-<details>
-<summary>Compatibility Patch Guide (Windows 7 ONLY)</summary>
-
-1. **Download Python embed package** from [PythonWin7][PythonWin7RepositoryOnGithub]:
-   - `python-3.13.2-embed-amd64.zip`
-2. **Extract required DLLs**:
-   - `python313.dll`
-   - `api-ms-win-core-path-l1-1-0.dll`
-3. **Apply patch**:
-   1. Complete software installation
-   2. Navigate to `_internal` folder in installation directory
-   3. Replace existing files with the extracted DLLs
-
-</details>
 
 ### vCard File Compatibility
 
 This app only supports generating version 2.1 vCard files that contain only name and phone number.
 
-| Third-party Application | Compatibility                                              |
+| Third-party Application | Details                                                    |
 | ----------------------- | ---------------------------------------------------------- |
 | Windows Contacts        | Chinese names may appear garbled in non-UTF-8 environments |
 
