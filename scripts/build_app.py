@@ -82,16 +82,16 @@ def pack_with_innosetup() -> int:
         print("InnoSetup not found.", file=sys.stderr)
         return 1
 
+    architectures_allowed = "x86compatible"
+    architectures_install_in64_bit_mode = ""
+
     match PLATFORM_NATIVE:
         case "win-amd64":
-            architecturesAllowed = "x64compatible"
-            architecturesInstallIn64BitMode = "win64"
+            architectures_allowed = "x64compatible"
+            architectures_install_in64_bit_mode = "win64"
         case "win-arm64":
-            architecturesAllowed = "arm64"
-            architecturesInstallIn64BitMode = "win64"
-        case _:
-            architecturesAllowed = "x86compatible"
-            architecturesInstallIn64BitMode = ""
+            architectures_allowed = "arm64"
+            architectures_install_in64_bit_mode = "win64"
 
     result = subprocess.run(
         [
@@ -104,8 +104,8 @@ def pack_with_innosetup() -> int:
         )}",
             "/D" + f"MyAppCopyright={APP_COPYRIGHT}",
             "/D" + f"MyAppVersion={APP_VERSION}",
-            "/D" + f"ArchitecturesAllowed={architecturesAllowed}",
-            "/D" + f"ArchitecturesInstallIn64BitMode={architecturesInstallIn64BitMode}",
+            "/D" + f"ArchitecturesAllowed={architectures_allowed}",
+            "/D" + f"ArchitecturesInstallIn64BitMode={architectures_install_in64_bit_mode}",
             os.path.abspath("vcf_generator_lite.iss"),
         ]
     )
