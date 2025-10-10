@@ -39,14 +39,13 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 - [Gitee 发行版][release_gitee]
 - [GitHub Releases][release_github]
 
-不同系统的用户需要下载不同的文件，您可以根据下表进行选择：
+不同平台的用户需要下载不同的文件，您可以根据下表进行选择：
 
-| 操作系统 | Inno Setup 安装包     | 便携包（压缩文件） | Python ZIP 应用         |
-| -------- | --------------------- | ------------------ | ----------------------- |
-| Windows  | `*_setup.exe`（推荐） | `*_portable.zip`   | `*_zipapp.pyzw`         |
-| Linux    | 暂未提供              | 暂未提供           | `*_zipapp.pyzw`（推荐） |
-| macOS    | 暂未提供              | 暂未提供           | `*_zipapp.pyzw`（推荐） |
-| Android  | 不支持                | 不支持             | 不支持                  |
+| 平台    | 软件包类型       | 文件                                                                      |
+| ------- | ---------------- | ------------------------------------------------------------------------- |
+| Windows | 安装程序         | VCFGeneratorLite\_\[应用版本\]\_**win-amd64**\_*setup.exe*                |
+| Windows | 便携版（压缩包） | VCFGeneratorLite\_\[应用版本\]\_**win-amd64**\_*portable.zip*             |
+| 跨平台  | Python ZIP 应用  | VCFGeneratorLite\_\[应用版本\]\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
 
 ## 使用方法
 
@@ -77,7 +76,7 @@ VCF 生成器，输入姓名与手机号则自动生成用于批量导入到通�
 
 ### 应用兼容性
 
-应用支持 Windows 8.1 或更高版本。如果您想在 Windows 8 及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older_windows.md)。
+本应用支持 Windows 8.1 或更高版本。如果您想在 Windows 8 及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older_windows.md)。
 
 | 系统环境              | 特性     | 详情                                    |
 | --------------------- | -------- | --------------------------------------- |

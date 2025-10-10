@@ -41,12 +41,11 @@ Get the software package through the following channels:
 
 Users of different systems need to download different files. You can make your selection according to the table below:
 
-| Operating System | Inno Setup Installer        | Portable Package (ZIP) | Python ZIP Application        |
-| ---------------- | --------------------------- | ---------------------- | ----------------------------- |
-| Windows          | `*_setup.exe` (Recommended) | `*_portable.zip`       | `*_zipapp.pyzw`               |
-| Linux            | Not Available               | Not Available          | `*_zipapp.pyzw` (Recommended) |
-| macOS            | Not Available               | Not Available          | `*_zipapp.pyzw` (Recommended) |
-| Android          | Not Supported               | Not Supported          | Not Supported                 |
+| Platform       | Package Type           | File                                                                         |
+| -------------- | ---------------------- | ---------------------------------------------------------------------------- |
+| Windows        | Installer              | VCFGeneratorLite\_\[App Version\]\_**win-amd64**\_*setup.exe*                |
+| Windows        | Portable (ZIP)         | VCFGeneratorLite\_\[App Version\]\_**win-amd64**\_*portable.zip*             |
+| Cross-platform | Python ZIP Application | VCFGeneratorLite\_\[App Version\]\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
 
 ## Usage
 
