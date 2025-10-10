@@ -11,11 +11,11 @@
 >
 > 选择使用第三方补丁意味着您已充分了解并自愿接受上述所有风险。本项目的开发者、贡献者及关联方​​对您使用第三方补丁可能造成的任何直接或间接损失（包括但不限于数据丢失、系统损坏、安全事件）概不负责​​。
 
-## 方案一：使用 [PythonWin7][PythonWin7RepositoryOnGithub] ![Windows 7、Windows 8](https://img.shields.io/badge/Windows_7、Windows_8-0078D4)
+## 方案一：使用 [PythonWin7][pythonwin7_repository_github] ![Windows 7、Windows 8](https://img.shields.io/badge/Windows_7、Windows_8-0078D4)
 
 对于安装包、便携包，您需要使用 PythonWin7 内的文件替换本应用的文件：
 
-1. **获取 Python 嵌入包**：从 [PythonWin7][PythonWin7RepositoryOnGithub] 仓库下载：
+1. **获取 Python 嵌入包**：从 [PythonWin7][pythonwin7_repository_github] 仓库下载：
    - `python-3.13.x-embed-amd64.zip`
 2. **提取 DLL 文件**：解压下载的 ZIP 包，从中获取以下文件：
    - `python313.dll`  
@@ -28,14 +28,14 @@
 
 对于 Python ZIP 应用，您只需要安装 PythonWin7 的 Python：
 
-1. **获取 Python 安装包**：从 [PythonWin7][PythonWin7RepositoryOnGithub] 仓库下载：
+1. **获取 Python 安装包**：从 [PythonWin7][pythonwin7_repository_github] 仓库下载：
    - 64 位系统：`python-3.13.x-amd64-full.exe`
    - 32 位系统：`python-3.13.x-full.exe`
 2. **安装 Python**：运行安装程序，按照提示进行安装。
 
 ## 方案二：使用 VxKex NEXT ![Windows 7](https://img.shields.io/badge/Windows_7-0078D4)
 
-1. **安装 VxKex NEXT**：从 [VxKex NEXT][VxKexNEXTReleaseOnGithub] 获取 Release 版本，按照提示进行安装。
+1. **安装 VxKex NEXT**：从 [VxKex NEXT][vxkex-next_release_github] 获取 Release 版本，按照提示进行安装。
 2. **启用 VxKex NEXT**：打开 `C:\Program Files\VxKex NEXT\VxKex.exe`，选择 `Enable VxKex`，然后选择 `vcf_generator_lite.exe`。
 
 对于安装包、便携包，您只需要为本应用目录中的 `vcf_generator_lite.exe` 启用 VxKex NEXT；
@@ -45,5 +45,5 @@
 
 该方法适用于 Windows Server 2003 RTM、SP1 和 SP2、Windows XP RTM、SP1、SP2 和 SP3 以及 Windows XP x64 SP1/SP2。 -->
 
-[PythonWin7RepositoryOnGithub]: https://github.com/adang1345/PythonWin7
-[VxKexNEXTReleaseOnGithub]: https://github.com/YuZhouRen86/VxKex-NEXT/releases/latest
+[pythonwin7_repository_github]: https://github.com/adang1345/PythonWin7
+[vxkex-next_release_github]: https://github.com/YuZhouRen86/VxKex-NEXT/releases/latest

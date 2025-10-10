@@ -3,9 +3,9 @@
 ## 技术栈
 
 - **IDE**: [Visual Studio Code](https://code.visualstudio.com/) 或者 [PyCharm](https://www.jetbrains.com/zh-cn/pycharm/)
-- **开发语言**: [Python 3.12+][PythonHomepage]
-- **UI 框架**: [Tkinter][TkinterHomepage]
-- **包管理**: [PDM][PDMHomepage]
+- **开发语言**: [Python 3.12+][python_homepage]
+- **UI 框架**: [Tkinter][tkinter_homepage]
+- **包管理**: [PDM][pdm_homepage]
 - **测试工具**: [pytest](https://docs.pytest.org/en/7.4.x/)
 - **检查工具**: [Black](https://black.readthedocs.io/)
 - **构建工具**: [PyInstaller](https://pyinstaller.org/en/stable/)、[ZipApp](https://docs.python.org/zh-cn/3/library/zipapp.html)、[InnoSetup 6.4+](https://jrsoftware.org/isinfo.php)、[UPX](https://upx.github.io/)
@@ -82,6 +82,6 @@ VCFGeneratorLiteForTkinter/
   - 尽量使用 `pack` 布局管理器，创建响应式 UI；
   - 组件间距统一使用 `padx=7p, pady=7p`。
 
-[PythonHomepage]: https://www.python.org/
-[PDMHomepage]: https://pdm-project.org/
-[TkinterHomepage]: https://docs.python.org/zh-cn/3/library/tk.html
+[python_homepage]: https://www.python.org/
+[pdm_homepage]: https://pdm-project.org/
+[tkinter_homepage]: https://docs.python.org/zh-cn/3/library/tk.html

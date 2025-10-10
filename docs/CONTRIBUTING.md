@@ -12,11 +12,11 @@
 
 ## 提交反馈
 
-您可以在 [Gitee Issues][IssuesOnGitee] 或 [GitHub Issues][IssuesOnGithub] 平台中提交反馈。
+您可以在 [Gitee Issues][issues_gitee] 或 [GitHub Issues][issues_github] 平台中提交反馈。
 
 ## 参与开发
 
-1. 确保 [Gitee][RepositoryOnGitee] 或 [GitHub][RepositoryOnGithub] 中没有相关的拉取请求（PR）
+1. 确保 [Gitee][repository_gitee] 或 [GitHub][repository_github] 中没有相关的拉取请求（PR）
 2. Fork 本仓库
 3. 使用 [Git](https://git-scm.com/) 克隆仓库到本地
 4. 阅读[开发指南](./dev/README.md)，熟悉项目开发方法
@@ -54,7 +54,7 @@
 
 详见 [视觉设计](./dev/visual.md)
 
-[RepositoryOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[RepositoryOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[IssuesOnGitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/issues
-[IssuesOnGithub]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/issues
+[repository_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
+[repository_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
+[issues_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/issues
+[issues_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/issues
