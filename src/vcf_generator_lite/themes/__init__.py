@@ -1,15 +1,19 @@
+from tkinter import Tk
+from tkinter.ttk import Style
+
+from vcf_generator_lite.themes.abs import ThemePatch
 from vcf_generator_lite.utils.environment import is_windows
-from vcf_generator_lite.utils.tkinter.theme import EnhancedTheme
 
-__all__ = ["create_platform_theme"]
+__all__ = ["create_theme_patch"]
 
 
-def create_platform_theme() -> EnhancedTheme:
-    if is_windows:
-        from vcf_generator_lite.themes.vista_theme import VistaTheme
+def create_theme_patch(app: Tk) -> ThemePatch:
+    theme_name = Style(app).theme_use()
+    if is_windows and theme_name == "vista":
+        from vcf_generator_lite.themes.vista_patch import VistaThemePatch
 
-        return VistaTheme()
+        return VistaThemePatch(app)
 
-    from vcf_generator_lite.themes.clam_theme import ClamTheme
+    from vcf_generator_lite.themes.default_patch import DefaultThemePatch
 
-    return ClamTheme()
+    return DefaultThemePatch(app)

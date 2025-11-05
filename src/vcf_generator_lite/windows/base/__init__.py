@@ -4,10 +4,10 @@ from tkinter import PhotoImage, Tk, Toplevel, Wm
 from tkinter.ttk import Style
 from typing import override
 
-from vcf_generator_lite.themes import create_platform_theme
+from vcf_generator_lite.themes import create_theme_patch
 from vcf_generator_lite.utils import resources
 from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
-from vcf_generator_lite.utils.tkinter.theme import EnhancedTheme
+from vcf_generator_lite.themes.abs import ThemePatch
 from vcf_generator_lite.utils.tkinter.window import (
     CenterWindowExtension,
     GeometryWindowExtension,
@@ -56,7 +56,7 @@ class AppWindowExtension(
 
 
 class ExtendedTk(Tk, AppWindowExtension, ABC):
-    theme: EnhancedTheme
+    theme_patch: ThemePatch
 
     def __init__(self, **kw):
         super().__init__(baseName="vcf_generator_lite", **kw)
@@ -64,17 +64,16 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
 
     @override
     def _configure_ui_withdraw(self):
-        self.set_theme(create_platform_theme())
+        self.apply_theme_patch()
         super()._configure_ui_withdraw()
         self.__apply_default_icon()
 
     def __apply_default_icon(self):
         self.iconphoto(True, PhotoImage(master=self, data=resources.read_binary("images/icon-48.png")))
 
-    def set_theme(self, theme: EnhancedTheme):
-        self.theme = theme
-        theme.configure_tk(self, Style(self))
-        theme.configure_window(self, Style(self))
+    def apply_theme_patch(self):
+        self.theme_patch = create_theme_patch(self)
+        self.theme_patch.configure_window(self)
         self.event_generate(EVENT_ENHANCED_THEME_CHANGED)
 
 
@@ -90,8 +89,8 @@ class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
 
     def __apply_theme(self):
         root: ExtendedTk = self.nametowidget(".")
-        root.theme.configure_window(self, Style(self))
-        root.bind(EVENT_ENHANCED_THEME_CHANGED, lambda _: root.theme.configure_window(self, Style(self)))
+        root.theme_patch.configure_window(self)
+        root.bind(EVENT_ENHANCED_THEME_CHANGED, lambda _: root.theme_patch.configure_window(self))
 
 
 class ExtendedDialog(ExtendedToplevel, ABC):
