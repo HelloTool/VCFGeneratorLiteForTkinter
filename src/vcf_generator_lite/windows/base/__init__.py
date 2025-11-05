@@ -1,13 +1,12 @@
 import logging
 from abc import ABC
 from tkinter import PhotoImage, Tk, Toplevel, Wm
-from tkinter.ttk import Style
 from typing import override
 
 from vcf_generator_lite.themes import create_theme_patch
+from vcf_generator_lite.themes.abs import ThemePatch
 from vcf_generator_lite.utils import resources
 from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
-from vcf_generator_lite.themes.abs import ThemePatch
 from vcf_generator_lite.utils.tkinter.window import (
     CenterWindowExtension,
     GeometryWindowExtension,

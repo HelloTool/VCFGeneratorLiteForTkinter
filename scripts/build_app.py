@@ -92,6 +92,8 @@ def pack_with_innosetup() -> int:
         case "win-arm64":
             architectures_allowed = "arm64"
             architectures_install_in64_bit_mode = "win64"
+        case _:
+            raise ValueError(f"Invalid platform: {PLATFORM_NATIVE}")
 
     result = subprocess.run(
         [
