@@ -2,7 +2,7 @@ import locale
 import logging
 import os
 import tomllib
-from importlib.abc import Traversable
+from importlib.resources.abc import Traversable
 from typing import Any
 
 from vcf_generator_lite.utils import resources
