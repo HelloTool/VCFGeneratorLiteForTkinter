@@ -32,6 +32,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
             text="\u26a0",
             font=extend_font_scale("TkDefaultFont", 24 / 9),
             style="DialogHeaderContent.TLabel",
+            foreground="orange",
         )
         self.header_icon.pack(side="left", padx="14p", pady="7p")
         self.header_label = Label(header_frame, style="DialogHeaderContent.TLabel")
