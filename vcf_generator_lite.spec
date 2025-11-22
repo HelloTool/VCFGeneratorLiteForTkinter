@@ -27,7 +27,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='vcf_generator_lite',
+    name='vcf-generator-lite',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

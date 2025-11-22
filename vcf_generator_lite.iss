@@ -3,7 +3,7 @@
 
 #define MyAppName "VCF Generator Lite"
 #define MyAppPublisher "Jesse205"
-#define MyAppExeName "vcf_generator_lite.exe"
+#define MyAppExeName "vcf-generator-lite.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -19,7 +19,7 @@ AppReadmeFile={cm:MyAppReadmeFile}
 AppUpdatesURL={cm:MyAppUpdatesURL}
 DefaultDirName={autopf}\{#MyAppPublisher}\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=.\LICENSE
+LicenseFile=.\docs\LICENSE
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=.\dist
@@ -66,7 +66,7 @@ en_us.MyAppPublisher=Jesse205
 en_us.MyAppPublisherURL=https://github.com/Jesse205
 en_us.MyAppReadmeFile=https://github.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/README.md
 en_us.MyAppUpdatesURL=https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases
-en_us.SetupAppRunningOnWin7=Note: You are using Windows 7. You need to replace program files with compatible version. For details, please visit https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older_windows.md
+en_us.SetupAppRunningOnWin7=Note: You are using Windows 7. You need to replace program files with compatible version. For details, please visit https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older-windows.md
 en_us.UninstallFailed=Uninstall failed
 
 zh_cn.MyAppName=VCF 生成器 Lite
@@ -74,7 +74,7 @@ zh_cn.MyAppPublisher=Jesse205
 zh_cn.MyAppPublisherURL=https://gitee.com/Jesse205
 zh_cn.MyAppReadmeFile=https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/README.md
 zh_cn.MyAppUpdatesURL=https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases
-zh_cn.SetupAppRunningOnWin7=注意: 您正在使用 Windows 7，您需要使用兼容的版本替换掉程序文件。详情请见 https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older_windows.md
+zh_cn.SetupAppRunningOnWin7=注意: 您正在使用 Windows 7，您需要使用兼容的版本替换掉程序文件。详情请见 https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/blob/master/docs/compatibility/runs-on-older-windows.md
 zh_cn.UninstallFailed=自动卸载失败
 
 [Code]
