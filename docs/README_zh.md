@@ -20,7 +20,7 @@
 
 VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快速转换为 VCF 文件，方便批量导入手机通讯录。
 
-[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](./LICENSE)
+[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](../LICENSE)
 [![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.zh.md)
 [![代码风格：black](https://img.shields.io/badge/代码风格-black-000000.svg)](https://github.com/psf/black)
 
@@ -107,7 +107,7 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 ## 许可证
 
-本项目以 Apache 2.0 许可证发布，详情请参阅 [LICENSE](./LICENSE)。
+本项目以 Apache 2.0 许可证发布，详情请参阅 [LICENSE](../LICENSE)。
 
 ```txt
 Copyright 2023-2025 Jesse205

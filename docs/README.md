@@ -21,7 +21,7 @@
 VCF Generator Lite is a lightweight tool that quickly converts name and phone number lists into VCF files for batch
 import to mobile contacts.
 
-[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](./LICENSE)
+[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](../LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -111,7 +111,7 @@ Please refer to the [Development Guide (Chinese)](./dev/README.md) and the [Cont
 
 ## License
 
-This project is released under the Apache 2.0 license. For details, please refer to [LICENSE](./LICENSE).
+This project is released under the Apache 2.0 license. For details, please refer to [LICENSE](../LICENSE).
 
 ```txt
 Copyright 2023-2025 Jesse205
