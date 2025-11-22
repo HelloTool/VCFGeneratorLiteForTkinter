@@ -1,15 +1,15 @@
 <div align="center">
-<img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
+<img src="./images/icon.svg" width="192" height="192" alt="App icon" />
 
 # VCF 生成器 Lite
 
 **仓库**：
-[![Gitee 仓库](https://img.shields.io/badge/Gitee-仓库-C71D23?logo=gitee)][repository_gitee]
-[![GitHub 仓库](https://img.shields.io/badge/GitHub-仓库-0969da?logo=github)][repository_github]
+[![Gitee 仓库](https://img.shields.io/badge/Gitee-仓库-C71D23?logo=gitee)][repository-gitee]
+[![GitHub 仓库](https://img.shields.io/badge/GitHub-仓库-0969da?logo=github)][repository-github]
 
 **平台**：
-[![Windows8.1+ (exe)](https://img.shields.io/badge/Windows_8.1+-exe-0078D4?logo=windows)][release_gitee]
-[![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release_gitee]
+[![Windows8.1+ (exe)](https://img.shields.io/badge/Windows_8.1+-exe-0078D4?logo=windows)][release-gitee]
+[![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release-gitee]
 
 **语言**：
 **中文** |
@@ -21,14 +21,14 @@
 VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快速转换为 VCF 文件，方便批量导入手机通讯录。
 
 [![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](./LICENSE)
-[![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.zh.md)
+[![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.zh.md)
 [![代码风格：black](https://img.shields.io/badge/代码风格-black-000000.svg)](https://github.com/psf/black)
 
 [![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
 
 ## 软件截图
 
-<img src="./docs/images/screenshots/main_window.webp" width="600" alt="主窗口" />
+<img src="./images/screenshots/main_window.webp" width="600" alt="主窗口" />
 
 ## 获取应用
 
@@ -36,16 +36,16 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 您可以通过以下渠道下载软件包：
 
-- [Gitee 发行版][release_gitee]
-- [GitHub Releases][release_github]
+- [Gitee 发行版][release-gitee]
+- [GitHub Releases][release-github]
 
 不同平台的用户需要下载不同的文件，您可以根据下表进行选择：
 
-| 平台      | 软件包类型     | 文件                                                                    |
-|---------|-----------|-----------------------------------------------------------------------|
-| Windows | 安装程序      | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*                |
-| Windows | 便携版       | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip*             |
-| 跨平台     | Python 应用 | VCFGeneratorLite\_\<应用版本\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
+| 平台    | 软件包类型  | 文件                                                                      |
+| ------- | ----------- | ------------------------------------------------------------------------- |
+| Windows | 安装程序    | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*                |
+| Windows | 便携版      | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip*             |
+| 跨平台  | Python 应用 | VCFGeneratorLite\_\<应用版本\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
 
 ## 使用方法
 
@@ -76,22 +76,22 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 ### 系统要求
 
-| 软件包类型            | 系统环境                      |
-|------------------|---------------------------|
-| Windows 安装程序、便携版 | Windows 8.1 或更高版本         |
-| Python 应用        | Python 3.12 或更高版本、Tkinter |
+| 软件包类型               | 系统环境                        |
+| ------------------------ | ------------------------------- |
+| Windows 安装程序、便携版 | Windows 8.1 或更高版本          |
+| Python 应用              | Python 3.12 或更高版本、Tkinter |
 
 如果您想在 Windows 8
-及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older_windows.md)。
+及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./compatibility/runs-on-older-windows.md)。
 
 在 Windows 中，如果您想直接双击启动 Python 应用，您需要安装 [Python 启动器][pylauncher]
 或者 [Python 安装管理器][pymanager]。
 
 ### 功能兼容性
 
-| 系统环境             | 特性   | 说明                     |
-|------------------|------|------------------------|
-| Windows 10 或更高版本 | 深色模式 | 不支持深色模式                |
+| 系统环境              | 特性     | 说明                                    |
+| --------------------- | -------- | --------------------------------------- |
+| Windows 10 或更高版本 | 深色模式 | 不支持深色模式                          |
 | Windows 10 或更高版本 | 显示缩放 | 切换 DPI 时，由操作系统自动完成缩放适配 |
 
 ### 文件兼容性
@@ -99,11 +99,11 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 - vCard 版本：2.1
 - 支持字段：姓名、电话号码、备注
 - 已知问题：
-    - Windows 联系人在非 UTF-8 环境下可能出现乱码
+  - Windows 联系人在非 UTF-8 环境下可能出现乱码
 
 ## 开发与贡献
 
-请参阅[《开发指南》](./docs/dev/README.md)与[《贡献指南》](./docs/CONTRIBUTING.md)。
+请参阅[《开发指南》](./dev/README.md)与[《贡献指南》](./CONTRIBUTING.md)。
 
 ## 许可证
 
@@ -127,16 +127,16 @@ limitations under the License.
 
 ## 开源声明
 
-请参见 [《开源声明》](./docs/legal/os_notices.md)
+请参见 [《开源声明》](./legal/os-notices.md)
 
 ## 特别感谢
 
 本项目部分代码由 AI 编码助手（DeepSeek、通义灵码）辅助生成。
 
-[repository_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[repository_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[release_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-[release_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
+[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
+[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
 
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
 

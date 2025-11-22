@@ -3,7 +3,7 @@ import runpy
 import tomllib
 from typing import TypedDict
 
-PATH_OS_NOTICE_DATA = "os_notices.toml"
+PATH_OS_NOTICE_DATA = "os-notices.toml"
 
 Notice = TypedDict(
     "Notice",

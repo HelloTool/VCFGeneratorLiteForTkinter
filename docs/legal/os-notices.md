@@ -8,4 +8,4 @@
 | 开源项目 | 许可证 | 版权声明 |
 | --- | --- | --- |
 | [CPython](https://github.com/python/cpython) | [Python license](https://docs.python.org/3/license.html) | Copyright © 2001 Python Software Foundation. All rights reserved.<br />Copyright © 2000 BeOpen.com. All rights reserved.<br />Copyright © 1995-2001 Corporation for National Research Initiatives. All rights reserved.<br />Copyright © 1991-1995 Stichting Mathematisch Centrum. All rights reserved. |
-| [TtkText](https://github.com/Jesse205/TtkText) | [MIT License](https://github.com/Jesse205/TtkText/blob/v0.2.0/LICENSE) | Copyright (c) 2025 Jesse205 |
+| [TtkText](https://github.com/Jesse205/TtkText) | [MIT License](https://github.com/Jesse205/TtkText/blob/v0.2.2/LICENSE) | Copyright (c) 2025 Jesse205 |

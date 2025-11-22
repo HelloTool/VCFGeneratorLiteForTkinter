@@ -1,5 +1,5 @@
 template = "./docs/legal/os_notices_template.py"
-output = "./docs/legal/os_notices.md"
+output = "./docs/legal/os-notices.md"
 
 [[notices]]
 name = "CPython"

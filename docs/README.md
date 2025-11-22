@@ -1,18 +1,18 @@
 <div align="center">
-<img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
+<img src="./images/icon.svg" width="192" height="192" alt="App icon" />
 
 # VCF Generator Lite
 
 **Repositories**:
-[![Gitee repository](https://img.shields.io/badge/Gitee-repository-C71D23?logo=gitee)][repository_gitee]
-[![GitHub repository](https://img.shields.io/badge/GitHub-repository-0969da?logo=github)][repository_github]
+[![Gitee repository](https://img.shields.io/badge/Gitee-repository-C71D23?logo=gitee)][repository-gitee]
+[![GitHub repository](https://img.shields.io/badge/GitHub-repository-0969da?logo=github)][repository-github]
 
 **Platforms**:
-[![Windows8.1+ (exe)](https://img.shields.io/badge/Windows_8.1+-exe-0078D4?logo=windows)][release_gitee]
-[![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release_gitee]
+[![Windows8.1+ (exe)](https://img.shields.io/badge/Windows_8.1+-exe-0078D4?logo=windows)][release-gitee]
+[![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release-gitee]
 
 **Languages**:
-[中文](./README.zh.md) |
+[中文](./README_zh.md) |
 **English** |
 <small>More translations are welcome!</small>
 
@@ -22,14 +22,14 @@ VCF Generator Lite is a lightweight tool that quickly converts name and phone nu
 import to mobile contacts.
 
 [![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](./LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 [![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
 
 ## Screenshot
 
-<img src="./docs/images/screenshots/main_window.webp" width="600" alt="Main window" />
+<img src="./images/screenshots/main_window.webp" width="600" alt="Main window" />
 
 ## Get the App
 
@@ -37,8 +37,8 @@ import to mobile contacts.
 
 Download the software from the following channels:
 
-- [Gitee Releases][release_gitee]
-- [GitHub Releases][release_github]
+- [Gitee Releases][release-gitee]
+- [GitHub Releases][release-github]
 
 Users of different systems need to download different files. You can make your selection according to the table below:
 
@@ -86,7 +86,7 @@ Users of different systems need to download different files. You can make your s
 | Python Application           | Python 3.12 or later, Tkinter |
 
 If you wish to use this application on Windows 8 or earlier versions, please refer
-to [Running on Older Windows](./docs/compatibility/runs-on-older_windows.md).
+to [Running on Older Windows](./compatibility/runs-on-older-windows.md).
 
 On Windows systems, to launch the Python application by double-clicking, you need to install either
 the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
@@ -103,11 +103,11 @@ the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
 - vCard Version: 2.1
 - Supported Fields: Name, Phone Number, Notes
 - Known Issues:
-    - Windows Contacts may display garbled characters in non-UTF-8 environments
+  - Windows Contacts may display garbled characters in non-UTF-8 environments
 
 ## Development & Contribution
 
-Please refer to the [Development Guide (Chinese)](./docs/dev/README.md) and the [Contribution Guide (Chinese)](./docs/CONTRIBUTING.md).
+Please refer to the [Development Guide (Chinese)](./dev/README.md) and the [Contribution Guide (Chinese)](./CONTRIBUTING.md).
 
 ## License
 
@@ -131,16 +131,16 @@ limitations under the License.
 
 ## Open Source Notice
 
-Please refer to [Open Source Notice (Chinese)](./docs/legal/os_notices.md)
+Please refer to [Open Source Notice (Chinese)](./legal/os-notices.md)
 
 ## Special Thanks
 
 Parts of the code in this project were generated with the assistance of AI coding tools (DeepSeek, Tongyi Lingma).
 
-[repository_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[repository_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[release_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-[release_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
+[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
+[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
 
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
 
