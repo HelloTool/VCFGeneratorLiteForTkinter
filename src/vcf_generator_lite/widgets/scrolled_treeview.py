@@ -1,4 +1,4 @@
-from tkinter.ttk import Treeview, Scrollbar, Style
+from tkinter.ttk import Scrollbar, Style, Treeview
 
 from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
 
@@ -46,8 +46,8 @@ class ScrolledTreeview(Treeview, ScalingMiscExtension):
         padding = self.cget("padding") or Style(self).lookup(style, "padding") or (0,)
         if isinstance(padding, str):
             padding = padding.split()
-        left = self.parse_dimen(str(padding[0])) if len(padding) >= 1 else 0
-        top = self.parse_dimen(str(padding[1])) if len(padding) >= 2 else left
-        right = self.parse_dimen(str(padding[2])) if len(padding) >= 3 else left
-        bottom = self.parse_dimen(str(padding[3])) if len(padding) >= 4 else top
+        left = self.parse_dimension(str(padding[0])) if len(padding) >= 1 else 0
+        top = self.parse_dimension(str(padding[1])) if len(padding) >= 2 else left
+        right = self.parse_dimension(str(padding[2])) if len(padding) >= 3 else left
+        bottom = self.parse_dimension(str(padding[3])) if len(padding) >= 4 else top
         return left, top, right, bottom

@@ -48,7 +48,7 @@ class ScalingMiscExtension(Misc):
         else:
             return float(self._scale_factor * value)
 
-    def parse_dimen(self, value: str | int | float) -> float:
+    def parse_dimension(self, value: str | int | float) -> float:
         if isinstance(value, int | float):
             return value
         match = re.match(r"([0-9.]+)([a-z]*)", value)
