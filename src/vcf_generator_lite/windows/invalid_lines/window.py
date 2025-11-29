@@ -1,5 +1,5 @@
 from tkinter import Misc
-from tkinter.ttk import Button, Frame, Label, Sizegrip
+from tkinter.ttk import Button, Frame, Label, Separator, Sizegrip
 from typing import override
 
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
@@ -42,6 +42,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
 
     @override
     def _create_content(self, parent: Misc):
+        Separator(parent).pack(fill="x")
         content_frame = Frame(parent)
         content_label = Label(content_frame, text=window_t("label_invalid_numbers"))
         content_label.pack(fill="x", padx="7p", pady=("7p", "2p"))
