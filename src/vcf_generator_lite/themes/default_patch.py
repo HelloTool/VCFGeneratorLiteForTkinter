@@ -14,11 +14,7 @@ class DefaultThemePatch(BaseThemePatch):
         default_font_size = int(default_font.actual("size"))
 
         # 重写部分配置以适配高分屏
-        self.style.configure("TButton", padding="2.5p")
+        self.style.configure("TButton", padding="2.5p", width=-8)
         self.style.configure("Treeview", rowheight=f"{default_font_size + 6}p")
         self.style.configure("Heading", padding="2.25p")
         self.style.configure("Vertical.TScrollbar", arrowsize="9p")
-
-        # 自定义组件
-        self.style.configure("DialogHeader.TFrame", relief="raised")
-        self.style.configure("ThemedText.TEntry", padding=0, borderwidth="1.5p")

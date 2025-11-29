@@ -18,7 +18,7 @@ class VistaThemePatch(BaseThemePatch):
         self.style.configure("Heading", padding="1.5p")
 
         # 自定义组件
-        self.style.configure("ThemedText.TEntry", padding=0, borderwidth="1.5p", bordercolor="SystemHighlight")
+        self.style.configure("ThemedText.TEntry", padding=0, borderwidth="1.5p")
         self.style.configure("DialogHeader.TFrame", background="systemWindow")
         self.style.configure("DialogHeaderContent.TFrame", background="systemWindow")
         self.style.configure("DialogHeaderContent.TLabel", background="systemWindow")
