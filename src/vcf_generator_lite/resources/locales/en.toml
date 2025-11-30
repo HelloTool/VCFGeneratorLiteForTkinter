@@ -82,3 +82,12 @@ detail = "{copyright}"
 title = "Failed to Open External Application"
 message = "Failed to open external application. Please check your default application settings."
 detail = """Link: {url}"""
+
+[entry_widget]
+menu_undo = "&Undo"
+menu_redo = "&Redo"
+menu_cut = "Cu&t"
+menu_copy = "&Copy"
+menu_paste = "&Paste"
+menu_delete = "&Delete"
+menu_select_all = "Select &All"

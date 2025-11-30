@@ -82,3 +82,12 @@ detail = """{copyright}"""
 title = "打开外部应用失败"
 message = "无法打开外部应用，请检查默认应用设置。"
 detail = """链接：{url}"""
+
+[entry_widget]
+menu_undo = "撤销(&U)"
+menu_redo = "重做(&R)"
+menu_cut = "剪切(&T)"
+menu_copy = "复制(&C)"
+menu_paste = "粘贴(&P)"
+menu_delete = "删除(&D)"
+menu_select_all = "全选(&A)"

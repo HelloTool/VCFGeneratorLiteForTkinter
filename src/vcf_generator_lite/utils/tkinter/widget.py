@@ -1,4 +1,4 @@
-from tkinter import Label, Event, Widget
+from tkinter import Event, Label, Widget
 from tkinter.ttk import Label as TtkLabel
 
 

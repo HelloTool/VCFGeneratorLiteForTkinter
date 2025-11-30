@@ -2,7 +2,10 @@ from tkinter import Entry, Menu, TclError, Text
 from tkinter.constants import SEL_FIRST
 from typing import Literal
 
+from vcf_generator_lite.utils.locales import scope
 from vcf_generator_lite.utils.tkinter.menu import MenuCommand, MenuSeparator, load_menu_items
+
+st = scope("entry_widget")
 
 
 def boolean_to_state(state: bool) -> Literal["normal", "disabled"]:
@@ -36,16 +39,16 @@ class TextContextMenu(Menu):
                 self,
                 [
                     MenuCommand(
-                        label="撤销(&U)",
+                        label=st("menu_undo"),
                         command=lambda: self.master.event_generate("<<Undo>>"),
                     ),
                     MenuCommand(
-                        label="重做(&R)",
+                        label=st("menu_redo"),
                         command=lambda: self.master.event_generate("<<Redo>>"),
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label="剪切(&T)",
+                        label=st("menu_cut"),
                         command=lambda: self.master.event_generate("<<Cut>>"),
                         state=state_by_selected,
                     ),
@@ -55,7 +58,7 @@ class TextContextMenu(Menu):
             self,
             [
                 MenuCommand(
-                    label="复制(&C)",
+                    label=st("menu_copy"),
                     command=lambda: self.master.event_generate("<<Copy>>"),
                     state=state_by_selected,
                 ),
@@ -66,11 +69,11 @@ class TextContextMenu(Menu):
                 self,
                 [
                     MenuCommand(
-                        label="粘贴(&P)",
+                        label=st("menu_paste"),
                         command=lambda: self.master.event_generate("<<Paste>>"),
                     ),
                     MenuCommand(
-                        label="删除(&D)",
+                        label=st("menu_delete"),
                         command=lambda: self.master.event_generate("<<Clear>>"),
                         state=state_by_selected,
                     ),
@@ -81,7 +84,7 @@ class TextContextMenu(Menu):
             [
                 MenuSeparator(),
                 MenuCommand(
-                    label="全选(&A)",
+                    label=st("menu_select_all"),
                     command=lambda: self.master.event_generate("<<SelectAll>>"),
                 ),
             ],

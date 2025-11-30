@@ -18,7 +18,7 @@ from vcf_generator_lite.utils.external_app import open_url_with_fallback
 from vcf_generator_lite.utils.locales import scope, t
 from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
 from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
-from vcf_generator_lite.widgets.menu import TextContextMenu
+from vcf_generator_lite.widgets.text_menu import TextContextMenu
 from vcf_generator_lite.windows.base import ExtendedTk
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
