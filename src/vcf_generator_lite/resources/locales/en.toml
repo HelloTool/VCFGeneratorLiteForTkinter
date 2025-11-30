@@ -80,5 +80,5 @@ detail = "{copyright}"
 
 [open_url_failure_message_box]
 title = "Failed to Open External Application"
-message = "Failed to open external application. Please check your default application settings.
+message = "Failed to open external application. Please check your default application settings."
 detail = """Link: {url}"""
