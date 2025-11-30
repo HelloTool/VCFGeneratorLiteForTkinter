@@ -15,7 +15,7 @@ from vcf_generator_lite.constants import (
 )
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils.external_app import open_url_with_fallback
-from vcf_generator_lite.utils.locales import branch, t
+from vcf_generator_lite.utils.locales import scope, t
 from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
 from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
 from vcf_generator_lite.widgets.menu import TextContextMenu
@@ -23,7 +23,7 @@ from vcf_generator_lite.windows.base import ExtendedTk
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
 
-window_t = branch("main_window")
+st = scope("main_window")
 
 
 class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
@@ -50,7 +50,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
 
     @override
     def _create_header(self, parent: Misc):
-        description_label = Label(parent, text=window_t("usage"), justify="left")
+        description_label = Label(parent, text=st("usage"), justify="left")
         description_label.bind("<Configure>", auto_wrap_configure_event, "+")
         description_label.pack(fill="x", padx="7p", pady="7p")
         return description_label
@@ -59,7 +59,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
     def _create_content(self, parent: Misc):
         content_frame = Frame(parent)
         self.content_text = ScrolledText(content_frame, undo=True, tabs="2c", tabstyle="wordprocessor", maxundo=5)
-        self.content_text.insert(0.0, window_t("input_example"))
+        self.content_text.insert(0.0, st("input_example"))
         self.content_text.edit_reset()
         self.content_text.pack(fill="both", expand=True, padx="7p", pady=0)
         text_context_menu = TextContextMenu(self.content_text)
@@ -73,11 +73,11 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         sizegrip.place(relx=1, rely=1, anchor="se")
 
         self.progress_bar = Progressbar(action_frame, orient="horizontal", length=200)
-        self.progress_label = Label(master=action_frame, text=window_t("label_generating"))
+        self.progress_label = Label(master=action_frame, text=st("label_generating"))
 
         self.generate_button = Button(
             action_frame,
-            text=window_t("button_generate"),
+            text=st("button_generate"),
             default="active",
             command=lambda: self.event_generate(EVENT_GENERATE),
         )
@@ -87,97 +87,97 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
     def _create_menus(self):
         self.load_menu_bar_items(
             MenuCascade(
-                label=window_t("menu_file"),
+                label=st("menu_file"),
                 items=[
                     MenuCommand(
-                        label=window_t("menu_file_generate"),
+                        label=st("menu_file_generate"),
                         command=lambda: self.event_generate(EVENT_GENERATE),
                         accelerator="Ctrl + S",
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_file_exit"),
+                        label=st("menu_file_exit"),
                         command=lambda: self.event_generate(EVENT_EXIT),
                         accelerator="Alt + F4",
                     ),
                 ],
             ),
             MenuCascade(
-                label=window_t("menu_edit"),
+                label=st("menu_edit"),
                 items=[
                     MenuCommand(
-                        label=window_t("menu_edit_undo"),
+                        label=st("menu_edit_undo"),
                         command=lambda: self.__generate_focus_event("<<Undo>>"),
                         accelerator="Ctrl + Z",
                     ),
                     MenuCommand(
-                        label=window_t("menu_edit_redo"),
+                        label=st("menu_edit_redo"),
                         command=lambda: self.__generate_focus_event("<<Redo>>"),
                         accelerator="Ctrl + Y",
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_edit_cut"),
+                        label=st("menu_edit_cut"),
                         command=lambda: self.__generate_focus_event("<<Cut>>"),
                         accelerator="Ctrl + X",
                     ),
                     MenuCommand(
-                        label=window_t("menu_edit_copy"),
+                        label=st("menu_edit_copy"),
                         command=lambda: self.__generate_focus_event("<<Copy>>"),
                         accelerator="Ctrl + C",
                     ),
                     MenuCommand(
-                        label=window_t("menu_edit_paste"),
+                        label=st("menu_edit_paste"),
                         command=lambda: self.__generate_focus_event("<<Paste>>"),
                         accelerator="Ctrl + V",
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_edit_select_all"),
+                        label=st("menu_edit_select_all"),
                         command=lambda: self.__generate_focus_event("<<SelectAll>>"),
                         accelerator="Ctrl + A",
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_edit_clean_quotes"),
+                        label=st("menu_edit_clean_quotes"),
                         command=lambda: self.event_generate(EVENT_CLEAN_QUOTES),
                     ),
                 ],
             ),
             MenuCascade(
-                label=window_t("menu_help"),
+                label=st("menu_help"),
                 items=[
                     MenuCommand(
-                        label=window_t("menu_help_repository"),
+                        label=st("menu_help_repository"),
                         command=lambda: open_url_with_fallback(self, URL_REPOSITORY),
                     ),
                     MenuCommand(
-                        label=window_t("menu_help_release"),
+                        label=st("menu_help_release"),
                         command=lambda: open_url_with_fallback(self, URL_RELEASES),
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_help_feedback"),
+                        label=st("menu_help_feedback"),
                         command=lambda: open_url_with_fallback(self, URL_REPORT),
                     ),
                     MenuCommand(
-                        label=window_t("menu_help_contact"),
+                        label=st("menu_help_contact"),
                         command=lambda: open_url_with_fallback(
                             self, str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
                         ),
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_help_license"),
+                        label=st("menu_help_license"),
                         command=lambda: open_url_with_fallback(self, URL_LICENSE),
                     ),
                     MenuCommand(
-                        label=window_t("menu_help_os_notices"),
+                        label=st("menu_help_os_notices"),
                         command=lambda: open_url_with_fallback(self, URL_OS_NOTICES),
                     ),
                     MenuSeparator(),
                     MenuCommand(
-                        label=window_t("menu_help_about"),
+                        label=st("menu_help_about"),
                         command=lambda: self.event_generate(EVENT_ABOUT),
                     ),
                 ],

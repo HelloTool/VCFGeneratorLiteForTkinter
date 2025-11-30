@@ -4,7 +4,7 @@ import sys
 
 from vcf_generator_lite import constants
 from vcf_generator_lite.utils.dpi_aware import enable_dpi_aware
-from vcf_generator_lite.utils.locales import branch
+from vcf_generator_lite.utils.locales import scope
 from vcf_generator_lite.windows.main import create_main_window
 
 try:
@@ -12,7 +12,7 @@ try:
 except ImportError:
     ColoredFormatter = None
 
-startup_t = branch("startup")
+startup_t = scope("startup")
 
 
 def fix_home_env():

@@ -10,58 +10,73 @@ from vcf_generator_lite.utils import resources
 logger = logging.getLogger(__name__)
 
 
+def get_fallback_traversable_list(locale_name: str):
+    locale_name_parts = locale_name.split("_")
+    fallback_names = [locale_name_parts[0]]
+    for part in locale_name_parts[1:]:
+        fallback_names.extend([f"{head_name}_{part}" for head_name in fallback_names])
+
+    fallback_traversable_list = []
+    for traversable in resources.traversable.joinpath("locales").iterdir():
+        traversable_name = os.path.splitext(traversable.name)[0]
+        if traversable_name in fallback_names:
+            fallback_traversable_list.append(traversable)
+            if len(fallback_traversable_list) == len(fallback_names):
+                break
+    fallback_traversable_list.reverse()
+    return fallback_traversable_list
+
+
+def deep_get(obj: dict[str, Any] | str, split_keys: list[str]) -> Any:
+    branch: dict[str, Any] | str = obj
+    for index, split_key in enumerate(split_keys):
+        if not isinstance(branch, dict):
+            return None
+        if split_key in branch:
+            branch = branch[split_key]
+    else:
+        return branch
+
+
 class Translator:
-    def __init__(self, current_locale: str | None = None, fallback_locale: str = "zh_CN"):
+    def __init__(self, current_locale: str | None = None, fallback_locale: str = "en"):
         if current_locale is None:
             # 不要使用 locale.getlocale() 因为 https://github.com/python/cpython/issues/130796
             current_locale = locale.getdefaultlocale()[0]
-        self.current_locale = current_locale
-        self.fallback_locale = fallback_locale
-        self.translations: dict[str, Any] = {}
-        self.load_locales()
-
-    def load_locale(self, locale_name: str, traversable: Traversable | None = None):
-        if traversable is None:
-            traversable = resources.traversable.joinpath("locales", f"{locale_name}.toml")
-        with traversable.open("rb") as f:
-            self.translations[locale_name] = tomllib.load(f)
-
-    def load_locales(self):
-        fallbacks: list[str | None] = [
-            *(self.current_locale.split("_") if (self.current_locale is not None) else []),
-            self.fallback_locale,
+        self.loaded_translations: list[dict[str, Any]] = []
+        self.fallback_traversable_list = [
+            *get_fallback_traversable_list(current_locale),
+            *get_fallback_traversable_list(fallback_locale),
         ]
-        for locale_traversable in resources.traversable.joinpath("locales").iterdir():
-            locale_name = os.path.splitext(locale_traversable.name)[0]
-            if locale_name in fallbacks:
-                self.load_locale(locale_name, locale_traversable)
 
     def translate(self, key: str) -> str:
-        fallbacks: list[str | None] = [
-            *(self.current_locale.split("_") if (self.current_locale is not None) else []),
-            self.fallback_locale,
-        ]
         split_keys: list[str] = key.split(".")
-        for fallback in fallbacks:
-            if fallback is None or fallback not in self.translations:
-                continue
-
-            branch = self.translations[fallback]
-            for split_key in split_keys:
-                if split_key in branch:
-                    branch = branch[split_key]
-            if isinstance(branch, str):
-                return branch
+        for translations in self.loaded_translations:
+            result = deep_get(translations, split_keys)
+            if isinstance(result, str):
+                return result
+        for i in range(len(self.fallback_traversable_list)):
+            translations = self.load_translation()
+            result = deep_get(translations, split_keys)
+            if isinstance(result, str):
+                return result
 
         raise KeyError(f"Key {key} not found in translations")
 
-    def branch(self, branch: str):
+    def load_translation(self):
+        traversable = self.fallback_traversable_list.pop(0)
+        with traversable.open("rb") as f:
+            result = tomllib.load(f)
+            self.loaded_translations.append(result)
+        return result
+
+    def scope(self, scope: str):
         def branch_translate(key: str) -> str:
-            return self.translate(f"{branch}.{key}")
+            return self.translate(f"{scope}.{key}")
 
         return branch_translate
 
 
 translator = Translator()
 t = translator.translate
-branch = translator.branch
+scope = translator.scope

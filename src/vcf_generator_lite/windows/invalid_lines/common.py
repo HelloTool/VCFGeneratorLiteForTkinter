@@ -1,3 +1,3 @@
-from vcf_generator_lite.utils.locales import branch
+from vcf_generator_lite.utils.locales import scope
 
-window_t = branch("vcf_generate_invalid_window")
+st = scope("vcf_generate_invalid_window")

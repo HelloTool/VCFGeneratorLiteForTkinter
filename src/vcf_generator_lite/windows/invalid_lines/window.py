@@ -9,7 +9,7 @@ from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
 from vcf_generator_lite.widgets.scrolled_treeview import ScrolledTreeview
 from vcf_generator_lite.windows.base import ExtendedDialog
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
-from vcf_generator_lite.windows.invalid_lines.common import window_t
+from vcf_generator_lite.windows.invalid_lines.common import st
 
 
 class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
@@ -17,7 +17,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()
-        self.title(window_t("title"))
+        self.title(st("title"))
         self.resizable(True, True)
         self.wm_size_pt(375, 300)
         self.wm_minsize_pt(225, 225)
@@ -44,7 +44,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
     def _create_content(self, parent: Misc):
         Separator(parent).pack(fill="x")
         content_frame = Frame(parent)
-        content_label = Label(content_frame, text=window_t("label_invalid_numbers"))
+        content_label = Label(content_frame, text=st("label_invalid_numbers"))
         content_label.pack(fill="x", padx="7p", pady=("7p", "2p"))
         self.content_tree = ScrolledTreeview(
             content_frame,
@@ -62,8 +62,8 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
             ),
         )
         self.content_tree.column("original", anchor="w")
-        self.content_tree.heading("row", text=window_t("heading_row"), anchor="w")
-        self.content_tree.heading("original", text=window_t("heading_original"), anchor="w")
+        self.content_tree.heading("row", text=st("heading_row"), anchor="w")
+        self.content_tree.heading("original", text=st("heading_original"), anchor="w")
         self.content_tree.pack(fill="both", expand=True, padx="7p")
         return content_frame
 

@@ -1,8 +1,8 @@
 from tkinter import Event
 
 from vcf_generator_lite.core.vcf_generator import InvalidLine
+from vcf_generator_lite.windows.invalid_lines.common import st
 from vcf_generator_lite.windows.invalid_lines.window import InvalidLinesWindow
-from vcf_generator_lite.windows.invalid_lines.common import window_t
 
 
 class InvalidLinesController:
@@ -14,14 +14,14 @@ class InvalidLinesController:
     ):
         self.window = window
         window.bind("<Return>", self.on_ok_click)
-        window.header_label.configure(text=window_t("message").format(path=display_path))
+        window.header_label.configure(text=st("message").format(path=display_path))
         for item in invalid_lines:
             window.content_tree.insert(
                 parent="",
                 index="end",
                 id=item.row_position,
                 values=(
-                    window_t("cell_row").format(row=item.row_position + 1),
+                    st("cell_row").format(row=item.row_position + 1),
                     item.content,
                 ),
             )
