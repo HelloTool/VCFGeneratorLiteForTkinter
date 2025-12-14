@@ -1,5 +1,4 @@
 from abc import ABC
-from abc import ABC
 from contextlib import contextmanager
 from tkinter import Misc, Tk, Toplevel, Wm
 from typing import cast
@@ -15,11 +14,6 @@ class WindowExtension(Misc, Wm, ABC):
 
 
 type WindowOrExtension = Window | WindowExtension
-
-
-class GeometryOffsetWindowExtension(WindowExtension, ABC):
-    def client_to_geometry_offset(self) -> Offset:
-        return Offset(x=self.winfo_x() - self.winfo_rootx(), y=self.winfo_y() - self.winfo_rooty())
 
 
 class GeometryWindowExtension(ScalingMiscExtension, WindowExtension, ABC):
@@ -40,19 +34,26 @@ class GeometryWindowExtension(ScalingMiscExtension, WindowExtension, ABC):
         return self.wm_maxsize(*cast(tuple[int, int], self.scale_args(width, height)))
 
 
-class CenterWindowExtension(GeometryOffsetWindowExtension, WindowExtension, ABC):
+def get_client_to_geometry_offset(window: Misc) -> Offset:
+    return Offset(x=window.winfo_x() - window.winfo_rootx(), y=window.winfo_y() - window.winfo_rooty())
+
+
+class CenterWindowExtension(WindowExtension, ABC):
 
     def center_reference_rect(self, rect_x: int, rect_y: int, rect_width: int, rect_height: int):
         client_x_min = self.winfo_vrootx()
         client_x_max = client_x_min + self.winfo_vrootwidth() - self.winfo_width()
         client_y_min = self.winfo_vrooty()
         client_y_max = client_y_min + self.winfo_vrootheight() - self.winfo_height()
+        if self._windowingsystem == "aqua":
+            client_y_min = max(client_y_min, 22)
+
         client_x = rect_x + (rect_width - self.winfo_width()) // 2
         client_x = max(min(client_x, client_x_max), client_x_min)
         client_y = rect_y + (rect_height - self.winfo_height()) // 2
         client_y = max(min(client_y, client_y_max), client_y_min)
         # 在Windows上，winfo_x/y是窗口坐标，而winfo_rootx/y是工作区坐标，geometry接收窗口坐标，所以需要将工作区坐标转换为窗口坐标。
-        geometry_offset = self.client_to_geometry_offset()
+        geometry_offset = get_client_to_geometry_offset(self)
         window_x = client_x + geometry_offset.x
         window_y = client_y + geometry_offset.y
         self.geometry(f"+{window_x}+{window_y}")
