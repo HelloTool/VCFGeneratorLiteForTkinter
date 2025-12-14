@@ -1,6 +1,7 @@
 import logging
 from abc import ABC
 from tkinter import PhotoImage, Tk, Toplevel, Wm
+from tkinter.ttk import Frame
 from typing import override
 
 from vcf_generator_lite.themes import create_theme_patch
@@ -13,7 +14,7 @@ from vcf_generator_lite.utils.tkinter.window import (
     WindowExtension,
     withdraw_cm,
 )
-from vcf_generator_lite.windows.base.constants import EVENT_ENHANCED_THEME_CHANGED, EVENT_EXIT
+from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 
 __all__ = ["ExtendedTk", "ExtendedToplevel", "ExtendedDialog"]
 _logger = logging.getLogger(__name__)
@@ -44,6 +45,8 @@ class AppWindowExtension(
         self._configure_ui()
 
     def _configure_ui_withdraw(self):
+        self.root_frame = Frame(self)
+        self.root_frame.place(relwidth=1, relheight=1)
         self.__apply_default_events()
 
     def _configure_ui(self):
@@ -72,8 +75,6 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
 
     def apply_theme_patch(self):
         self.theme_patch = create_theme_patch(self)
-        self.theme_patch.configure_window(self)
-        self.event_generate(EVENT_ENHANCED_THEME_CHANGED)
 
 
 class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
@@ -84,12 +85,6 @@ class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()
-        self.__apply_theme()
-
-    def __apply_theme(self):
-        root: ExtendedTk = self.nametowidget(".")
-        root.theme_patch.configure_window(self)
-        root.bind(EVENT_ENHANCED_THEME_CHANGED, lambda _: root.theme_patch.configure_window(self))
 
 
 class ExtendedDialog(ExtendedToplevel, ABC):
