@@ -41,11 +41,11 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 不同平台的用户需要下载不同的文件，您可以根据下表进行选择：
 
-| 平台    | 软件包类型  | 文件                                                                      |
-| ------- | ----------- | ------------------------------------------------------------------------- |
-| Windows | 安装程序    | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*                |
-| Windows | 便携版      | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip*             |
-| 跨平台  | Python 应用 | VCFGeneratorLite\_\<应用版本\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
+| 平台    | 软件包类型      | 文件                                                                      |
+| ------- | --------------- | ------------------------------------------------------------------------- |
+| Windows | 安装程序        | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*                |
+| Windows | 便携版          | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip*             |
+| 跨平台  | Python ZIP 应用 | VCFGeneratorLite\_\<应用版本\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
 
 ## 使用方法
 
@@ -79,7 +79,7 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 | 软件包类型               | 系统环境                        |
 | ------------------------ | ------------------------------- |
 | Windows 安装程序、便携版 | Windows 8.1 或更高版本          |
-| Python 应用              | Python 3.12 或更高版本、Tkinter |
+| Python ZIP 应用          | Python 3.12 或更高版本、Tkinter |
 
 如果您想在 Windows 8
 及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./compatibility/runs-on-older-windows.md)。
@@ -93,6 +93,8 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 | --------------------- | -------- | --------------------------------------- |
 | Windows 10 或更高版本 | 深色模式 | 不支持深色模式                          |
 | Windows 10 或更高版本 | 显示缩放 | 切换 DPI 时，由操作系统自动完成缩放适配 |
+
+如果您想在 Windows 中使用深色模式，您可以[启用高对比度模式][windows-high-contrast-support]，或者使用 [Rectify11][rectify11] 或其他第三方工具修改系统主题。
 
 ### 文件兼容性
 
@@ -137,7 +139,7 @@ limitations under the License.
 [repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
 [release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
 [release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
-
 [pymanager]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-install-manager
+[windows-high-contrast-support]: https://support.microsoft.com/zh-cn/windows/%E5%9C%A8-windows-%E4%B8%AD%E6%9B%B4%E6%94%B9%E9%A2%9C%E8%89%B2%E5%AF%B9%E6%AF%94%E5%BA%A6-fedc744c-90ac-69df-aed5-c8a90125e696
+[rectify11]: https://www.rectify11.com/

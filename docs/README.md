@@ -83,7 +83,7 @@ Users of different systems need to download different files. You can make your s
 | Software Package Type        | System Requirements           |
 |------------------------------|-------------------------------|
 | Windows Installer & Portable | Windows 8.1 or later          |
-| Python Application           | Python 3.12 or later, Tkinter |
+| Python ZIP Application           | Python 3.12 or later, Tkinter |
 
 If you wish to use this application on Windows 8 or earlier versions, please refer
 to [Running on Older Windows](./compatibility/runs-on-older-windows.md).
@@ -97,6 +97,8 @@ the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
 | ------------------- | --------------- | ------------------------------------------------------------------ |
 | Windows 10 or later | Dark Mode       | Dark mode not supported                                            |
 | Windows 10 or later | Display Scaling | Display scaling adaptation is handled by the OS when switching DPI |
+
+If you want to use dark mode in Windows, you can [enable high contrast mode][windows-high-contrast-support], or use [Rectify11][rectify11] or other third-party tools to modify the system theme.
 
 ### File Compatibility
 
@@ -141,7 +143,7 @@ Parts of the code in this project were generated with the assistance of AI codin
 [repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
 [release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
 [release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
-
 [pymanager]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-install-manager
+[windows-high-contrast-support]: https://support.microsoft.com/en-us/windows/turn-high-contrast-mode-on-or-off-in-windows-909e9d89-a0f9-a3a9-b993-7a6dcee85025
+[rectify11]: https://www.rectify11.com/

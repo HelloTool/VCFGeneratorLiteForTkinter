@@ -1,4 +1,4 @@
-name: Bug 反馈
+name: "[简体中文] Bug 报告"
 description: 当你在代码中发现了一个 Bug，导致应用崩溃或抛出异常，或者有一个组件存在问题，或者某些地方看起来不对劲。
 title: "[Bug]: "
 labels: ["bug"]
@@ -45,7 +45,7 @@ body:
     attributes:
       label: 操作系统
       description: 问题发生在什么操作系统上？
-      placeholder: 例如：Windows 11 专业版 24H2 26100.6725
+      placeholder: 例如：Windows
     validations:
       required: true
   - type: textarea
@@ -55,7 +55,7 @@ body:
       description: 应用的运行环境是什么？
       placeholder: |
         例如：
-        - 系统版本号：24H2 26100.6725
+        - 系统版本号：Windows 11 专业版 24H2 26100.6725
         - Python（如果有）：3.13.0
     validations:
       required: false
