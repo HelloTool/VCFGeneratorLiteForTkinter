@@ -14,9 +14,9 @@ copyrights = [
 ]
 
 [[notices]]
-name = "TtkText"
+name = "ttk-text"
 dependency = "ttk-text"
-repository = "https://github.com/Jesse205/TtkText"
+repository = "https://github.com/HelloTool/ttk-text"
 license = "MIT License"
-license-url = "https://github.com/Jesse205/TtkText/blob/v{version}/LICENSE"
+license-url = "https://github.com/HelloTool/ttk-text/blob/v{version}/LICENSE"
 copyrights = ["Copyright (c) 2025 Jesse205"]
