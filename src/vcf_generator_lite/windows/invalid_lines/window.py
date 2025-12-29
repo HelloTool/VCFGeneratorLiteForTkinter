@@ -50,9 +50,10 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         tree_frame.pack(fill="both", expand=True, padx="7p")
         self.content_tree = Treeview(
             tree_frame,
-            columns=("row", "original"),
+            columns=("row", "original", "reason"),
             show="headings",
             selectmode="browse",
+            height=0,
         )
         tree_scrollbar = Scrollbar(tree_frame, orient="vertical", command=self.content_tree.yview)
         tree_scrollbar.pack(side="right", fill="y")
@@ -70,6 +71,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         self.content_tree.column("original", anchor="w")
         self.content_tree.heading("row", text=st("heading_row"), anchor="w")
         self.content_tree.heading("original", text=st("heading_original"), anchor="w")
+        self.content_tree.heading("reason", text=st("heading_reason"), anchor="w")
         self.content_tree.pack(fill="both", expand=True)
         return content_frame
 

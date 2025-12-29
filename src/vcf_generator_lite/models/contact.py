@@ -17,7 +17,7 @@ def is_china_mobile_phone(phone: str) -> bool:
 def parse_contact(person_text: str):
     parts = person_text.split()
     if len(parts) < 2:
-        raise ValueError(f"The person info is illegal: '{person_text}'.")
+        raise ValueError("The text must contain at least a name and a phone number.")
 
     for i, part in enumerate(parts):
         if is_china_mobile_phone(part):
@@ -27,6 +27,6 @@ def parse_contact(person_text: str):
             note = " ".join(note_parts) if note_parts else None
             break
     else:
-        raise ValueError(f"The person info is illegal: '{person_text}'.")
+        raise ValueError("The text does not contain a valid phone number.")
 
     return Contact(name, phone, note)

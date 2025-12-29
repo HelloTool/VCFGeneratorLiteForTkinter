@@ -23,6 +23,7 @@ class InvalidLinesController:
                 values=(
                     st("cell_row").format(row=item.row_position + 1),
                     item.content,
+                    item.reason,
                 ),
             )
 

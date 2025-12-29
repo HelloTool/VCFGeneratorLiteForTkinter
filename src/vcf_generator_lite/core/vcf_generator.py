@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 class InvalidLine:
     row_position: int
     content: str
-    exception_str: str
+    reason: str
 
 
 @dataclass

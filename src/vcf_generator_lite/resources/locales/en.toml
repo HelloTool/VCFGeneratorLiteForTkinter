@@ -71,6 +71,7 @@ message = "File exported to {path}, invalid numbers have been ignored."
 label_invalid_numbers = "Invalid numbers: "
 heading_row = "Position"
 heading_original = "Original Content"
+heading_reason = "Reason"
 cell_row = "Row {row}"
 
 [about_message_box]

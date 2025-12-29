@@ -71,6 +71,7 @@ message = "已导出文件到 {path}，异常的号码已被忽略。"
 label_invalid_numbers = "异常的号码："
 heading_row = "位置"
 heading_original = "原始内容"
+heading_reason = "原因"
 cell_row = "第 {row} 行"
 
 [about_message_box]
