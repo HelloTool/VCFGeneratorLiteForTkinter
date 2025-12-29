@@ -23,6 +23,6 @@ class VistaThemePatch(BaseThemePatch):
         self.style.configure("DialogHeaderContent.TFrame", background="systemWindow")
         self.style.configure("DialogHeaderContent.TLabel", background="systemWindow")
 
-        # Windows 7 中菜单默认不使用TkMenuFont，因此需要手动设置字体。
+        # Windows 7 中菜单默认不使用 TkMenuFont，因此需要手动设置字体。
         menu_font = nametofont("TkMenuFont")
         app.option_add("*Menu.font", menu_font, "startupFile")

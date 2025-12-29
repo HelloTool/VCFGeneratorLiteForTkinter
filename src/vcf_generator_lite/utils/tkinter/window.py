@@ -52,7 +52,7 @@ class CenterWindowExtension(WindowExtension, ABC):
         client_x = max(min(client_x, client_x_max), client_x_min)
         client_y = rect_y + (rect_height - self.winfo_height()) // 2
         client_y = max(min(client_y, client_y_max), client_y_min)
-        # 在Windows上，winfo_x/y是窗口坐标，而winfo_rootx/y是工作区坐标，geometry接收窗口坐标，所以需要将工作区坐标转换为窗口坐标。
+        # 在 Windows 上，winfo_x/y 是窗口坐标，而 winfo_rootx/y 是工作区坐标，geometry 接收窗口坐标，所以需要将工作区坐标转换为窗口坐标。
         geometry_offset = get_client_to_geometry_offset(self)
         window_x = client_x + geometry_offset.x
         window_y = client_y + geometry_offset.y

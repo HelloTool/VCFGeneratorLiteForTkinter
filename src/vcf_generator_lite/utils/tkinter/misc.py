@@ -25,9 +25,9 @@ class ScalingMiscExtension(Misc):
 
     def scaling(self, factor: float | None = None):
         """
-        设置或获取GUI缩放比例因子
+        设置或获取 GUI 缩放比例因子
 
-        当传入factor参数时，设置当前缩放比例并应用新的缩放因子到Tkinter窗口。
+        当传入 factor 参数时，设置当前缩放比例并应用新的缩放因子到 Tkinter 窗口。
         不传入参数时返回当前缩放比例因子。
 
         与 tk scaling ?-displayof window? ?number? 相同。

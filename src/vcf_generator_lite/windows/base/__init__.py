@@ -32,7 +32,7 @@ class AppWindowExtension(
 
     特性：
     - 继承 GeometryWindowExtension: 提供基于物理/虚拟像素的窗口尺寸控制
-    - 继承 ScalingWindowExtension: 支持高DPI屏幕的自适应缩放
+    - 继承 ScalingWindowExtension: 支持高 DPI 屏幕的自适应缩放
     - 继承 CenterWindowExtension: 实现窗口居中显示功能
     - 继承 WindowExtension: 基础窗口功能扩展
     """
@@ -41,7 +41,7 @@ class AppWindowExtension(
         super().__init__()
         with withdraw_cm(self):
             self._configure_ui_withdraw()
-            self.update_idletasks()  # 在deiconify前调用可以一定程度上防止首次启动时窗口闪烁
+            self.update_idletasks()  # 在 deiconify 前调用可以一定程度上防止首次启动时窗口闪烁
         self._configure_ui()
 
     def _configure_ui_withdraw(self):
