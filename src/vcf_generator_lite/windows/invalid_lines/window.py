@@ -1,5 +1,5 @@
 from tkinter import Misc
-from tkinter.ttk import Button, Frame, Label, Scrollbar, Separator, Sizegrip, Treeview
+from tkinter.ttk import Button, Frame, Label, Separator, Sizegrip
 from typing import override
 
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
@@ -7,6 +7,7 @@ from vcf_generator_lite.utils.locales import t
 from vcf_generator_lite.utils.tkinter.font import extend_font_scale
 from vcf_generator_lite.utils.tkinter.misc import scale_kw
 from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
+from vcf_generator_lite.widgets.scrolled_treeview import ScrolledTreeview
 from vcf_generator_lite.windows.base import ExtendedDialog
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines.common import st
@@ -46,18 +47,13 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         content_frame = Frame(parent)
         content_label = Label(content_frame, text=st("label_invalid_numbers"))
         content_label.pack(fill="x", padx="7p", pady=("7p", "2p"))
-        tree_frame = Frame(content_frame)
-        tree_frame.pack(fill="both", expand=True, padx="7p")
-        self.content_tree = Treeview(
-            tree_frame,
+        self.content_tree = ScrolledTreeview(
+            content_frame,
             columns=("row", "original", "reason"),
             show="headings",
             selectmode="browse",
             height=0,
         )
-        tree_scrollbar = Scrollbar(tree_frame, orient="vertical", command=self.content_tree.yview)
-        tree_scrollbar.pack(side="right", fill="y")
-        self.content_tree.configure(yscrollcommand=tree_scrollbar.set)
         self.content_tree.column(
             column="row",
             anchor="w",
@@ -72,7 +68,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         self.content_tree.heading("row", text=st("heading_row"), anchor="w")
         self.content_tree.heading("original", text=st("heading_original"), anchor="w")
         self.content_tree.heading("reason", text=st("heading_reason"), anchor="w")
-        self.content_tree.pack(fill="both", expand=True)
+        self.content_tree.pack(fill="both", expand=True, padx="7p")
         return content_frame
 
     @override
