@@ -1,10 +1,9 @@
 from abc import ABC
 from contextlib import contextmanager
 from tkinter import Misc, Tk, Toplevel, Wm
-from typing import cast
 
 from vcf_generator_lite.utils.graphics import Offset
-from vcf_generator_lite.utils.tkinter.misc import ScalingMiscExtension
+from vcf_generator_lite.utils.tkinter.misc import scale_args
 
 type Window = Tk | Toplevel
 
@@ -16,7 +15,7 @@ class WindowExtension(Misc, Wm, ABC):
 type WindowOrExtension = Window | WindowExtension
 
 
-class GeometryWindowExtension(ScalingMiscExtension, WindowExtension, ABC):
+class GeometryWindowExtension(WindowExtension, ABC):
     def wm_size(self, width: int, height: int):
         self.wm_geometry(f"{width}x{height}")
 
@@ -25,13 +24,13 @@ class GeometryWindowExtension(ScalingMiscExtension, WindowExtension, ABC):
         设置窗口大小
         注：窗口大小单位为虚拟像素
         """
-        self.wm_size(*self.scale_args(width, height))
+        self.wm_size(*scale_args(self, width, height))
 
     def wm_minsize_pt(self, width: int, height: int) -> None:
-        return self.wm_minsize(*self.scale_args(width, height))
+        return self.wm_minsize(*scale_args(self, width, height))
 
     def wm_maxsize_pt(self, width: int, height: int) -> None:
-        return self.wm_maxsize(*cast(tuple[int, int], self.scale_args(width, height)))
+        return self.wm_maxsize(*scale_args(self, width, height))
 
 
 def get_client_to_geometry_offset(window: Misc) -> Offset:
