@@ -55,5 +55,5 @@ def scale_args(master: Misc, *args: int | float) -> tuple[Any, ...]:
     return tuple(scaled(master, value) for value in args)
 
 
-def scale_kw(self, **kwargs: int | float) -> dict[str, Any]:
-    return {key: self.get_scaled(value) for key, value in kwargs.items()}
+def scale_kw(master: Misc, **kwargs: int | float) -> dict[str, Any]:
+    return {key: scaled(master, value) for key, value in kwargs.items()}
