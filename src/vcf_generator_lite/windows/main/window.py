@@ -223,7 +223,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
 
     def set_progress_determinate(self, value: bool):
         previous_value: bool = self.progress_bar.cget("mode") == "determinate"
-        if previous_value != previous_value:
+        if value == previous_value:
             return
         if value:
             self.progress_bar.configure(mode="determinate", maximum=1)

@@ -65,13 +65,18 @@ class MainController:
         self.window.set_progress(progress=0)
         self.window.set_progress_determinate(False)
         self.window.set_generate_enabled(False)
+        self.window.generate_button.busy_hold()  # pyright: ignore[reportCallIssue]
+        self.window.update()
 
         def done(future: Future[GenerateResult]):
             self.is_generating = False
             file_io.close()
             self.window.hide_progress()
+            self.window.update()
             self._show_generate_done_dialog(file_io.name, future.result())
             self.window.set_generate_enabled(True)
+            self.window.generate_button.busy_forget()
+            self.window.update()
 
         def on_update_progress(progress: float, determinate: bool):
             self.window.set_progress_determinate(determinate)
