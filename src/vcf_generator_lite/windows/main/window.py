@@ -17,7 +17,7 @@ from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayo
 from vcf_generator_lite.utils.external_app import open_url_with_fallback
 from vcf_generator_lite.utils.locales import scope, t
 from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
-from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
+from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
 from vcf_generator_lite.widgets.text_menu import TextContextMenu
 from vcf_generator_lite.windows.base import ExtendedTk
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
@@ -51,7 +51,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
     @override
     def _create_header(self, parent: Misc):
         description_label = Label(parent, text=st("usage"), justify="left")
-        description_label.bind("<Configure>", auto_wrap_configure_event, "+")
+        enable_auto_wrap(description_label)
         description_label.pack(fill="x", padx="7p", pady="7p")
         return description_label
 

@@ -5,7 +5,8 @@ from typing import override
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils.locales import t
 from vcf_generator_lite.utils.tkinter.font import extend_font_scale
-from vcf_generator_lite.utils.tkinter.widget import auto_wrap_configure_event
+from vcf_generator_lite.utils.tkinter.misc import scale_kw
+from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
 from vcf_generator_lite.windows.base import ExtendedDialog
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines.common import st
@@ -35,7 +36,7 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
         )
         self.header_icon.pack(side="left", padx="14p", pady="7p")
         self.header_label = Label(header_frame, style="DialogHeaderContent.TLabel")
-        self.header_label.bind("<Configure>", auto_wrap_configure_event, "+")
+        enable_auto_wrap(self.header_label)
         self.header_label.pack(fill="x", padx=(0, "14p"), pady="14p")
         return header_frame
 
@@ -60,7 +61,8 @@ class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
             column="row",
             anchor="w",
             stretch=False,
-            **self.scale_kw(
+            **scale_kw(
+                self,
                 width=60,
                 minwidth=45,
             ),
