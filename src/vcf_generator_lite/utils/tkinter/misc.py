@@ -1,8 +1,12 @@
 import logging
-from tkinter import Misc
+from tkinter import Misc, Tk
 from typing import Any, overload
 
 logger = logging.getLogger(__name__)
+
+
+def get_main_window(misc: Misc) -> Tk:
+    return misc.nametowidget(".")
 
 
 @overload
@@ -20,14 +24,15 @@ def scaling(master: Misc, factor: float | None = None) -> float | None:
 
     - Tk 手册页：https://www.tcl-lang.org/man/tcl8.6/TkCmd/tk.htm
     """
+    main_window = get_main_window(master)
     if factor is not None:
         master.tk.call("tk", "scaling", factor)
-        setattr(master.tk, "_scaling", factor)
+        setattr(main_window, "_scaling", factor)
     else:
-        factor = getattr(master.tk, "_scaling")
+        factor = getattr(main_window, "_scaling", None)
         if factor is None:
             factor = master.tk.call("tk", "scaling")
-            setattr(master.tk, "_scaling", factor)
+            setattr(main_window, "_scaling", factor)
         return factor
 
 
