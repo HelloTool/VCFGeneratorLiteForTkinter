@@ -3,7 +3,7 @@ from tkinter.constants import SEL_FIRST
 from typing import Literal
 
 from vcf_generator_lite.utils.locales import scope
-from vcf_generator_lite.utils.tkinter.menu import MenuCommand, MenuSeparator, load_menu_items
+from vcf_generator_lite.utils.tkinter.menu import parse_menu_label
 
 st = scope("entry_widget")
 
@@ -35,59 +35,39 @@ class TextContextMenu(Menu):
         state_by_selected = boolean_to_state(self.is_selected())
         is_master_editable = state_to_boolean(self.master.cget("state"))
         if is_master_editable:
-            load_menu_items(
-                self,
-                [
-                    MenuCommand(
-                        label=st("menu_undo"),
-                        command=lambda: self.master.event_generate("<<Undo>>"),
-                    ),
-                    MenuCommand(
-                        label=st("menu_redo"),
-                        command=lambda: self.master.event_generate("<<Redo>>"),
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_cut"),
-                        command=lambda: self.master.event_generate("<<Cut>>"),
-                        state=state_by_selected,
-                    ),
-                ],
+            self.add_command(
+                **parse_menu_label(st("menu_undo")),
+                command=lambda: self.master.event_generate("<<Undo>>"),
             )
-        load_menu_items(
-            self,
-            [
-                MenuCommand(
-                    label=st("menu_copy"),
-                    command=lambda: self.master.event_generate("<<Copy>>"),
-                    state=state_by_selected,
-                ),
-            ],
+            self.add_command(
+                **parse_menu_label(st("menu_redo")),
+                command=lambda: self.master.event_generate("<<Redo>>"),
+            )
+            self.add_separator()
+            self.add_command(
+                **parse_menu_label(st("menu_cut")),
+                command=lambda: self.master.event_generate("<<Cut>>"),
+                state=state_by_selected,
+            )
+        self.add_command(
+            **parse_menu_label(st("menu_copy")),
+            command=lambda: self.master.event_generate("<<Copy>>"),
+            state=state_by_selected,
         )
         if is_master_editable:
-            load_menu_items(
-                self,
-                [
-                    MenuCommand(
-                        label=st("menu_paste"),
-                        command=lambda: self.master.event_generate("<<Paste>>"),
-                    ),
-                    MenuCommand(
-                        label=st("menu_delete"),
-                        command=lambda: self.master.event_generate("<<Clear>>"),
-                        state=state_by_selected,
-                    ),
-                ],
+            self.add_command(
+                **parse_menu_label(st("menu_paste")),
+                command=lambda: self.master.event_generate("<<Paste>>"),
             )
-        load_menu_items(
-            self,
-            [
-                MenuSeparator(),
-                MenuCommand(
-                    label=st("menu_select_all"),
-                    command=lambda: self.master.event_generate("<<SelectAll>>"),
-                ),
-            ],
+            self.add_command(
+                **parse_menu_label(st("menu_delete")),
+                command=lambda: self.master.event_generate("<<Clear>>"),
+                state=state_by_selected,
+            )
+        self.add_separator()
+        self.add_command(
+            **parse_menu_label(st("menu_select_all")),
+            command=lambda: self.master.event_generate("<<SelectAll>>"),
         )
         self.tk_popup(x, y)
 

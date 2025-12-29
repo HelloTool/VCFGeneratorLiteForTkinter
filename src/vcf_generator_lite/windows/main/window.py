@@ -1,5 +1,5 @@
 import urllib.parse
-from tkinter import Misc
+from tkinter import Menu, Misc
 from tkinter.ttk import Button, Frame, Label, Progressbar, Sizegrip
 from typing import override
 
@@ -16,7 +16,7 @@ from vcf_generator_lite.constants import (
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils.external_app import open_url_with_fallback
 from vcf_generator_lite.utils.locales import scope, t
-from vcf_generator_lite.utils.tkinter.menu import MenuBarWindowExtension, MenuCascade, MenuCommand, MenuSeparator
+from vcf_generator_lite.utils.tkinter.menu import parse_menu_label
 from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
 from vcf_generator_lite.widgets.text_menu import TextContextMenu
 from vcf_generator_lite.windows.base import ExtendedTk
@@ -26,7 +26,7 @@ from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_Q
 st = scope("main_window")
 
 
-class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
+class MainWindow(ExtendedTk, VerticalDialogLayout):
     generate_button: Button
     content_text: ScrolledText
     progress_bar: Progressbar
@@ -41,7 +41,8 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         self.wm_minsize_pt(300, 300)
         self.wm_size_pt(450, 450)
         self._create_widgets(self)
-        self._create_menus()
+        menu_bar = self._create_menu_bar()
+        self.configure(menu=menu_bar)
 
     @override
     def _configure_ui(self):
@@ -84,105 +85,120 @@ class MainWindow(ExtendedTk, VerticalDialogLayout, MenuBarWindowExtension):
         self.generate_button.pack(side="right", padx="7p", pady="7p")
         return action_frame
 
-    def _create_menus(self):
-        self.load_menu_bar_items(
-            MenuCascade(
-                label=st("menu_file"),
-                items=[
-                    MenuCommand(
-                        label=st("menu_file_generate"),
-                        command=lambda: self.event_generate(EVENT_GENERATE),
-                        accelerator="Ctrl + S",
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_file_exit"),
-                        command=lambda: self.event_generate(EVENT_EXIT),
-                        accelerator="Alt + F4",
-                    ),
-                ],
-            ),
-            MenuCascade(
-                label=st("menu_edit"),
-                items=[
-                    MenuCommand(
-                        label=st("menu_edit_undo"),
-                        command=lambda: self.__generate_focus_event("<<Undo>>"),
-                        accelerator="Ctrl + Z",
-                    ),
-                    MenuCommand(
-                        label=st("menu_edit_redo"),
-                        command=lambda: self.__generate_focus_event("<<Redo>>"),
-                        accelerator="Ctrl + Y",
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_edit_cut"),
-                        command=lambda: self.__generate_focus_event("<<Cut>>"),
-                        accelerator="Ctrl + X",
-                    ),
-                    MenuCommand(
-                        label=st("menu_edit_copy"),
-                        command=lambda: self.__generate_focus_event("<<Copy>>"),
-                        accelerator="Ctrl + C",
-                    ),
-                    MenuCommand(
-                        label=st("menu_edit_paste"),
-                        command=lambda: self.__generate_focus_event("<<Paste>>"),
-                        accelerator="Ctrl + V",
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_edit_select_all"),
-                        command=lambda: self.__generate_focus_event("<<SelectAll>>"),
-                        accelerator="Ctrl + A",
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_edit_clean_quotes"),
-                        command=lambda: self.event_generate(EVENT_CLEAN_QUOTES),
-                    ),
-                ],
-            ),
-            MenuCascade(
-                label=st("menu_help"),
-                items=[
-                    MenuCommand(
-                        label=st("menu_help_repository"),
-                        command=lambda: open_url_with_fallback(self, URL_REPOSITORY),
-                    ),
-                    MenuCommand(
-                        label=st("menu_help_release"),
-                        command=lambda: open_url_with_fallback(self, URL_RELEASES),
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_help_feedback"),
-                        command=lambda: open_url_with_fallback(self, URL_REPORT),
-                    ),
-                    MenuCommand(
-                        label=st("menu_help_contact"),
-                        command=lambda: open_url_with_fallback(
-                            self, str(urllib.parse.urlunsplit(("mailto", None, EMAIL_JESSE205, None, None)))
-                        ),
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_help_license"),
-                        command=lambda: open_url_with_fallback(self, URL_LICENSE),
-                    ),
-                    MenuCommand(
-                        label=st("menu_help_os_notices"),
-                        command=lambda: open_url_with_fallback(self, URL_OS_NOTICES),
-                    ),
-                    MenuSeparator(),
-                    MenuCommand(
-                        label=st("menu_help_about"),
-                        command=lambda: self.event_generate(EVENT_ABOUT),
-                    ),
-                ],
+    def _create_menu_bar(self):
+        menu_bar = Menu(self, tearoff=False)
+        menu_bar.add_cascade(
+            **parse_menu_label(st("menu_file")),
+            menu=self._create_file_menu(menu_bar),
+        )
+        menu_bar.add_cascade(
+            **parse_menu_label(st("menu_edit")),
+            menu=self._create_edit_menu(menu_bar),
+        )
+        menu_bar.add_cascade(
+            **parse_menu_label(st("menu_help")),
+            menu=self._create_help_menu(menu_bar),
+        )
+        return menu_bar
+
+    def _create_file_menu(self, master: Misc):
+        file_menu = Menu(master, tearoff=False)
+        file_menu.add_command(
+            **parse_menu_label(st("menu_file_generate")),
+            command=lambda: self.event_generate(EVENT_GENERATE),
+            accelerator="Ctrl + S",
+        )
+        file_menu.add_separator()
+        file_menu.add_command(
+            **parse_menu_label(st("menu_file_exit")),
+            command=lambda: self.event_generate(EVENT_EXIT),
+            accelerator="Alt + F4",
+        )
+        return file_menu
+
+    def _create_edit_menu(self, master: Misc):
+        edit_menu = Menu(master, tearoff=False)
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_undo")),
+            command=lambda: self.__generate_focus_event("<<Undo>>"),
+            accelerator="Ctrl + Z",
+        )
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_redo")),
+            command=lambda: self.__generate_focus_event("<<Redo>>"),
+            accelerator="Ctrl + Y",
+        )
+        edit_menu.add_separator()
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_cut")),
+            command=lambda: self.__generate_focus_event("<<Cut>>"),
+            accelerator="Ctrl + X",
+        )
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_copy")),
+            command=lambda: self.__generate_focus_event("<<Copy>>"),
+            accelerator="Ctrl + C",
+        )
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_paste")),
+            command=lambda: self.__generate_focus_event("<<Paste>>"),
+            accelerator="Ctrl + V",
+        )
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_select_all")),
+            command=lambda: self.__generate_focus_event("<<SelectAll>>"),
+            accelerator="Ctrl + A",
+        )
+        edit_menu.add_separator()
+        edit_menu.add_command(
+            **parse_menu_label(st("menu_edit_clean_quotes")),
+            command=lambda: self.event_generate(EVENT_CLEAN_QUOTES),
+        )
+        return edit_menu
+
+    def _create_help_menu(self, master: Misc):
+        help_menu = Menu(master, tearoff=False)
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_repository")),
+            command=lambda: open_url_with_fallback(self, URL_REPOSITORY),
+        )
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_release")),
+            command=lambda: open_url_with_fallback(self, URL_RELEASES),
+        )
+        help_menu.add_separator()
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_feedback")),
+            command=lambda: open_url_with_fallback(self, URL_REPORT),
+        )
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_contact")),
+            command=lambda: open_url_with_fallback(
+                parent=self,
+                url=urllib.parse.SplitResult(
+                    scheme="mailto",
+                    netloc="",
+                    path=EMAIL_JESSE205,
+                    query="",
+                    fragment="",
+                ).geturl(),
             ),
         )
+        help_menu.add_separator()
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_license")),
+            command=lambda: open_url_with_fallback(self, URL_LICENSE),
+        )
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_os_notices")),
+            command=lambda: open_url_with_fallback(self, URL_OS_NOTICES),
+        )
+        help_menu.add_separator()
+        help_menu.add_command(
+            **parse_menu_label(st("menu_help_about")),
+            command=lambda: self.event_generate(EVENT_ABOUT),
+        )
+        return help_menu
 
     def __generate_focus_event(self, sequence: str):
         if widget := self.focus_get():
