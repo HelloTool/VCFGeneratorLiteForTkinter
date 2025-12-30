@@ -70,4 +70,4 @@ reportMissingParameterType = "none"
 reportUnknownVariableType = "none"
 reportUnnecessaryIsInstance = "none"
 reportImplicitOverride = "error"
-ignore = ["src/vcf_generator_lite/widgets/tkhtmlview", "typings"]
+ignore = ["typings"]
