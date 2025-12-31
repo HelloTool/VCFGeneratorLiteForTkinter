@@ -1,4 +1,4 @@
-import copy
+import dataclasses
 from tkinter.ttk import Scrollbar, Style, Treeview
 
 from vcf_generator_lite.utils.graphics import FPixelPadding, parse_padding
@@ -32,7 +32,7 @@ class ScrolledTreeview(Treeview):
             self.vbar = Scrollbar(self, orient="vertical")
             self.vbar.pack(side="right", fill="y", pady="1.5p", padx="1.5p")
             self.configure(yscrollcommand=self.vbar.set)
-            self.insets = copy.replace(
+            self.insets = dataclasses.replace(
                 self._insets,
                 right=self.vbar.winfo_reqwidth() + scaled(self, 1.5),
             )
