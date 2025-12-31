@@ -15,8 +15,7 @@ jobs:
     with:
       build-windows-installer: true
       build-windows-portable: true
-      build-python312-zipapp: true
-      build-python313-zipapp: true
+      build-python3-zipapp: true
   release:
     name: Release
     needs: build-apps
