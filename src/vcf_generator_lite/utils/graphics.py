@@ -15,7 +15,7 @@ class FPixelPadding:
     right: float = 0
     bottom: float = 0
 
-    def __add__(self, other: FPixelPadding) -> FPixelPadding:
+    def __add__(self, other: "FPixelPadding") -> "FPixelPadding":
         return FPixelPadding(
             left=self.left + other.left,
             top=self.top + other.top,
@@ -23,7 +23,7 @@ class FPixelPadding:
             bottom=self.bottom + other.bottom,
         )
 
-    def __sub__(self, other: FPixelPadding) -> FPixelPadding:
+    def __sub__(self, other: "FPixelPadding") -> "FPixelPadding":
         return FPixelPadding(
             left=self.left - other.left,
             top=self.top - other.top,
