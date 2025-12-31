@@ -12,7 +12,7 @@ button_generate = "开始生成"
 label_generating = "正在生成……"
 
 menu_file = "文件(&F)"
-menu_file_generate = "开始生成(&S)…"
+menu_file_generate = "生成文件(&G)…"
 menu_file_exit = "退出(&X)"
 
 menu_edit = "编辑(&E)"

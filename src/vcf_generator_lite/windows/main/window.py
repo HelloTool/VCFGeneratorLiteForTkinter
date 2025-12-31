@@ -106,7 +106,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
         file_menu.add_command(
             **parse_menu_label(st("menu_file_generate")),
             command=lambda: self.event_generate(EVENT_GENERATE),
-            accelerator="Ctrl + S",
+            accelerator="Ctrl + G",
         )
         file_menu.add_separator()
         file_menu.add_command(

@@ -26,8 +26,8 @@ class MainController:
         window.bind(EVENT_ABOUT, self.on_about)
         window.bind(EVENT_CLEAN_QUOTES, self.on_clean_quotes)
         window.bind(EVENT_GENERATE, self.on_generate)
-        window.bind("<Control-Lock-S>", self.on_generate)
-        window.bind("<Control-s>", self.on_generate)
+        window.bind("<Control-Lock-G>", self.on_generate)
+        window.bind("<Control-g>", self.on_generate)
         window.bind("<Return>", self.on_return)
         window.bind(EVENT_EXIT, self.on_exit)
 
@@ -43,6 +43,8 @@ class MainController:
         self.window.generate_button.invoke()
 
     def on_generate(self, _: Event):
+        if self.is_generating:
+            return
         text_content = self.window.get_text_content()
         file_io = None
         try:

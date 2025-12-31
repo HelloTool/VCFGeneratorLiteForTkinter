@@ -12,7 +12,7 @@ button_generate = "Generate"
 label_generating = "Generating..."
 
 menu_file = "&File"
-menu_file_generate = "&Start Generate..."
+menu_file_generate = "&Generate file..."
 menu_file_exit = "E&xit"
 
 menu_edit = "&Edit"
