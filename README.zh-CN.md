@@ -41,11 +41,11 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 不同平台的用户需要下载不同的文件，您可以根据下表进行选择：
 
-| 平台    | 软件包类型      | 文件                                                                      |
-| ------- | --------------- | ------------------------------------------------------------------------- |
-| Windows | 安装程序        | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*                |
-| Windows | 便携版          | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip*             |
-| 跨平台  | Python ZIP 应用 | VCFGeneratorLite\_\<应用版本\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
+| 平台    | 软件包类型      | 文件                                                          |
+| ------- | --------------- | ------------------------------------------------------------- |
+| Windows | 安装程序        | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*setup.exe*    |
+| Windows | 便携版          | VCFGeneratorLite\_\<应用版本\>\_**win-amd64**\_*portable.zip* |
+| 跨平台  | Python ZIP 应用 | VCFGeneratorLite\_\<应用版本\>\_**python3**\_*zipapp.pyzw*    |
 
 ## 使用方法
 
@@ -62,7 +62,7 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 > [!NOTE] 说明
 >
-> - 制表符会自动转换为空格处理，您可以同时使用制表符和空格分割。
+> - 制表符会自动转换为空格处理，您可以同时使用制表符和空格分割姓名与电话号码。
 > - 程序会自动去除文本框内多余的空格。
 >
 > 例如 `东坡居士 苏轼   13333333333  眉州眉山人` 将会被识别为
@@ -81,11 +81,9 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 | Windows 安装程序、便携版 | Windows 8.1 或更高版本          |
 | Python ZIP 应用          | Python 3.12 或更高版本、Tkinter |
 
-如果您想在 Windows 8
-及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older-windows.md)。
+如果您想在 Windows 8 及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older-windows.md)。
 
-在 Windows 中，如果您想直接双击启动 Python 应用，您需要安装 [Python 启动器][pylauncher]
-或者 [Python 安装管理器][pymanager]。
+在 Windows 中，如果您想直接双击启动 Python ZIP 应用，您需要安装 [Python 启动器][pylauncher] 或者 [Python 安装管理器][pymanager]。
 
 ### 功能兼容性
 

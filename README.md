@@ -42,11 +42,11 @@ Download the software from the following channels:
 
 Users of different systems need to download different files. You can make your selection according to the table below:
 
-| Platform       | Package Type           | File                                                                     |
-| -------------- | ---------------------- | ------------------------------------------------------------------------ |
-| Windows        | Installer              | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*setup.exe*                |
-| Windows        | Portable               | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*portable.zip*             |
-| Cross-platform | Python ZIP Application | VCFGeneratorLite\_\<version\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
+| Platform       | Package Type           | File                                                         |
+| -------------- | ---------------------- | ------------------------------------------------------------ |
+| Windows        | Installer              | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*setup.exe*    |
+| Windows        | Portable               | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*portable.zip* |
+| Cross-platform | Python ZIP Application | VCFGeneratorLite\_\<version\>\_**python3**\_*zipapp.pyzw*    |
 
 ## Usage
 
@@ -65,7 +65,7 @@ Users of different systems need to download different files. You can make your s
 
 > [!NOTE]
 >
-> - Tabs will be automatically converted to spaces for processing.
+> - Tabs will be automatically converted to spaces, and you can use both tabs and spaces to separate the name and phone number.
 > - The program will automatically remove extra spaces from the text field.
 >
 > For example, ` Han Meimei   13333333333   A   well-known girl` will be recognized as
@@ -85,11 +85,9 @@ Users of different systems need to download different files. You can make your s
 | Windows Installer & Portable | Windows 8.1 or later          |
 | Python ZIP Application       | Python 3.12 or later, Tkinter |
 
-If you wish to use this application on Windows 8 or earlier versions, please refer
-to [Running on Older Windows](./docs/compatibility/runs-on-older-windows.md).
+If you wish to use this application on Windows 8 or earlier versions, please refer to [Running on Older Windows](./docs/compatibility/runs-on-older-windows.md).
 
-On Windows systems, to launch the Python application by double-clicking, you need to install either
-the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
+On Windows systems, to launch the Python Zip Application by double-clicking, you need to install either the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
 
 ### Features Compatibility
 
