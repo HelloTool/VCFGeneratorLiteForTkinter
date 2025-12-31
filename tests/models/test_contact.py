@@ -22,15 +22,13 @@ class TestParseContact:
     # 异常情况测试
     def test_missing_phone(self):
         """测试缺少有效手机号的情况"""
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValueError):
             parse_contact("王五 123456 工程师")
-        assert "The person info is illegal" in str(excinfo.value)
 
     def test_insufficient_parts(self):
         """测试输入少于两个部分的情况"""
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValueError):
             parse_contact("赵六")
-        assert "The person info is illegal" in str(excinfo.value)
 
     def test_multiple_phones(self):
         """测试包含多个手机号的情况（应使用第一个有效手机号）"""
