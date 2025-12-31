@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./images/icon.svg" width="192" height="192" alt="App icon" />
+<img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
 
 # VCF 生成器 Lite
 
@@ -12,7 +12,7 @@
 [![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release-gitee]
 
 **语言**：
-**中文** |
+**简体中文** |
 [English](./README.md) |
 <small>期待您的翻译！</small>
 
@@ -20,15 +20,15 @@
 
 VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快速转换为 VCF 文件，方便批量导入手机通讯录。
 
-[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](../LICENSE)
-[![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.zh.md)
+[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](./LICENSE)
+[![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.zh.md)
 [![代码风格：black](https://img.shields.io/badge/代码风格-black-000000.svg)](https://github.com/psf/black)
 
 [![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
 
 ## 软件截图
 
-<img src="./images/screenshots/main_window.webp" width="600" alt="主窗口" />
+<img src="./docs/images/screenshots/main_window.webp" width="600" alt="主窗口" />
 
 ## 获取应用
 
@@ -82,7 +82,7 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 | Python ZIP 应用          | Python 3.12 或更高版本、Tkinter |
 
 如果您想在 Windows 8
-及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./compatibility/runs-on-older-windows.md)。
+及以下版本中使用本应用，请参考[《在旧版本 Windows 中运行》](./docs/compatibility/runs-on-older-windows.md)。
 
 在 Windows 中，如果您想直接双击启动 Python 应用，您需要安装 [Python 启动器][pylauncher]
 或者 [Python 安装管理器][pymanager]。
@@ -105,11 +105,11 @@ VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快�
 
 ## 开发与贡献
 
-请参阅[《开发指南》](./dev/README.md)与[《贡献指南》](./CONTRIBUTING.md)。
+请参阅[《开发指南》](./docs/dev/README.md)与[《贡献指南》](./docs/CONTRIBUTING.md)。
 
 ## 许可证
 
-本项目以 Apache 2.0 许可证发布，详情请参阅 [LICENSE](../LICENSE)。
+本项目以 Apache 2.0 许可证发布，详情请参阅 [LICENSE](./LICENSE)。
 
 ```txt
 Copyright 2023-2025 Jesse205
@@ -129,7 +129,7 @@ limitations under the License.
 
 ## 开源声明
 
-请参见 [《开源声明》](./legal/os-notices.md)
+请参见 [《开源声明》](./docs/legal/os-notices.md)
 
 ## 特别感谢
 

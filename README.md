@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./images/icon.svg" width="192" height="192" alt="App icon" />
+<img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
 
 # VCF Generator Lite
 
@@ -12,7 +12,7 @@
 [![Python3.12+ (pyzw)](https://img.shields.io/badge/Python_3.12+-pyzw-3776AB?logo=python&logoColor=f5f5f5)][release-gitee]
 
 **Languages**:
-[中文](./README_zh.md) |
+[简体中文](./README.zh-CN.md) |
 **English** |
 <small>More translations are welcome!</small>
 
@@ -21,15 +21,15 @@
 VCF Generator Lite is a lightweight tool that quickly converts name and phone number lists into VCF files for batch
 import to mobile contacts.
 
-[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](../LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
+[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](./LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 [![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
 
 ## Screenshot
 
-<img src="./images/screenshots/main_window.webp" width="600" alt="Main window" />
+<img src="./docs/images/screenshots/main_window.webp" width="600" alt="Main window" />
 
 ## Get the App
 
@@ -43,7 +43,7 @@ Download the software from the following channels:
 Users of different systems need to download different files. You can make your selection according to the table below:
 
 | Platform       | Package Type           | File                                                                     |
-|----------------|------------------------|--------------------------------------------------------------------------|
+| -------------- | ---------------------- | ------------------------------------------------------------------------ |
 | Windows        | Installer              | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*setup.exe*                |
 | Windows        | Portable               | VCFGeneratorLite\_\<version\>\_**win-amd64**\_*portable.zip*             |
 | Cross-platform | Python ZIP Application | VCFGeneratorLite\_\<version\>\_**cpython-\[3.12\|3.13\]**\_*zipapp.pyzw* |
@@ -81,12 +81,12 @@ Users of different systems need to download different files. You can make your s
 ### System Requirements
 
 | Software Package Type        | System Requirements           |
-|------------------------------|-------------------------------|
+| ---------------------------- | ----------------------------- |
 | Windows Installer & Portable | Windows 8.1 or later          |
-| Python ZIP Application           | Python 3.12 or later, Tkinter |
+| Python ZIP Application       | Python 3.12 or later, Tkinter |
 
 If you wish to use this application on Windows 8 or earlier versions, please refer
-to [Running on Older Windows](./compatibility/runs-on-older-windows.md).
+to [Running on Older Windows](./docs/compatibility/runs-on-older-windows.md).
 
 On Windows systems, to launch the Python application by double-clicking, you need to install either
 the [Python Launcher][pylauncher] or [Python Install Manager][pymanager].
@@ -109,11 +109,11 @@ If you want to use dark mode in Windows, you can [enable high contrast mode][win
 
 ## Development & Contribution
 
-Please refer to the [Development Guide (Chinese)](./dev/README.md) and the [Contribution Guide (Chinese)](./CONTRIBUTING.md).
+Please refer to the [Development Guide (Chinese)](./docs/dev/README.md) and the [Contribution Guide (Chinese)](./docs/CONTRIBUTING.md).
 
 ## License
 
-This project is released under the Apache 2.0 license. For details, please refer to [LICENSE](../LICENSE).
+This project is released under the Apache 2.0 license. For details, please refer to [LICENSE](./LICENSE).
 
 ```txt
 Copyright 2023-2025 Jesse205
@@ -133,7 +133,7 @@ limitations under the License.
 
 ## Open Source Notice
 
-Please refer to [Open Source Notice (Chinese)](./legal/os-notices.md)
+Please refer to [Open Source Notice (Chinese)](./docs/legal/os-notices.md)
 
 ## Special Thanks
 
