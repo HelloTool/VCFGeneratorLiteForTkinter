@@ -9,6 +9,7 @@ from vcf_generator_lite.__version__ import __version__
 from vcf_generator_lite.constants import APP_COPYRIGHT
 from vcf_generator_lite.core.vcf_generator import GenerateResult, InvalidLine, VCFGeneratorTask
 from vcf_generator_lite.utils.locales import t
+from vcf_generator_lite.utils.tkinter.busy import tk_busy_forget, tk_buy_hold
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines import create_invalid_lines_window
 from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
@@ -65,7 +66,7 @@ class MainController:
         self.window.set_progress(progress=0)
         self.window.set_progress_determinate(False)
         self.window.set_generate_enabled(False)
-        self.window.generate_button.busy_hold()  # pyright: ignore[reportCallIssue]
+        tk_buy_hold(self.window.generate_button)
         self.window.update()
 
         def done(future: Future[GenerateResult]):
@@ -75,7 +76,7 @@ class MainController:
             self.window.update()
             self._show_generate_done_dialog(file_io.name, future.result())
             self.window.set_generate_enabled(True)
-            self.window.generate_button.busy_forget()
+            tk_busy_forget(self.window.generate_button)
             self.window.update()
 
         def on_update_progress(progress: float, determinate: bool):
