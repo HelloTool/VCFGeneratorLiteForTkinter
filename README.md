@@ -1,7 +1,7 @@
 <div align="center">
 <img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
 
-# VCF Generator Lite
+# VCF Generator Lite ![with Tkinter](https://img.shields.io/badge/with-Tkinter-00319C)
 
 **Repositories**:
 [![Gitee repository](https://img.shields.io/badge/Gitee-repository-C71D23?logo=gitee)][repository-gitee]

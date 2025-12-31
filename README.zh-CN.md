@@ -1,7 +1,7 @@
 <div align="center">
 <img src="./docs/images/icon.svg" width="192" height="192" alt="App icon" />
 
-# VCF 生成器 Lite
+# VCF 生成器 Lite ![使用 Tkinter](https://img.shields.io/badge/使用-Tkinter-00319C)
 
 **仓库**：
 [![Gitee 仓库](https://img.shields.io/badge/Gitee-仓库-C71D23?logo=gitee)][repository-gitee]
