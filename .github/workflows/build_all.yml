@@ -11,12 +11,8 @@ on:
         description: Build Windows Portable
         type: boolean
         default: true
-      build-python312-zipapp:
-        description: Build Python 3.12 Zip Application
-        type: boolean
-        default: true
-      build-python313-zipapp:
-        description: Build Python 3.13 Zip Application
+      build-python3-zipapp:
+        description: Build Python 3 Zip Application
         type: boolean
         default: true
   workflow_call:
@@ -29,12 +25,8 @@ on:
         description: Build Windows Portable
         type: boolean
         default: false
-      build-python312-zipapp:
-        description: Build Python 3.12 Zip Application
-        type: boolean
-        default: false
-      build-python313-zipapp:
-        description: Build Python 3.13 Zip Application
+      build-python3-zipapp:
+        description: Build Python 3 Zip Application
         type: boolean
         default: false
 
@@ -49,7 +41,7 @@ jobs:
     with:
       os: windows-latest
       package-type: installer
-      python-version: 3.13
+      python-version: 3.14t
       artifact-path: dist/*_setup.exe
       artifact-name: windows-installer
 
@@ -60,28 +52,17 @@ jobs:
     with:
       os: windows-latest
       package-type: portable
-      python-version: 3.13
+      python-version: 3.14t
       artifact-path: dist/*_portable.zip
       artifact-name: windows-portable
 
-  build-python312-zipapp:
-    if: ${{ inputs.build-python312-zipapp }}
-    name: Build Python 3.12 Zip Application
+  build-python3-zipapp:
+    if: ${{ inputs.build-python3-zipapp }}
+    name: Build Python 3 Zip Application
     uses: ./.github/workflows/build.yml
     with:
       os: ubuntu-latest
       package-type: zipapp
-      python-version: 3.12
+      python-version: 3.14t
       artifact-path: dist/*_zipapp.pyzw
-      artifact-name: python312-zipapp
-
-  build-python313-zipapp:
-    if: ${{ inputs.build-python313-zipapp }}
-    name: Build Python 3.13 Zip Application
-    uses: ./.github/workflows/build.yml
-    with:
-      os: ubuntu-latest
-      package-type: zipapp
-      python-version: 3.13
-      artifact-path: dist/*_zipapp.pyzw
-      artifact-name: python313-zipapp
+      artifact-name: python3-zipapp

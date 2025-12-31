@@ -51,14 +51,12 @@ def build_with_pdm_packer():
             "-o",
             os.path.join(
                 "dist",
-                OUTPUT_BASE_NAME_TEMPLATE.format(version=APP_VERSION, platform=PLATFORM_PYTHON, distribution="zipapp")
+                OUTPUT_BASE_NAME_TEMPLATE.format(version=APP_VERSION, platform="python3", distribution="zipapp")
                 + ".pyzw",
             ),
             "--interpreter",
-            f"/usr/bin/env python{PYTHON_VERSION}",
-            "--compile",
+            f"/usr/bin/env python3",
             "--compress",
-            "--no-py",
         ],
         env={
             **os.environ,
