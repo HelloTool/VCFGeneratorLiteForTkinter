@@ -1,6 +1,8 @@
 import importlib.resources
 
-traversable = importlib.resources.files("vcf_generator_lite.resources")
+# 使用 .joinpath("resources") 以兼容 Python3.12
+# https://github.com/python/importlib_resources/issues/287
+traversable = importlib.resources.files("vcf_generator_lite").joinpath("resources")
 
 
 def read_text(resource: str, *, encoding: str = "utf-8") -> str:
