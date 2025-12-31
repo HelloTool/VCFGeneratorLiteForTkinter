@@ -40,7 +40,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       os: windows-latest
-      package-type: installer
+      package-type: innosetup
       python-version: 3.14t
       artifact-path: dist/*_setup.exe
       artifact-name: windows-installer
