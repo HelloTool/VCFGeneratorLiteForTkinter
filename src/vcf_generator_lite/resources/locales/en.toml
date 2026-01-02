@@ -53,6 +53,10 @@ label_type_vcf = "vCard File (*.vcf)"
 title = "Save Failed"
 message = "Permission denied, please grant permission again."
 
+[save_vcf_os_error_message_box]
+title = "Save Failed"
+message = "System error: {reason}"
+
 [vcf_generate_success_message_box]
 title = "VCF File Generated Successfully"
 message = "File exported to {path}."

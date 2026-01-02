@@ -53,6 +53,10 @@ label_type_vcf = "vCard 文件 (*.vcf)"
 title = "保存失败"
 message = "权限被拒，请授予权限后再试。"
 
+[save_vcf_os_error_message_box]
+title = "保存失败"
+message = "系统错误：{reason}"
+
 [vcf_generate_success_message_box]
 title = "生成 VCF 文件成功"
 message = "已导出文件到 {path}。"

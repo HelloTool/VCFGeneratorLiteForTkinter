@@ -60,6 +60,13 @@ class MainController:
                 t("save_vcf_permission_denied_message_box.title"), t("save_vcf_permission_denied_message_box.message")
             )
             return
+        except OSError as e:
+            messagebox.showerror(
+                title=t("save_vcf_os_error_message_box.title"),
+                message=t("save_vcf_os_error_message_box.message").format(reason=str(e)),
+            )
+            return
+
         if file_io is None:
             return
         self.generate_file_name = os.path.basename(file_io.name)
