@@ -20,11 +20,11 @@
 
 VCF 生成器 Lite 是一款轻量级工具，可将姓名和手机号列表快速转换为 VCF 文件，方便批量导入手机通讯录。
 
-[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](./LICENSE)
+[![许可证](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteWithTkinter?label=%E8%AE%B8%E5%8F%AF%E8%AF%81)](./LICENSE)
 [![贡献者公约](https://img.shields.io/badge/贡献者公约-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.zh.md)
 [![代码风格：black](https://img.shields.io/badge/代码风格-black-000000.svg)](https://github.com/psf/black)
 
-[![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
+[![Test](https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/actions/workflows/test.yml)
 
 ## 软件截图
 
@@ -133,10 +133,10 @@ limitations under the License.
 
 本项目部分代码由 AI 编码助手（DeepSeek、通义灵码）辅助生成。
 
-[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-[release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/releases/latest
+[release-github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/releases/latest
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
 [pymanager]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-install-manager
 [windows-high-contrast-support]: https://support.microsoft.com/zh-cn/windows/%E5%9C%A8-windows-%E4%B8%AD%E6%9B%B4%E6%94%B9%E9%A2%9C%E8%89%B2%E5%AF%B9%E6%AF%94%E5%BA%A6-fedc744c-90ac-69df-aed5-c8a90125e696

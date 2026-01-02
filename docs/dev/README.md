@@ -39,7 +39,7 @@
 ## 项目结构
 
 ```txt
-VCFGeneratorLiteForTkinter/
+VCFGeneratorLiteWithTkinter/
 ├── scripts/                        # 构建脚本
 ├── src/                            # 源代码
 │   └── vcf_generator_lite/

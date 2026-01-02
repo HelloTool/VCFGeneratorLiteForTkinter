@@ -54,7 +54,7 @@
 
 详见 [视觉设计](./dev/visual.md)
 
-[repository_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[repository_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[issues_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/issues
-[issues_github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/issues
+[repository_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[repository_github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[issues_gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/issues
+[issues_github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/issues

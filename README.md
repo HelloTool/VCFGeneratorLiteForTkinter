@@ -21,11 +21,11 @@
 VCF Generator Lite is a lightweight tool that quickly converts name and phone number lists into VCF files for batch
 import to mobile contacts.
 
-[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteForTkinter)](./LICENSE)
+[![License](https://img.shields.io/github/license/HelloTool/VCFGeneratorLiteWithTkinter)](./LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./docs/CODE_OF_CONDUCT.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-[![Test](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteForTkinter/actions/workflows/test.yml)
+[![Test](https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/actions/workflows/test.yml/badge.svg)](https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/actions/workflows/test.yml)
 
 ## Screenshot
 
@@ -137,10 +137,10 @@ Please refer to [Open Source Notice (Chinese)](./docs/legal/os-notices.md)
 
 Parts of the code in this project were generated with the assistance of AI coding tools (DeepSeek, Tongyi Lingma).
 
-[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/
-[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/
-[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
-[release-github]: https://github.com/HelloTool/VCFGeneratorLiteForTkinter/releases/latest
+[repository-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[repository-github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/
+[release-gitee]: https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/releases/latest
+[release-github]: https://github.com/HelloTool/VCFGeneratorLiteWithTkinter/releases/latest
 [pylauncher]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-launcher-for-windows-deprecated
 [pymanager]: https://docs.python.org/zh-cn/3.15/using/windows.html#python-install-manager
 [windows-high-contrast-support]: https://support.microsoft.com/en-us/windows/turn-high-contrast-mode-on-or-off-in-windows-909e9d89-a0f9-a3a9-b993-7a6dcee85025
