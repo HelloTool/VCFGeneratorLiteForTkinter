@@ -5,7 +5,7 @@ from concurrent.futures import FIRST_EXCEPTION, Future, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from queue import Queue
 from threading import Lock
-from typing import IO
+from typing import IO, NamedTuple
 
 from vcf_generator_lite.models.contact import Contact, PhoneNotFoundError, parse_contact
 
@@ -32,6 +32,12 @@ class VCardGeneratorState:
 class GenerateResult:
     invalid_lines: list[InvalidLine]
     exception: BaseException | None = None
+
+
+class WriteQueueItem(NamedTuple):
+    row_position: int
+    origin_content: str
+    vcard: str
 
 
 def utf8_to_qp(text: str) -> str:
@@ -65,7 +71,7 @@ class VCFGeneratorTask:
         self._output_io = output_io
         self._state = VCardGeneratorState()
         self._lock = Lock()
-        self._write_queue: Queue[str | None] = Queue()
+        self._write_queue: Queue[WriteQueueItem | None] = Queue()
 
     def start(self) -> Future[GenerateResult]:
         future = self._executor.submit(self._process)
@@ -102,7 +108,7 @@ class VCFGeneratorTask:
             try:
                 contact = parse_contact(line)
                 vcard = serialize_to_vcard(contact)
-                self._write_queue.put(vcard)
+                self._write_queue.put(WriteQueueItem(row_position=position, origin_content=line, vcard=vcard))
             except PhoneNotFoundError as e:
                 self._finish_item()
                 _logger.warning(f"Phone not found at line {position}: {e}")
@@ -110,7 +116,7 @@ class VCFGeneratorTask:
                     self._state.invalid_lines.append(InvalidLine(row_position=position, content=line, exception=e))
             except Exception as e:
                 self._finish_item()
-                _logger.warning(f"Unexpected parsing error at line {position}", exc_info=e)
+                _logger.warning(f"Parsing error at line {position}", exc_info=e)
                 with self._lock:
                     self._state.invalid_lines.append(InvalidLine(row_position=position, content=line, exception=e))
 
@@ -119,8 +125,14 @@ class VCFGeneratorTask:
     def _write_output(self):
         while self._state.running and ((item := self._write_queue.get()) is not None):
             try:
-                self._output_io.write(item)
+                self._output_io.write(item.vcard)
                 self._output_io.write("\n\n")
+            except Exception as e:
+                _logger.warning(f"Unexpected writing error at line {item.row_position}", exc_info=e)
+                with self._lock:
+                    self._state.invalid_lines.append(
+                        InvalidLine(row_position=item.row_position, content=item.origin_content, exception=e)
+                    )
             finally:
                 self._write_queue.task_done()
                 self._finish_item()

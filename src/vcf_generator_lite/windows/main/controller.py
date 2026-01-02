@@ -1,3 +1,4 @@
+import logging
 import os.path
 import re
 import traceback
@@ -14,6 +15,8 @@ from vcf_generator_lite.windows.base.constants import EVENT_EXIT
 from vcf_generator_lite.windows.invalid_lines import create_invalid_lines_window
 from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
 from vcf_generator_lite.windows.main.window import MainWindow
+
+logger = logging.getLogger(__name__)
 
 
 class MainController:
@@ -81,7 +84,10 @@ class MainController:
 
         def done(future: Future[GenerateResult]):
             self.is_generating = False
-            file_io.close()
+            try:
+                file_io.close()
+            except BaseException as e:
+                logger.error("Closing file failed: {}", e)
             self.window.hide_progress()
             self.window.update()
             self._show_generate_done_dialog(file_io.name, future.result())
