@@ -103,7 +103,6 @@ class VCFGeneratorTask:
                 contact = parse_contact(line)
                 vcard = serialize_to_vcard(contact)
                 self._write_queue.put(vcard)
-                raise Exception("fhhgfhg")
             except PhoneNotFoundError as e:
                 self._finish_item()
                 _logger.warning(f"Phone not found at line {position}: {e}")
