@@ -1,8 +1,15 @@
 from tkinter import Event
 
 from vcf_generator_lite.core.vcf_generator import InvalidLine
+from vcf_generator_lite.models.contact import PhoneNotFoundError
 from vcf_generator_lite.windows.invalid_lines.common import st
 from vcf_generator_lite.windows.invalid_lines.window import InvalidLinesWindow
+
+
+def get_locale_exception(exception: BaseException):
+    if isinstance(exception, PhoneNotFoundError):
+        return st("exception_phone_not_found")
+    return str(exception)
 
 
 class InvalidLinesController:
@@ -23,7 +30,7 @@ class InvalidLinesController:
                 values=(
                     st("cell_row").format(row=item.row_position + 1),
                     item.content,
-                    item.reason,
+                    get_locale_exception(item.exception),
                 ),
             )
 

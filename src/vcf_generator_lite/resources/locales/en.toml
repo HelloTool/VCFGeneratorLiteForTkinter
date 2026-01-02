@@ -77,6 +77,7 @@ heading_row = "Position"
 heading_original = "Original Content"
 heading_reason = "Reason"
 cell_row = "Row {row}"
+exception_phone_not_found = "Phone number not found"
 
 [about_message_box]
 title = "About VCF Generator Lite"

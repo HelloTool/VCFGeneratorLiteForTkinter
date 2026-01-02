@@ -77,6 +77,7 @@ heading_row = "位置"
 heading_original = "原始内容"
 heading_reason = "原因"
 cell_row = "第 {row} 行"
+exception_phone_not_found = "号码未找到"
 
 [about_message_box]
 title = "关于 VCF 生成器 Lite"

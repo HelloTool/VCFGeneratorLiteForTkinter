@@ -57,7 +57,8 @@ class MainController:
             )
         except PermissionError:
             messagebox.showerror(
-                t("save_vcf_permission_denied_message_box.title"), t("save_vcf_permission_denied_message_box.message")
+                title=t("save_vcf_permission_denied_message_box.title"),
+                message=t("save_vcf_permission_denied_message_box.message"),
             )
             return
         except OSError as e:
@@ -127,21 +128,19 @@ class MainController:
         )
 
     def _show_generate_done_dialog(self, display_path: str, generate_result: GenerateResult):
-        if generate_result.exceptions:
-            self._show_generate_error_dialog(generate_result.exceptions)
+        if generate_result.exception:
+            self._show_generate_error_dialog(generate_result.exception)
         elif len(generate_result.invalid_lines) > 0:
             self._show_generate_invalid_dialog(display_path, generate_result.invalid_lines)
         else:
             self._show_generate_success_dialog(display_path)
 
-    def _show_generate_error_dialog(self, exceptions: list[BaseException]):
+    def _show_generate_error_dialog(self, exception: BaseException):
         messagebox.showerror(
             parent=self.window,
             title=t("vcf_generate_error_message_box.title"),
             message=t("vcf_generate_error_message_box.message").format(
-                content="\n\n".join(
-                    ("\n".join(traceback.format_exception(exception)) for exception in exceptions),
-                ),
+                content="\n".join(traceback.format_exception(exception)),
             ),
         )
 

@@ -7,7 +7,7 @@ from queue import Queue
 from threading import Lock
 from typing import IO
 
-from vcf_generator_lite.models.contact import Contact, parse_contact
+from vcf_generator_lite.models.contact import Contact, PhoneNotFoundError, parse_contact
 
 _logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ _logger = logging.getLogger(__name__)
 class InvalidLine:
     row_position: int
     content: str
-    reason: str
+    exception: BaseException
 
 
 @dataclass
@@ -25,14 +25,13 @@ class VCardGeneratorState:
     processed: int = 0
     progress: float = 0
     invalid_lines: list[InvalidLine] = field(default_factory=list)
-    exceptions: list[BaseException] = field(default_factory=list)
     running: bool = False
 
 
 @dataclass(frozen=True)
 class GenerateResult:
     invalid_lines: list[InvalidLine]
-    exceptions: list[BaseException]
+    exception: BaseException | None = None
 
 
 def utf8_to_qp(text: str) -> str:
@@ -40,16 +39,16 @@ def utf8_to_qp(text: str) -> str:
 
 
 def serialize_to_vcard(contact: Contact):
-    items: list[str] = [
+    items: list[str | None] = [
         "BEGIN:VCARD",
         "VERSION:2.1",
-        f"FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.name)}",
+        f"FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.name)}" if contact.name else None,
         f"TEL;CELL:{contact.phone}",
+        f"NOTE;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.note)}" if contact.note else None,
+        "END:VCARD",
     ]
-    if contact.note:
-        items.append(f"NOTE;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:{utf8_to_qp(contact.note)}")
-    items.append("END:VCARD")
-    return "\n".join(items)
+    filtered_items = (item for item in items if item is not None)
+    return "\n".join(filtered_items)
 
 
 class VCFGeneratorTask:
@@ -79,12 +78,16 @@ class VCFGeneratorTask:
             write_future = pipeline_executor.submit(self._write_output)
             done, _ = wait([parse_future, write_future], return_when=FIRST_EXCEPTION)
         self._state.running = False
-        # 收集异常
+
+        exception: BaseException | None = None
         for future in done:
-            if exception := future.exception():
-                with self._lock:
-                    self._state.exceptions.append(exception)
-        return GenerateResult(invalid_lines=self._state.invalid_lines, exceptions=self._state.exceptions)
+            exception = future.exception()
+            if exception:
+                break
+        return GenerateResult(
+            invalid_lines=self._state.invalid_lines,
+            exception=exception,
+        )
 
     def _parse_input(self) -> None:
         lines = [line.strip() for line in self._input_text.split("\n")]
@@ -100,16 +103,17 @@ class VCFGeneratorTask:
                 contact = parse_contact(line)
                 vcard = serialize_to_vcard(contact)
                 self._write_queue.put(vcard)
-            except ValueError as e:
+                raise Exception("fhhgfhg")
+            except PhoneNotFoundError as e:
                 self._finish_item()
-                _logger.warning(f"Invalid contact data at line {position}: {e}")
+                _logger.warning(f"Phone not found at line {position}: {e}")
                 with self._lock:
-                    self._state.invalid_lines.append(InvalidLine(position, line, str(e)))
+                    self._state.invalid_lines.append(InvalidLine(row_position=position, content=line, exception=e))
             except Exception as e:
                 self._finish_item()
-                _logger.exception(f"Unexpected parsing error at line {position}", exc_info=e)
+                _logger.warning(f"Unexpected parsing error at line {position}", exc_info=e)
                 with self._lock:
-                    self._state.exceptions.append(e)
+                    self._state.invalid_lines.append(InvalidLine(row_position=position, content=line, exception=e))
 
         self._write_queue.put(None)  # 结束信号
 
