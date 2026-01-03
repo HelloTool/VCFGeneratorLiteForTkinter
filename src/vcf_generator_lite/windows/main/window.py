@@ -16,12 +16,25 @@ from vcf_generator_lite.constants import (
 from vcf_generator_lite.layouts.vertical_dialog_layout import VerticalDialogLayout
 from vcf_generator_lite.utils.external_app import open_url_with_fallback
 from vcf_generator_lite.utils.locales import scope, t
+from vcf_generator_lite.utils.tkinter.accelerators import (
+    ACCELERATOR_COPY,
+    ACCELERATOR_CUT,
+    ACCELERATOR_PASTE,
+    ACCELERATOR_REDO,
+    ACCELERATOR_SELECT_ALL,
+    ACCELERATOR_UNDO,
+)
 from vcf_generator_lite.utils.tkinter.menu import parse_menu_label
 from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
 from vcf_generator_lite.widgets.text_menu import TextContextMenu
 from vcf_generator_lite.windows.base import ExtendedTk
 from vcf_generator_lite.windows.base.constants import EVENT_EXIT
-from vcf_generator_lite.windows.main.constants import EVENT_ABOUT, EVENT_CLEAN_QUOTES, EVENT_GENERATE
+from vcf_generator_lite.windows.main.constants import (
+    ACCELERATOR_GENERATE,
+    EVENT_ABOUT,
+    EVENT_CLEAN_QUOTES,
+    EVENT_GENERATE,
+)
 
 st = scope("main_window")
 
@@ -86,7 +99,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
         return action_frame
 
     def _create_menu_bar(self):
-        menu_bar = Menu(self, tearoff=False)
+        menu_bar = Menu(self, tearoff=False, name="menubar")
         menu_bar.add_cascade(
             **parse_menu_label(st("menu_file")),
             menu=self._create_file_menu(menu_bar),
@@ -106,13 +119,14 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
         file_menu.add_command(
             **parse_menu_label(st("menu_file_generate")),
             command=lambda: self.event_generate(EVENT_GENERATE),
-            accelerator="Ctrl + G",
+            accelerator=ACCELERATOR_GENERATE,
         )
         file_menu.add_separator()
+        # 通常不提供退出的快捷键
+        # https://learn.microsoft.com/en-us/windows/win32/uxguide/cmd-menus
         file_menu.add_command(
             **parse_menu_label(st("menu_file_exit")),
             command=lambda: self.event_generate(EVENT_EXIT),
-            accelerator="Alt + F4",
         )
         return file_menu
 
@@ -121,33 +135,33 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_undo")),
             command=lambda: self.__generate_focus_event("<<Undo>>"),
-            accelerator="Ctrl + Z",
+            accelerator=ACCELERATOR_UNDO,
         )
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_redo")),
             command=lambda: self.__generate_focus_event("<<Redo>>"),
-            accelerator="Ctrl + Y",
+            accelerator=ACCELERATOR_REDO,
         )
         edit_menu.add_separator()
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_cut")),
             command=lambda: self.__generate_focus_event("<<Cut>>"),
-            accelerator="Ctrl + X",
+            accelerator=ACCELERATOR_CUT,
         )
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_copy")),
             command=lambda: self.__generate_focus_event("<<Copy>>"),
-            accelerator="Ctrl + C",
+            accelerator=ACCELERATOR_COPY,
         )
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_paste")),
             command=lambda: self.__generate_focus_event("<<Paste>>"),
-            accelerator="Ctrl + V",
+            accelerator=ACCELERATOR_PASTE,
         )
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_select_all")),
             command=lambda: self.__generate_focus_event("<<SelectAll>>"),
-            accelerator="Ctrl + A",
+            accelerator=ACCELERATOR_SELECT_ALL,
         )
         edit_menu.add_separator()
         edit_menu.add_command(
