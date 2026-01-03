@@ -20,9 +20,9 @@ from vcf_generator_lite.utils.tkinter.accelerators import (
     ACCELERATOR_COPY,
     ACCELERATOR_CUT,
     ACCELERATOR_PASTE,
-    ACCELERATOR_REDO,
     ACCELERATOR_SELECT_ALL,
     ACCELERATOR_UNDO,
+    get_accelerator_redo,
 )
 from vcf_generator_lite.utils.tkinter.menu import parse_menu_label
 from vcf_generator_lite.utils.tkinter.widget import enable_auto_wrap
@@ -140,7 +140,7 @@ class MainWindow(ExtendedTk, VerticalDialogLayout):
         edit_menu.add_command(
             **parse_menu_label(st("menu_edit_redo")),
             command=lambda: self.__generate_focus_event("<<Redo>>"),
-            accelerator=ACCELERATOR_REDO,
+            accelerator=get_accelerator_redo(self),
         )
         edit_menu.add_separator()
         edit_menu.add_command(
