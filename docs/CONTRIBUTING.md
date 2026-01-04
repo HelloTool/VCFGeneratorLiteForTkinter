@@ -32,7 +32,7 @@
 
 - 函数参数必须声明类型
 - 单行最大 120 字符
-- 其他情况以 [The Black code style](https://black.readthedocs.io/en/stable/the_black_code_style/index.html) 和 [PEP8](https://peps.python.org/pep-0008/) 为准
+- 其他情况以 [PEP8](https://peps.python.org/pep-0008/) 为准
 
 **Markdown (`.md`)：**
 
