@@ -67,7 +67,7 @@ VCFGeneratorLiteWithTkinter/
 | --------------------------------- | --------------------------------------- |
 | `uv run vcf-generator-lite`       | 运行应用                                |
 | `uv run pytest`                   | 测试应用                                |
-| `uv format`                       | 格式化所有代码                          |
+| `uv run ruff format`              | 格式化所有代码                          |
 | `uv run ruff check`               | 检查所有代码                            |
 | `uv run scripts/build_app.py`     | 构建应用                                |
 | `uv run scripts/version.py`       | 查看当前版本                            |

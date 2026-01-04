@@ -14,7 +14,6 @@ from vcf_generator_lite.windows.invalid_lines.common import st
 
 
 class InvalidLinesWindow(ExtendedDialog, VerticalDialogLayout):
-
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()

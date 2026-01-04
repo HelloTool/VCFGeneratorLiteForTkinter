@@ -20,7 +20,6 @@ logger = logging.getLogger(__name__)
 
 
 class MainController:
-
     def __init__(self, window: MainWindow):
         self.window = window
         self.is_generating: bool = False

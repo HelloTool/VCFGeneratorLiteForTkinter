@@ -48,13 +48,11 @@ is-purelib = true
 
 [tool.ruff]
 line-length = 120
+extend-exclude = ["tests", "typings/**"]
 
 [tool.ruff.format]
 docstring-code-format = true
 line-ending = "lf"
-
-[tool.ruff.lint]
-exclude = ["typings/*"]
 
 [tool.pyright]
 strictListInference = true

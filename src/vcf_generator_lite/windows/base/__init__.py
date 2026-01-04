@@ -86,7 +86,6 @@ class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):
 
 
 class ExtendedDialog(ExtendedToplevel, ABC):
-
     @override
     def _configure_ui_withdraw(self):
         super()._configure_ui_withdraw()

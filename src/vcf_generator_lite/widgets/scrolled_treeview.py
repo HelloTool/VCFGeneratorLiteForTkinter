@@ -6,7 +6,6 @@ from vcf_generator_lite.utils.tkinter.misc import scaled
 
 
 class ScrolledTreeview(Treeview):
-
     def __init__(self, master=None, vertical=True, **kw):
         super().__init__(master, **kw)
         self.vbar: Scrollbar | None = None
