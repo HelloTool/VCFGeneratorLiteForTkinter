@@ -8,7 +8,7 @@ from zipfile import ZipFile
 
 import PyInstaller.__main__ as pyinstaller
 
-from scripts.prepare_innosetup_extensions import PATH_INNOSETUP_EXTENSION, prepare_innosetup_extensions
+from prepare_innosetup_extensions import PATH_INNOSETUP_EXTENSION, prepare_innosetup_extensions
 from vcf_generator_lite.__version__ import __version__ as APP_VERSION
 from vcf_generator_lite.constants import APP_COPYRIGHT
 
@@ -55,7 +55,7 @@ def build_with_pdm_packer():
                 + ".pyzw",
             ),
             "--interpreter",
-            f"/usr/bin/env python3",
+            "/usr/bin/env python3",
             "--compress",
         ],
         env={
@@ -97,11 +97,13 @@ def pack_with_innosetup() -> int:
         [
             iscc_path,
             "/D"
-            + f"OutputBaseFilename={OUTPUT_BASE_NAME_TEMPLATE.format(
-            version=APP_VERSION,
-            platform=PLATFORM_NATIVE,
-            distribution="setup"
-        )}",
+            + f"OutputBaseFilename={
+                OUTPUT_BASE_NAME_TEMPLATE.format(
+                    version=APP_VERSION,
+                    platform=PLATFORM_NATIVE,
+                    distribution='setup',
+                )
+            }",
             "/D" + f"MyAppCopyright={APP_COPYRIGHT}",
             "/D" + f"MyAppVersion={APP_VERSION}",
             "/D" + f"ArchitecturesAllowed={architectures_allowed}",
@@ -153,3 +155,7 @@ def main() -> int:
         case _:
             raise ValueError(f"Invalid type: {type_}")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

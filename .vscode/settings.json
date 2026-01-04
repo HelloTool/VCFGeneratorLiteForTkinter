@@ -1,11 +1,11 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "pyproject.toml": "pdm.lock, .editorconfig, .markdownlint.json",
+    "pyproject.toml": "uv.lock, .editorconfig, .markdownlint.json",
     "*": "${basename}.*.${extname}",
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true
   },
   "python.testing.pytestArgs": [

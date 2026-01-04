@@ -26,7 +26,7 @@ OutputDir=.\dist
 OutputBaseFilename={#OutputBaseFilename}
 Compression=lzma2/max
 SolidCompression=yes
-WizardStyle=modern
+WizardStyle=modern dynamic
 ArchitecturesAllowed={#ArchitecturesAllowed}
 ArchitecturesInstallIn64BitMode={#ArchitecturesInstallIn64BitMode}
 AllowNoIcons=yes
@@ -41,23 +41,9 @@ Name: en_us; MessagesFile: "compiler:Default.isl"
 Name: zh_cn; MessagesFile: ".innosetup\Languages\ChineseSimplified.isl"
 
 [LangOptions]
-; Microsoft's recommended normal font size is 9pt.
-DialogFontSize=9
-WelcomeFontSize=12
-TitleFontSize=29
-CopyrightFontSize=9
 
 ; The language file does not contain the correct font, so we should set the correct font.
 ; https://learn.microsoft.com/zh-cn/windows/win32/uxguide/text-ui#guidelines
-en_us.DialogFontName=Segoe UI
-en_us.WelcomeFontName=Segoe UI
-en_us.TitleFontName=Segoe UI
-en_us.CopyrightFontName=Segoe UI
-; Windows 7 does not have Microsoft Yahei UI fonts, so it should always be Microsoft Yahei fonts
-zh_cn.DialogFontName=Microsoft Yahei
-zh_cn.WelcomeFontName=Microsoft Yahei
-zh_cn.TitleFontName=Microsoft Yahei
-zh_cn.CopyrightFontName=Microsoft Yahei
 
 [CustomMessages]
 MyAppName=VCF Generator Lite
@@ -130,7 +116,6 @@ end;
 procedure CurInstallProgressChanged(CurProgress, MaxProgress: Integer);
 var
   WinVersion: TWindowsVersion;
-  VersionStr: string;
 begin
   GetWindowsVersionEx(WinVersion);
   if (CurProgress=MaxProgress) and (WinVersion.Major = 6) and (WinVersion.Minor = 1) and (not Win7MessageShown) then

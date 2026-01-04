@@ -3,12 +3,15 @@
 ## 技术栈
 
 - **IDE**: [Visual Studio Code](https://code.visualstudio.com/) 或者 [PyCharm](https://www.jetbrains.com/zh-cn/pycharm/)
-- **开发语言**: [Python 3.12+][python_homepage]
-- **UI 框架**: [Tkinter][tkinter_homepage]
-- **包管理**: [PDM][pdm_homepage]
+- **开发语言**: [Python 3.12+][python-homepage]
+- **UI 框架**: [Tkinter][tkinter-homepage]
+- **包管理工具**: [uv][uv-homepage]
 - **测试工具**: [pytest](https://docs.pytest.org/en/7.4.x/)
-- **检查工具**: [Black](https://black.readthedocs.io/)
-- **构建工具**: [PyInstaller](https://pyinstaller.org/en/stable/)、[ZipApp](https://docs.python.org/zh-cn/3/library/zipapp.html)、[InnoSetup 6.4+](https://jrsoftware.org/isinfo.php)、[UPX](https://upx.github.io/)
+- **格式化工具**: [Ruff][ruff-formatter-homepage]
+- **代码检查工具**: [Ruff][ruff-linter-homepage]、[Pyright][pyright-homepage]
+- **构建工具**:
+  - Windows: [PyInstaller](https://pyinstaller.org/en/stable/)、[InnoSetup 6.6+][innosetup-homepage]、[UPX](https://upx.github.io/)
+  - ZIP 应用：[zipapp](https://docs.python.org/zh-cn/3/library/zipapp.html)
 
 ## 🛠️ 开发准备
 
@@ -16,16 +19,15 @@
 
 1. **安装基础工具**：
    - 下载并安装 Python 3.13+（勾选 `Add to PATH`）
-   - [安装 PDM](https://pdm-project.org/zh-cn/latest/#_3)（包管理工具）
-      ```bash
-      pip install --user pdm
-      ```
-   - 安装 UPX（可选）
+   - [安装 uv][uv-installation]
+   - （可选）安装 UPX
    - 安装 InnoSetup（仅 Windows）
 2. **安装依赖项**：
    ```bash
-   pdm install -G:all # 安装项目依赖
-   pdm install --plugins  # 安装 PDM 插件
+   # 仅安装开发和生产依赖项
+   uv sync
+   # 或安装所有依赖项
+   uv sync --all-groups
    ```
 
 ## 📦 构建应用
@@ -61,12 +63,15 @@ VCFGeneratorLiteWithTkinter/
 
 ## 常用命令
 
-| 命令                         | 描述                                    |
-| ---------------------------- | --------------------------------------- |
-| `pdm run vcf-generator-lite` | 运行应用                                |
-| `pdm run build_app`          | 构建应用                                |
-| `pdm run version`            | 查看当前版本                            |
-| `pdm run version 1.2.3`      | 更新版本号为 `1.2.3` 并同步所有配置文件 |
+| 命令                              | 描述                                    |
+| --------------------------------- | --------------------------------------- |
+| `uv run vcf-generator-lite`       | 运行应用                                |
+| `uv run pytest`                   | 测试应用                                |
+| `uv format`                       | 格式化所有代码                          |
+| `uv run ruff check`               | 检查所有代码                            |
+| `uv run scripts/build_app.py`     | 构建应用                                |
+| `uv run scripts/version.py`       | 查看当前版本                            |
+| `uv run scripts/version.py 1.2.3` | 更新版本号为 `1.2.3` 并同步所有配置文件 |
 
 您可以通过 `pdm run --list` 查看所有自定义命令。
 
@@ -82,6 +87,11 @@ VCFGeneratorLiteWithTkinter/
   - 尽量使用 `pack` 布局管理器，创建响应式 UI；
   - 组件间距统一使用 `padx=7p, pady=7p`。
 
-[python_homepage]: https://www.python.org/
-[pdm_homepage]: https://pdm-project.org/
-[tkinter_homepage]: https://docs.python.org/zh-cn/3/library/tk.html
+[python-homepage]: https://www.python.org/
+[uv-homepage]: https://docs.astral.sh/uv/
+[uv-installation]: https://docs.astral.sh/uv/getting-started/installation/
+[tkinter-homepage]: https://docs.python.org/zh-cn/3/library/tk.html
+[ruff-formatter-homepage]: https://docs.astral.sh/ruff/formatter/
+[ruff-linter-homepage]: https://docs.astral.sh/ruff/linter/
+[innosetup-homepage]: https://jrsoftware.org/isinfo.php
+[pyright-homepage]: https://microsoft.github.io/pyright

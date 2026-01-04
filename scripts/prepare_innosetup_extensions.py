@@ -29,7 +29,7 @@ def prepare_innosetup_extensions(
         )
         return 1
     file_text = response.text
-    # 获取到的内容是CRLF换行的，但是python只能识别LF换行，所以需要替换一下
+    # 获取到的内容是 CRLF 换行的，但是 python 只能识别 LF 换行，所以需要替换一下
     file_text = file_text.replace("\r", "")
 
     os.makedirs(os.path.dirname(PATH_CHINESE_SIMPLIFIED), exist_ok=True)
@@ -58,3 +58,7 @@ def main() -> int:
         case _:
             download_url = URL_CHINESE_SIMPLIFIED_ISL_URL
     return prepare_innosetup_extensions(download_url)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

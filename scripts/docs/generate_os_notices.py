@@ -1,5 +1,6 @@
 import importlib.metadata
 import runpy
+import sys
 import tomllib
 from typing import TypedDict
 
@@ -41,3 +42,7 @@ def main() -> int:
         )["output"]
         f.write(output)
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
