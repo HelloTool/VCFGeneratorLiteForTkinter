@@ -50,7 +50,7 @@ def test_vcard_file_generator():
         wait([generate_future])
     generate_result = generate_future.result()
 
-    assert generate_result.exceptions == [], "不应有任何异常"
+    assert generate_result.exception is None, "不应有意外的异常"
     assert progress_history[-1][0] == 1.0, "末尾进度应为 1.0"
 
     for item in generate_result.invalid_lines:
