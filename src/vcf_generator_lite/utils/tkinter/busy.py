@@ -4,7 +4,7 @@ from tkinter import Misc
 def tk_buy_hold(master: Misc):
     if getattr(master, "tk_buy_hold", None) is not None:
         # noinspection PyUnresolvedReferences
-        master.tk_buy_hold()  # pyright: ignore[reportAttributeAccessIssue, reportCallIssue]
+        master.tk_busy_hold()  # pyright: ignore[reportAttributeAccessIssue, reportCallIssue]
     else:
         master.tk.call("tk", "busy", "hold", str(master))
 
