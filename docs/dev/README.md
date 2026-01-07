@@ -24,7 +24,7 @@
    - 安装 InnoSetup（仅 Windows）
 2. **安装依赖项**：
    ```bash
-   uv sync --all-groups
+   uv sync
    ```
 
 ## 📦 构建应用

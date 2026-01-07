@@ -16,7 +16,13 @@ build = [
     "pyinstaller-versionfile>=3.0.1",
     "requests>=2.32.5",
 ]
-dev = ["colorlog>=6.9.0"]
+dev = [
+    "colorlog>=6.9.0",
+    { include-group = "lint" },
+    { include-group = "test" },
+    { include-group = "build" },
+]
+
 
 [project.urls]
 Repository = "https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter"
@@ -27,24 +33,8 @@ Issues = "https://gitee.com/HelloTool/VCFGeneratorLiteWithTkinter/issues/new/cho
 vcf-generator-lite = "vcf_generator_lite.__main__:main"
 
 [build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
-[tool.pdm]
-plugins = ["pdm-packer"]
-distribution = true
-
-[tool.pdm.scripts]
-build_app = { call = "scripts.build_app:main", help = "Build app." }
-version = { call = "scripts.version:main", help = "Display or modify the project version number." }
-test = { shell = "pytest", help = "Run tests." }
-format = { shell = "black .", help = "Format code." }
-lint = { shell = "pyright", help = "Lint code." }
-prepare_innosetup_extensions = { call = "scripts.prepare_innosetup_extensions:main", help = "Download InnoSetup language files." }
-docs_generate_os_notices = { call = "scripts.docs.generate_os_notices:main", help = "Generate Open Source notices." }
-
-[tool.pdm.build]
-is-purelib = true
+requires = ["uv_build>=0.9.22,<0.10.0"]
+build-backend = "uv_build"
 
 [tool.ruff]
 line-length = 120

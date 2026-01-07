@@ -480,6 +480,12 @@ build = [
 ]
 dev = [
     { name = "colorlog" },
+    { name = "pyinstaller" },
+    { name = "pyinstaller-versionfile" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "requests" },
+    { name = "ruff" },
 ]
 lint = [
     { name = "pyright" },
@@ -498,7 +504,15 @@ build = [
     { name = "pyinstaller-versionfile", specifier = ">=3.0.1" },
     { name = "requests", specifier = ">=2.32.5" },
 ]
-dev = [{ name = "colorlog", specifier = ">=6.9.0" }]
+dev = [
+    { name = "colorlog", specifier = ">=6.9.0" },
+    { name = "pyinstaller", specifier = ">=6.17.0" },
+    { name = "pyinstaller-versionfile", specifier = ">=3.0.1" },
+    { name = "pyright", specifier = ">=1.1.407" },
+    { name = "pytest", specifier = ">=9.0.2" },
+    { name = "requests", specifier = ">=2.32.5" },
+    { name = "ruff", specifier = ">=0.14.10" },
+]
 lint = [
     { name = "pyright", specifier = ">=1.1.407" },
     { name = "ruff", specifier = ">=0.14.10" },
