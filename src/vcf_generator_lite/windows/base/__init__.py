@@ -1,7 +1,7 @@
 import logging
 from abc import ABC
-from tkinter import PhotoImage, Tk, Toplevel, Wm
-from tkinter.ttk import Frame
+from tkinter import Event, PhotoImage, Tk, Toplevel, Wm
+from tkinter.ttk import Frame, Style
 from typing import override
 
 from vcf_generator_lite.themes import create_theme_patch
@@ -56,10 +56,10 @@ class AppWindowExtension(
 
 
 class ExtendedTk(Tk, AppWindowExtension, ABC):
-    theme_patch: ThemePatch
-
     def __init__(self, **kw):
         super().__init__(baseName="vcf_generator_lite", **kw)
+        self.theme_name: str | None = None
+        self.theme_patch: ThemePatch | None = None
         AppWindowExtension.__init__(self)
 
     @override
@@ -67,12 +67,21 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
         self.apply_theme_patch()
         super()._configure_ui_withdraw()
         self.__apply_default_icon()
+        self.bind("<<ThemeChanged>>", self.__on_theme_changed, "+")
 
     def __apply_default_icon(self):
         self.iconphoto(True, PhotoImage(master=self, data=resources.read_binary("images/icon-48.png")))
 
     def apply_theme_patch(self):
-        self.theme_patch = create_theme_patch(self)
+        if self.theme_name == self.theme_name:
+            return
+        self.theme_name = Style(self).theme_use()
+        self.theme_patch = create_theme_patch(self, self.theme_name)
+
+    def __on_theme_changed(self, event: Event):
+        if event.widget != self:
+            return
+        self.apply_theme_patch()
 
 
 class ExtendedToplevel(Toplevel, AppWindowExtension, ABC):

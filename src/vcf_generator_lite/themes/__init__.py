@@ -1,5 +1,4 @@
 from tkinter import Tk
-from tkinter.ttk import Style
 
 from vcf_generator_lite.themes.abs import ThemePatch
 from vcf_generator_lite.utils.environment import is_windows
@@ -7,8 +6,7 @@ from vcf_generator_lite.utils.environment import is_windows
 __all__ = ["create_theme_patch"]
 
 
-def create_theme_patch(app: Tk) -> ThemePatch:
-    theme_name = Style(app).theme_use()
+def create_theme_patch(app: Tk, theme_name: str) -> ThemePatch:
     if is_windows and theme_name == "vista":
         from vcf_generator_lite.themes.vista_patch import VistaThemePatch
 
