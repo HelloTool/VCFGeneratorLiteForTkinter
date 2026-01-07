@@ -2,7 +2,7 @@ from tkinter import Misc
 
 
 def tk_buy_hold(master: Misc):
-    if getattr(master, "tk_buy_hold", None) is not None:
+    if hasattr(master, "tk_buy_hold"):
         # noinspection PyUnresolvedReferences
         master.tk_busy_hold()  # pyright: ignore[reportAttributeAccessIssue, reportCallIssue]
     else:
@@ -10,7 +10,7 @@ def tk_buy_hold(master: Misc):
 
 
 def tk_busy_forget(master: Misc):
-    if getattr(master, "tk_busy_forget", None) is not None:
+    if hasattr(master, "tk_busy_forget"):
         # noinspection PyUnresolvedReferences
         master.tk_busy_forget()  # pyright: ignore[reportAttributeAccessIssue]
     else:
