@@ -2,7 +2,7 @@
 
 ## 技术栈
 
-- **IDE**: [Visual Studio Code](https://code.visualstudio.com/) 或者 [PyCharm](https://www.jetbrains.com/zh-cn/pycharm/)
+- **IDE**: [Visual Studio Code](https://code.visualstudio.com/) 或者 [PyCharm 2025.3.1](https://www.jetbrains.com/zh-cn/pycharm/)
 - **开发语言**: [Python 3.12+][python-homepage]
 - **UI 框架**: [Tkinter][tkinter-homepage]
 - **包管理工具**: [uv][uv-homepage]
@@ -18,25 +18,22 @@
 ### 环境配置
 
 1. **安装基础工具**：
-   - 下载并安装 Python 3.13+（勾选 `Add to PATH`）
+   - 下载并安装 Python 3.12+ 和 Tkinter
    - [安装 uv][uv-installation]
    - （可选）安装 UPX
    - 安装 InnoSetup（仅 Windows）
 2. **安装依赖项**：
    ```bash
-   # 仅安装开发和生产依赖项
-   uv sync
-   # 或安装所有依赖项
    uv sync --all-groups
    ```
 
 ## 📦 构建应用
 
-| 软件包类型       | 命令                             |
-| ---------------- | -------------------------------- |
-| Windows 安装程序 | `pdm run build_app -t innosetup` |
-| 便携包           | `pdm run build_app -t portable`  |
-| Python ZIP 应用  | `pdm run build_app -t zipapp`    |
+| 软件包类型       | 命令                                       |
+| ---------------- | ------------------------------------------ |
+| Windows 安装程序 | `uv run scripts/build_app.py -t innosetup` |
+| 便携包           | `uv run scripts/build_app.py -t portable`  |
+| Python ZIP 应用  | `uv run scripts/build_app.py -t zipapp`    |
 
 ## 项目结构
 
@@ -72,8 +69,6 @@ VCFGeneratorLiteWithTkinter/
 | `uv run scripts/build_app.py`     | 构建应用                                |
 | `uv run scripts/version.py`       | 查看当前版本                            |
 | `uv run scripts/version.py 1.2.3` | 更新版本号为 `1.2.3` 并同步所有配置文件 |
-
-您可以通过 `pdm run --list` 查看所有自定义命令。
 
 ## 🎨 UI 开发规范
 
