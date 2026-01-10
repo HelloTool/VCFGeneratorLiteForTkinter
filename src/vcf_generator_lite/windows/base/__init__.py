@@ -73,10 +73,11 @@ class ExtendedTk(Tk, AppWindowExtension, ABC):
         self.iconphoto(True, PhotoImage(master=self, data=resources.read_binary("images/icon-48.png")))
 
     def apply_theme_patch(self):
-        if self.theme_name == self.theme_name:
+        theme_name = Style(self).theme_use()
+        if self.theme_name == theme_name:
             return
-        self.theme_name = Style(self).theme_use()
-        self.theme_patch = create_theme_patch(self, self.theme_name)
+        self.theme_name = theme_name
+        self.theme_patch = create_theme_patch(self, theme_name)
 
     def __on_theme_changed(self, event: Event):
         if event.widget != self:
