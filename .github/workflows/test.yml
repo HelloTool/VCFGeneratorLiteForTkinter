@@ -1,26 +1,29 @@
 name: Test
 
 on:
-  push:
-    branches: ["master"]
+  # push:
+  #   branches: [ "master" ]
   pull_request:
-    branches: ["master"]
+    branches: [ "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest # TODO: Use ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12", "3.13"]
+        python-version: [ "3.12", "3.13", "3.14", "3.14t" ]
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup PDM with Python ${{ matrix.python-version }}
-        uses: pdm-project/setup-pdm@v4
+      - uses: actions/checkout@v6
+      - name: Install uv and set the Python version
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: |
-          pdm use ${{ matrix.python-version }}
-          pdm install -G:all
+        run: uv sync
       - name: Test with pytest
-        run: pdm run test
+        run: uv run pytest

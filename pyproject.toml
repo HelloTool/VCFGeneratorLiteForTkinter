@@ -38,7 +38,7 @@ build-backend = "uv_build"
 
 [tool.ruff]
 line-length = 120
-extend-exclude = ["tests", "typings/**"]
+extend-exclude = ["typings/**"]
 
 [tool.ruff.format]
 docstring-code-format = true

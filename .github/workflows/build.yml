@@ -38,18 +38,18 @@ jobs:
     runs-on: ${{ inputs.os }}
     name: Build ${{ inputs.artifact-name }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Python and PDM
-        uses: pdm-project/setup-pdm@v4
+      - uses: actions/checkout@v6
+
+      - name: Install uv and set the Python version
+        uses: astral-sh/setup-uv@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          python-version: ${{ inputs.python-version }}
-          architecture: x64
+          python-version-file: ".python-version"
 
       - name: Install Dependencies
         run: |
-          pdm use ${{ inputs.python-version }}
-          pdm install -G:all
-          pdm install --plugins
+          uv sync
       
       # Do not use UPX for speed.
       # - name: Prepare UPX for Windows
@@ -57,11 +57,11 @@ jobs:
       #   run: choco install upx
 
       - name: Build Package
-        run: pdm run build_app -t ${{ inputs.package-type }}
+        run: uv run scripts/build_app.py -t ${{ inputs.package-type }}
 
       - name: Upload Package
         id: upload-package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ inputs.artifact-name }}
           path: ${{ inputs.artifact-path }}
