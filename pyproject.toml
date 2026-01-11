@@ -6,7 +6,7 @@ authors = [{ name = "Jesse205", email = "jesse205@qq.com" }]
 license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["ttk-text>=0.2.2"]
+dependencies = ["ttk-text==0.3.0"]
 
 [dependency-groups]
 test = ["pytest>=9.0.2"]
