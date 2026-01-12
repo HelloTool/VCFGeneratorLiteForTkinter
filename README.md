@@ -4,8 +4,8 @@
 # VCF Generator Lite ![with Tkinter](https://img.shields.io/badge/with-Tkinter-00319C)
 
 **Repositories**:
-[![Gitee repository](https://img.shields.io/badge/Gitee-repository-C71D23?logo=gitee)][repository-gitee]
-[![GitHub repository](https://img.shields.io/badge/GitHub-repository-0969da?logo=github)][repository-github]
+[![Gitee Primary Repository](https://img.shields.io/badge/Gitee-Primary_Repo-C71D23?logo=gitee)][repository-gitee]
+[![GitHub Secondary Repository](https://img.shields.io/badge/GitHub-Secondary_Repo-0969da?logo=github)][repository-github]
 
 **Platforms**:
 [![Windows8.1+ (exe)](https://img.shields.io/badge/Windows_8.1+-exe-0078D4?logo=windows)][release-gitee]
@@ -100,7 +100,7 @@ If you want to use dark mode in Windows, you can [enable high contrast mode][win
 ### File Compatibility
 
 - vCard Version: 2.1
-- Supported Fields: Name, Phone Number, Notes
+- Supported Fields: Name, Phone Number, Note
 - Known Issues:
   - Windows Contacts may display garbled characters in non-UTF-8 environments
 
