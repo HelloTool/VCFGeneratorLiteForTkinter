@@ -7,15 +7,15 @@ import sysconfig
 from zipfile import ZipFile
 
 import PyInstaller.__main__ as pyinstaller
-
 from prepare_innosetup_extensions import PATH_INNOSETUP_EXTENSION, prepare_innosetup_extensions
+
 from vcf_generator_lite.__version__ import __version__ as APP_VERSION
 from vcf_generator_lite.constants import APP_COPYRIGHT
 
 PYTHON_VERSION = sysconfig.get_python_version()
 PLATFORM_PYTHON = f"{sys.implementation.name}-{PYTHON_VERSION}"
 PLATFORM_NATIVE = sysconfig.get_platform()
-OUTPUT_BASE_NAME_TEMPLATE = "VCFGeneratorLite_v{version}_{platform}_{distribution}"
+OUTPUT_BASE_NAME_TEMPLATE = "vcf-generator-lite-v{version}-{platform}-{distribution}"
 
 
 def ensure_dist_dir():
@@ -35,6 +35,15 @@ def build_with_pyinstaller():
     print("Building finished.")
 
 
+def build_with_uv():
+    uv_path = shutil.which("uv")
+    if uv_path is None:
+        print("uv not found.", file=sys.stderr)
+        return 1
+    result = subprocess.run([uv_path, "build"])
+    return result.returncode
+
+
 def build_with_pdm_packer():
     print("Building with pdm-packer...")
     ensure_dist_dir()
@@ -51,8 +60,7 @@ def build_with_pdm_packer():
             "-o",
             os.path.join(
                 "dist",
-                OUTPUT_BASE_NAME_TEMPLATE.format(version=APP_VERSION, platform="python3", distribution="zipapp")
-                + ".pyzw",
+                OUTPUT_BASE_NAME_TEMPLATE.format(version=APP_VERSION, platform="py3", distribution="zipapp") + ".pyzw",
             ),
             "--interpreter",
             "/usr/bin/env python3",
@@ -151,7 +159,9 @@ def main() -> int:
             build_with_pyinstaller()
             pack_with_zipfile()
         case "zipapp":
-            return build_with_pdm_packer()
+            # TODO: Implement pack with zipapp
+            raise NotImplementedError("Pack with zipapp is not implemented yet.")
+            # return build_with_pdm_packer()
         case _:
             raise ValueError(f"Invalid type: {type_}")
     return 0
